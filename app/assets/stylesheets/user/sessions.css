@@ -1,0 +1,107 @@
+.loginbox {
+  width: 80vw;
+  border-radius: 10px;
+  background-color: #F0F0F0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px 80px;
+}
+
+.loginbox-top{
+  display: flex;
+  align-items: flex-end;
+}
+
+.loginbox-top-maintitle{
+  font-family: '游明朝', serif;
+  font-size: 50px;
+  line-height: 1;
+}
+
+.loginbox-top-subtitle{
+  font-size: 16px;
+  margin-left: 20px;
+  line-height: 2;
+}
+
+.loginbox-buttom{
+  display: flex;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.loginbox-buttom-left{
+
+}
+
+.field{
+  margin-top: 30px;
+}
+
+.field-label{
+  font-size: 12px;
+}
+
+.field-input{
+  height: 40px;
+  width: 400px;
+  border: none;
+  margin-top: 10px;
+}
+
+.remember-label{
+  font-size: 12px;
+}
+
+.actions-button{
+  height: 40px;
+  width: 400px;
+  background-color: #313E52;
+  color: #F0F0F0;
+  border: none;
+  border-radius: 10px;
+  margin-top: 60px;
+}
+
+.password{
+  margin-top: 10px;
+  text-align: center;
+}
+.password-forget{
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.loginbox-buttom-right{
+  text-align: center;
+  margin-left: 180px;
+  margin-top: 80px;
+}
+
+.right-maintitle{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.right-subtitle{
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.sign-in{
+  height: 40px;
+  width: 400px;
+  background-color: #313E52;
+  border-radius: 10px;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-in-button{
+  font-size: 14px;
+  color: #F0F0F0;
+}
