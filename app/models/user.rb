@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 # アソシエーション
-  has_one_attached :image
+  has_one_attached :profile_image
+  has_one_attached :background_image
   has_many :channel_users
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -14,8 +15,8 @@ class User < ApplicationRecord
   belongs_to :mbti
 
 # バリデーション
-  VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
-  VALID_ID_REGEX = /\A[a-zA-Z0-9]+\z/
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  VALID_ID_REGEX = /\A[a-zA-Z0-9_]+\z/
   # validates :image(profile)
   validates :name, presence: true
   validates :email, presence: true
@@ -24,8 +25,8 @@ class User < ApplicationRecord
   # validates :age_id
   # validates :birthday
   # validates :mbti_id
-  validates_format_of :line, with: VALID_ID_REGEX
-  validates_format_of :paypay, with: VALID_ID_REGEX
+  validates_format_of :line, with: VALID_ID_REGEX, allow_blank: true
+  validates_format_of :paypay, with: VALID_ID_REGEX, allow_blank: true
   # validates :image(background)
   # validates :profile
 end

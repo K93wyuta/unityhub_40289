@@ -3,15 +3,18 @@
     新規会員登録
   </div>
   <div class = "sign-up-box">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: { multipart: true }) do |f| %>
       <div class = "error">
         <%= render "devise/shared/error_messages", resource: resource %>
       </div>
       <div class= "image-name">
         <div class="sign-in-field">
-          <div class = "image-box"></div>
-          <% f.label :image,class:"sign-in-field-label" %>
-          <% f.file_field :image, class:"sign-in-profileimage" %>
+          <div class = "image-box">
+            <% f.label :image,class:"sign-in-field-label" %>
+            <%= f.file_field :profile_image, class:"sign-in-profileimage", id:"user_profile_image" %>
+            <span class="custom-profileimage", id="profileimage-previews"></span>
+            <%= image_tag 'user/registrations/photo-button.png',class:"photo-button-profileimage" %>
+          </div>
         </div>
         <div class="sign-in-field">
           <%= f.label :name, "名前",class:"sign-in-field-label" %><br />
@@ -47,11 +50,11 @@
           </div>
           <div class="sign-in-field">
             <% f.label :gender %>
-            <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:""}) %>
+            <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box"}) %>
           </div>
           <div class="sign-in-field">
             <%  f.label :age %>
-            <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:""}) %>
+            <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box"}) %>
           </div>
           <div class="sign-in-field">
             <%  f.label :birthday %>
@@ -59,7 +62,7 @@
           </div>
           <div class="sign-in-field">
             <% f.label :mbti %>
-            <%= f.collection_select(:mbti_id, Mbti.all, :id, :name, {}, {class:"select-box", id:""}) %>
+            <%= f.collection_select(:mbti_id, Mbti.all, :id, :name, {}, {class:"select-box"}) %>
           </div>
           <div class="sign-in-field">
             <% f.label :line %>
@@ -70,9 +73,12 @@
             <%= f.text_field :paypay, placeholder:"PayPay IDを入力してください", autocomplete: "paypay",class:"sign-in-field-input2" %>
           </div>
           <div class="sign-in-field">
-            <div class = "image-backgroundimage"></div>
-            <% f.label :image %>
-            <% f.file_field :image, class:"sign-in-backgroundimage" %>
+            <div class = "image-box">
+              <% f.label :image %>
+              <%= f.file_field :background_image, class:"sign-in-backgroundimage",id:"user_background_image" %>
+              <span class="custom-backgroundimage", id="backgroundimage-previews"></span>
+              <%= image_tag 'user/registrations/photo-button.png',class:"photo-button-backgroundimage" %>
+            </div>
           </div>
           <div class="sign-in-field">
             <% f.label :profile %>
