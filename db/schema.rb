@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_22_054828) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_23_002014) do
+  create_table "channels", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "identification", null: false
+    t.string "password_digest", null: false
+    t.text "introduction"
+    t.bigint "administrator_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["administrator_id"], name: "index_channels_on_administrator_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -31,4 +42,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_22_054828) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "channels", "users", column: "administrator_id"
 end
