@@ -1,0 +1,83 @@
+.channel{
+  display: flex;
+}
+
+.left-content{
+  position: fixed;
+  background-color: #313E52;
+  height: 100vh;
+  width: 220px;
+}
+
+.left-content-box{
+margin: 10px 20px;
+}
+
+.logo{
+  font-size: 26px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.channel-box{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.channel-image1{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  margin-right: 20px;
+}
+
+.channel-name{
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.nav{
+  margin-bottom: 60px;
+}
+
+.nav-lists{
+
+}
+
+.nav-list{
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.nav-list-image{
+  height: 16px;
+  width: 16px;
+  margin-right: 20px;
+}
+
+.nav-list-name{
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.post{
+  margin-bottom: 180px;
+}
+
+.post-lists{
+
+}
+
+.post-list{
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.logout{
+  display: flex;
+  align-items: center;
+}

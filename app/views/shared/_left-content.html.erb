@@ -1,0 +1,74 @@
+<div class = "left-content">
+  <div class = "left-content-box">
+    <h1 class = "logo">
+      UnityHub
+    </h1>
+    <div class = "channel-box">
+      <div class = "channel-image1">
+      </div>
+      <div class = "channel-name">
+        チャンネル名
+      </div>
+    </div>
+    <div class = "nav">
+      <ul class = "nav-lists">
+        <li class = "nav-list">
+          <%= image_tag 'channel/index/nav-home.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            ホーム
+          </div>
+        </li>
+        <li class = "nav-list">
+          <%= image_tag 'channel/index/nav-tweet.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            ツイート
+          </div>
+        </li>
+        <li class = "nav-list">
+          <%= image_tag 'channel/index/nav-calendar.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            カレンダー
+          </div>
+        </li>
+        <li class = "nav-list">
+          <%= image_tag 'channel/index/nav-chat.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            チャット
+          </div>
+        </li>
+        <li class = "nav-list">
+          <%= image_tag 'channel/index/nav-album.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            アルバム
+          </div>
+        </li>
+        <li class = "nav-list">
+          <%= image_tag 'channel/index/nav-profile.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            プロフィール
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class ="post">
+      <ul class = "post-lists">
+        <li class = "post-list">
+          <%= image_tag 'channel/index/post-topics.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            News&Topics
+          </div>
+        </li>
+        <li class = "post-list">
+          <%= image_tag 'channel/index/post-event.svg',class:"nav-list-image" %>
+          <div class = "nav-list-name">
+            イベント申請
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class = "logout">
+      <%= image_tag 'channel/index/logout.svg',class:"nav-list-image" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-list-name" %>
+    </div>
+  </div>
+</div>
