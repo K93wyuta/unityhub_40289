@@ -1,0 +1,96 @@
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class ="channel-form">
+      <div class ="channel-form-back">
+        <%= link_to '< 戻る', :back ,class:"channel-form-back" %>
+      </div>
+      <div class ="channel-form-title">
+        チャンネル　新規作成
+      </div>
+      <div class ="channel-form-contents">
+      <%= form_with(model:@channel, local: true) do |f| %>
+        <div class = "error">
+          <%# render "devise/shared/error_messages", resource: resource %>
+        </div>
+        <div class= "channel-form-top">
+          <div class="channel-form-field">
+            <div class = "channel-form-main-image">
+              <% f.label :image %>
+              <%= f.file_field :channel_main_image, class:"channel-form-main-image-input", id:"channel-form-main-image" %>
+              <span class="custom-channel-form-main-image", id="custom-channel-form-main-image-previews"></span>
+              <%= image_tag 'channel/index/photo-button.png',class:"channel-form-main-image-button" %>
+            </div>
+          </div>
+          <div class="channel-form-field">
+            <%= f.label :name, "チャンネル名",class:"channel-form-field-label" %><br />
+            <%= f.text_field :name, placeholder:"チャンネル名を入力してください", autofocus: true, autocomplete: "name",class:"channel-form-input1" %>
+          </div>
+        </div>
+        <div class = "channel-form-buttom">
+          <div class = "channel-form-field-labels">
+            <div class="channel-form-field-label">ID</div>
+            <div class="channel-form-field-label">パスワード</div>
+            <div class="channel-form-field-label">確認用</div>
+            <div class="channel-form-field-label-background">背景画像</div>
+            <div class="channel-form-field-label-introduction">紹介文</div>
+            <div class="channel-form-field-label-administrator">管理者</div>
+            <div class="channel-form-field-label-participant">参加者</div>
+          </div>
+          <div class = "channel-form-field-input">
+            <div class="channel-form-field">
+              <% f.label :identification %>
+              <%= f.text_field :identification, placeholder:"IDを入力してください", autocomplete: "identification", class:"channel-form-input2" %>
+            </div>
+            <div class="channel-form-field">
+              <% f.label :password %>
+              <%= f.password_field :password, placeholder:"パスワードを入力してください", autocomplete: "password_digest", class:"channel-form-input2" %>
+            </div>
+            <div class="channel-form-field">
+              <% f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "password_confirmation", class:"channel-form-input2" %>
+            </div>
+            <div class="channel-form-field">
+              <div class = "channel-form-background-image">
+                <% f.label :image %>
+                <%= f.file_field :channel_background_image, class:"channel-form-background-image-input", id:"channel-form-background-image" %>
+              <span class="custom-channel-form-background-image", id="custom-channel-form-background-image-previews"></span>
+              <%= image_tag 'channel/index/photo-button.png',class:"channel-form-background-image-button" %>
+            </div>
+            </div>
+            <div class="channel-form-field">
+              <% f.label :introduction %>
+              <%= f.text_area :introduction, placeholder:"紹介文を入力してください", autocomplete: "introduction",class:"channel-form-input3" %>
+            </div>
+            <div class="channel-form-field">
+              <div class ="channel-modal-content-administrator">
+                <% @administrators.each do |administrator| %>
+                  <div class ="channel-modal-content-user">
+                    <%= check_box_tag 'administrators[]', administrator.id, false, class: "channel-modal-content-user-check" %>
+                    <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
+                    <%= label_tag :administratorname,administrator.name, class: "channel-modal-content-user-name" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="channel-form-field">
+              <div class ="channel-modal-content-administrator">
+                <% @users.each do |user| %>
+                  <div class ="channel-modal-content-user">
+                    <%= check_box_tag 'users[]', user.id, false, class: "channel-modal-content-user-check" %>
+                    <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
+                    <%= label_tag :username,user.name, class: "channel-modal-content-user-name" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="channel-actions">
+          <%= f.submit "作成する",class:"channel-form-actions-button"%>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

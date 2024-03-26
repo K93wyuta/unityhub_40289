@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_23_003221) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_26_085607) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,15 +39,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_23_003221) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "channel_users", charset: "utf8", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "administrator"
+    t.index ["channel_id"], name: "index_channel_users_on_channel_id"
+    t.index ["user_id"], name: "index_channel_users_on_user_id"
+  end
+
   create_table "channels", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "identification", null: false
     t.string "password_digest", null: false
     t.text "introduction"
-    t.bigint "administrator_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["administrator_id"], name: "index_channels_on_administrator_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -72,5 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_23_003221) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "channels", "users", column: "administrator_id"
+  add_foreign_key "channel_users", "channels"
+  add_foreign_key "channel_users", "users"
 end

@@ -2,3 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "profile-image"
+import "profile-image"
+import "channel-image"

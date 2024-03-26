@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   root to: 'channels#index'
   devise_for :users
-  resources :cahnnels, only: :index
+  resources :channels, only: [:index, :new, :create]
 end
