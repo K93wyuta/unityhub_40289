@@ -3,19 +3,21 @@
   <div class = "channel-right-content" >
     <div class = "channel-top">
       <div class = "channel-top-background">
+        <%= image_tag @channel.channel_background_image, class:"channel-top-background-image" %>
         <div class ="channel-top-box">
-          <div class = channel-top-box-image2>
+          <div class = "channel-top-box-image2">
+            <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image"%>
           </div>
           <div class ="channel-top-box-name">
-            チャンネル名
+            <%= @channel.name %>
           </div>
           <div class= "channel-top-box-id">
-            Channel ID
+            <%= @channel.identification %>
           </div>
         </div>
       </div>
       <div class ="channel-top-edit">
-        編集
+        <%= link_to "編集", edit_channel_path(@channel.id) %>
       </div>
     </div>
     <div class ="channel-content">
@@ -26,7 +28,7 @@
             紹介文
           </div>
           <div class ="channel-profile-text">
-            紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。
+            <%= @channel.introduction %>
           </div>
         </div>
       </div>
@@ -36,20 +38,16 @@
         </div>
         <div class ="channel-Administrator-user">
           <ul class = "channel-Administrator-user-lists">
-            <li class ="channel-Administrator-user-list">
-              <div class = "channel-Administrator-userimage">
-              </div>
-              <div class ="channel-Administrator-username">
-                松原裕太
-              </div>
-            </li>
-            <li class ="channel-Administrator-user-list">
-              <div class = "channel-Administrator-userimage">
-              </div>
-              <div class ="channel-Administrator-username">
-                松原裕太
-              </div>
-            </li>
+            <% @administrators.each do |administrator| %>
+                <li class ="channel-Administrator-user-list">
+                  <div class = "channel-Administrator-userimage">
+                    <%= image_tag administrator.profile_image, class:"channel-Administrator-user-frofile-image" %>
+                  </div>
+                  <div class ="channel-Administrator-username">
+                    <%= administrator.name %>
+                  </div>
+                </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -59,27 +57,16 @@
         </div>
         <div class ="channel-participant-user">
           <ul class = "channel-participant-user-lists">
-            <li class ="channel-participant-user-list">
-              <div class = "channel-participant-userimage">
-              </div>
-              <div class ="channel-participant-username">
-                松原裕太
-              </div>
-            </li>
-            <li class ="channel-participant-user-list">
-              <div class = "channel-participant-userimage">
-              </div>
-              <div class ="channel-participant-username">
-                松原裕太
-              </div>
-            </li>
-            <li class ="channel-participant-user-list">
-              <div class = "channel-participant-userimage">
-              </div>
-              <div class ="channel-participant-username">
-                松原裕太
-              </div>
-            </li>
+            <% @channel_users.each do |user| %>
+              <li class ="channel-participant-user-list">
+                <div class = "channel-participant-userimage">
+                  <%= image_tag user.user.profile_image, class:"channel-Administrator-user-frofile-image" %>
+                </div>
+                <div class ="channel-participant-username">
+                  <%= user.user.name %>
+                </div>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

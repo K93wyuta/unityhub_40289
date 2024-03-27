@@ -32,6 +32,26 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
+    @administrators = @channel.administrators
+    @channel_users = @channel.channel_users.where(administrator: false)
+  end
+
+  def edit
+    @channel = Channel.find(params[:id])
+    @administrators = User.all
+    @users = User.all
+  end
+
+  def update
+    channel = Channel.find(params[:id])
+    if channel.update(channel_params)
+    redirect_to channel_path(params[:id])
+    else
+      @channel = Channel.find(params[:id])
+      @administrators = User.all
+      @users = User.all
+      render :edit,status: :unprocessable_entity
+    end
   end
 
   private
