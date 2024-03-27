@@ -1,222 +1,43 @@
-<div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "channel-top">
-      <div class = "channel-top-background">
-        <div class ="channel-top-box">
-          <div class = channel-top-box-image2>
-          </div>
-          <div class ="channel-top-box-name">
-            チャンネル名
-          </div>
-          <div class= "channel-top-box-id">
-            Channel ID
-          </div>
-        </div>
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
+<div class = "channel-index-content" >
+  <div class ="channel-index-title">
+    チャンネルを選択してください
+  </div>
+  <div class ="channel-index">
+    <% @channels.each do |channel| %>
+    <div class ="channel-index-box">
+    <%= image_tag(channel.channel_background_image, class:"channel-index-box-image") if channel.channel_background_image.attached? %>
+      <div class ="channel-index-box-check">
+        ✓
       </div>
-      <div class ="channel-top-edit">
-        編集
-      </div>
-    </div>
-    <div class ="channel-content">
-      <div class ="channel-profile">
-        <%= image_tag 'channel/index/profile.svg',class:"channel-profile-image" %>
-        <div class = "channel-profile-content">
-          <div class = "channel-profile-title">
-            紹介文
-          </div>
-          <div class ="channel-profile-text">
-            紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。紹介文が入ります。
-          </div>
-        </div>
-      </div>
-      <div class ="channel-Administrator">
-        <div class ="channel-Administrator-title">
-          管理者
-        </div>
-        <div class ="channel-Administrator-user">
-          <ul class = "channel-Administrator-user-lists">
-            <li class ="channel-Administrator-user-list">
-              <div class = "channel-Administrator-userimage">
-              </div>
-              <div class ="channel-Administrator-username">
-                松原裕太
-              </div>
-            </li>
-            <li class ="channel-Administrator-user-list">
-              <div class = "channel-Administrator-userimage">
-              </div>
-              <div class ="channel-Administrator-username">
-                松原裕太
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class ="channel-participant">
-        <div class ="channel-participant-title">
-          参加者
-        </div>
-        <div class ="channel-participant-user">
-          <ul class = "channel-participant-user-lists">
-            <li class ="channel-participant-user-list">
-              <div class = "channel-participant-userimage">
-              </div>
-              <div class ="channel-participant-username">
-                松原裕太
-              </div>
-            </li>
-            <li class ="channel-participant-user-list">
-              <div class = "channel-participant-userimage">
-              </div>
-              <div class ="channel-participant-username">
-                松原裕太
-              </div>
-            </li>
-            <li class ="channel-participant-user-list">
-              <div class = "channel-participant-userimage">
-              </div>
-              <div class ="channel-participant-username">
-                松原裕太
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class ="channel-event">
-        <div class ="channel-event-title">
-          イベント
-        </div>
-        <ul class ="channel-event-lists">
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div class ="channel-event-button">
-          <button id="leftButton" class ="botton"><</button>
-          <button id="rightButton" class ="botton">></button>
-        </div>
-      </div>
-      <div class ="channel-topics">
-        <div class ="channel-topics-title">
-          News&Topics
-        </div>
-        <div class ="channel-topics-content">
-          <ul class ="channel-topics-content-lists">
-            <li class ="channel-topics-content-list">
-              <div class ="channel-topics-content-list-left">
-                <div class ="channel-topics-content-list-image">
-                </div>
-              </div>
-              <div class ="channel-topics-content-list-right">
-                <div class ="channel-topics-content-list-top">
-                  <div class ="channel-topics-content-list-top-name">
-                    松原裕太
-                  </div>
-                  <div class ="channel-topics-content-list-top-time">
-                    17:42
-                  </div>
-                </div>
-                <div class ="channel-topics-content-list-center">
-                  <div class ="channel-topics-content-list-center-title">
-                    タイトル
-                  </div>
-                  <div class ="channel-topics-content-list-center-edit">
-                    編集
-                  </div>
-                  <div class ="channel-topics-content-list-center-delete">
-                    削除
-                  </div>
-                </div>
-                <div class ="channel-topics-content-list-buttom">
-                  投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
-                </div>
-                <div class ="channel-topics-content-list-line">
-                </div>
-              </div>
-            </li>
-            <li class ="channel-topics-content-list">
-              <div class ="channel-topics-content-list-left">
-                <div class ="channel-topics-content-list-image">
-                </div>
-              </div>
-              <div class ="channel-topics-content-list-right">
-                <div class ="channel-topics-content-list-top">
-                  <div class ="channel-topics-content-list-top-name">
-                    松原裕太
-                  </div>
-                  <div class ="channel-topics-content-list-top-time">
-                    17:42
-                  </div>
-                </div>
-                <div class ="channel-topics-content-list-center">
-                  <div class ="channel-topics-content-list-center-title">
-                    タイトル
-                  </div>
-                  <div class ="channel-topics-content-list-center-edit">
-                    編集
-                  </div>
-                  <div class ="channel-topics-content-list-center-delete">
-                    削除
-                  </div>
-                </div>
-                <div class ="channel-topics-content-list-buttom">
-                  投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
-                </div>
-                <div class ="channel-topics-content-list-line">
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+      <div class ="channel-index-box-title">
+        <%= channel.name %>
       </div>
     </div>
+    <%# モーダル %>
+    <div class= "modal-channel-login">
+      <div class= "modal-channel-login-back">
+        ×
+      </div>
+      <div class= "modal-channel-login-box">
+        <%= form_with model: @session, url:sessions_path, local: true, method: :post do |f| %>
+        <div class ="modal-channel-login-column">
+          ID
+        </div>
+        <%= f.text_field:identification, placeholder: "IDを入力してください", class:"modal-channel-login-form" %>
+        <div class ="modal-channel-login-column">
+          パスワード
+        </div>
+        <%= f.password_field:password, placeholder: "パスワードを入力してください" ,class:"modal-channel-login-form"%>
+        <%= f.submit "参加する" ,class:"modal-channel-login-action"%>
+        <% end %>
+      </div>
+    </div>
+    <%# モーダル %>
+    <% end %>
+  <%= link_to '+' ,new_channel_path ,class:"channel-new-action" %>
   </div>
 </div>

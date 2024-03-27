@@ -2,6 +2,9 @@ class ChannelsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @channels = current_user.channels.includes(:channel_users).where(channel_users: { administrator: false })
+    @identification = params[:identification]
+    @password = params[:password]
   end
 
   def new
@@ -25,6 +28,10 @@ class ChannelsController < ApplicationController
       @users = User.all
       render :new
     end
+  end
+
+  def show
+    @channel = Channel.find(params[:id])
   end
 
   private
