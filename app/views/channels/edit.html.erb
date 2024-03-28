@@ -1,6 +1,19 @@
 <%# モーダル表示時バックグランド %>
 <div class="overlay"></div>
 <%# モーダル表示時バックグランド %>
+<%# モーダル %>
+<div class ="channel-box-modal">
+  <div class ="channel-box-modal-title">
+    チャンネルを退出しますか？
+  </div>
+  <div class ="channel-box-modal-button">
+      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
+    <div class ="channel-box-modal-button-n">
+      No
+    </div>
+  </div>
+</div>
+<%# モーダル %>
 
 <div class = "channel">
   <%= render "shared/left-content" %>
@@ -15,7 +28,7 @@
       <div class ="channel-form-contents">
       <%= form_with(model:@channel, local: true) do |f| %>
         <div class = "error">
-          <%# render "devise/shared/error_messages", resource: resource %>
+          <%= render "shared/error_messages", resource: @channel %>
         </div>
         <div class= "channel-form-top">
           <div class="channel-form-field">

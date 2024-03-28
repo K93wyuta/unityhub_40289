@@ -8,7 +8,7 @@
   <div class ="channel-form-contents">
   <%= form_with(model:@channel, local: true) do |f| %>
     <div class = "error">
-      <%# render "devise/shared/error_messages", resource: resource %>
+      <%= render "shared/error_messages", resource: @channel %>
     </div>
     <div class= "channel-form-top">
       <div class="channel-form-field">
