@@ -1,3 +1,7 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
 <div class = "channel">
   <%= render "shared/left-content" %>
   <div class = "channel-right-content" >
@@ -6,7 +10,7 @@
         <%= link_to '< 戻る', channel_path(params[:id]),class:"channel-form-back" %>
       </div>
       <div class ="channel-form-title">
-        チャンネル
+        チャンネル　編集
       </div>
       <div class ="channel-form-contents">
       <%= form_with(model:@channel, local: true) do |f| %>
@@ -89,7 +93,23 @@
           </div>
         </div>
         <div class="channel-actions">
-          <%= f.submit "更新する",class:"channel-form-actions-button"%>
+          <%= f.submit "更新する",class:"channel-form-actions-button-update"%>
+          <div class="channel-form-actions-button-delete">
+          削除する
+          </div>
+          <%# モーダル %>
+          <div class ="channel-form-actions-button-delete-modal">
+            <div class ="channel-form-actions-button-delete-modal-title">
+              本当に削除しますか？
+            </div>
+            <div class ="channel-form-actions-button-delete-modal-button">
+                <%= link_to 'Yes', channel_path(@channel.id), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
+              <div class ="channel-form-actions-button-delete-modal-button-n">
+                No
+              </div>
+            </div>
+          </div>
+          <%# モーダル %>
         </div>
       <% end %>
       </div>

@@ -3,16 +3,14 @@
     <h1 class = "logo">
       UnityHub
     </h1>
-    <%= link_to root_path do %>
-      <div class = "channel-box">
-        <div class = "channel-image1">
-          <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image-nav"%>
-        </div>
-        <div class = "channel-name">
-          <%= @channel.name %>
-        </div>
+    <div class = "channel-box">
+      <div class = "channel-image1">
+        <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image-nav" %>
       </div>
-    <% end %>
+      <div class = "channel-name">
+        <%= @channel.name %>
+      </div>
+    </div>
     <div class = "nav">
       <ul class = "nav-lists">
         <li class = "nav-list">
