@@ -15,4 +15,3 @@ class Channel < ApplicationRecord
   validates :password, presence: true
   # validates :introduction
 end
-
