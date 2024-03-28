@@ -24,6 +24,10 @@
       </div>
       <div class= "modal-channel-login-box">
         <%= form_with model: @session, url:sessions_path, local: true, method: :post do |f| %>
+          <%= f.hidden_field :channel_id, value: channel.id %>
+        <div class ="modal-channel-login-channelname">
+          <%= channel.name %>
+        </div>
         <div class ="modal-channel-login-column">
           ID
         </div>

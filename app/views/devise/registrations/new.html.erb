@@ -1,10 +1,11 @@
 <div class = "sign-up">
+          <%= link_to '< 戻る', :back ,class:"sign-up-back" %>
   <div class ="sign-up-title">
     新規会員登録
   </div>
   <div class = "sign-up-box">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: { multipart: true }) do |f| %>
-      <div class = "error">
+      <div class = "sign-up-error">
         <%= render "devise/shared/error_messages", resource: resource %>
       </div>
       <div class= "image-name">

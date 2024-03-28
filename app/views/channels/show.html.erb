@@ -16,9 +16,11 @@
           </div>
         </div>
       </div>
-      <div class ="channel-top-edit">
-        <%= link_to "編集", edit_channel_path(@channel.id) %>
-      </div>
+      <% if @channel.administrators.include?(current_user) %>
+        <div class ="channel-top-edit">
+          <%= link_to "編集", edit_channel_path(@channel.id) %>
+        </div>
+      <% end %>
     </div>
     <div class ="channel-content">
       <div class ="channel-profile">

@@ -40,6 +40,18 @@
   cursor: pointer;
 }
 
+.modal-channel-login-channelname{
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-channel-login-channelid{
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
 .modal-channel-login-column{
   margin-bottom: 10px;
 }

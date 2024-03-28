@@ -3,10 +3,10 @@
   <div class = "channel-right-content" >
     <div class ="channel-form">
       <div class ="channel-form-back">
-        <%= link_to '< 戻る', :back ,class:"channel-form-back" %>
+        <%= link_to '< 戻る', channel_path(params[:id]),class:"channel-form-back" %>
       </div>
       <div class ="channel-form-title">
-        チャンネル　
+        チャンネル
       </div>
       <div class ="channel-form-contents">
       <%= form_with(model:@channel, local: true) do |f| %>
@@ -66,7 +66,7 @@
               <div class ="channel-modal-content-administrator">
                 <% @administrators.each do |administrator| %>
                   <div class ="channel-modal-content-user">
-                    <% checked = @channel.channel_users.exists?(user_id: administrator.id) %>
+                    <% checked = @channel.channel_users.exists?(user_id: administrator.id, administrator: true) %>
                     <%= check_box_tag 'administrators[]', administrator.id, checked, class: "channel-modal-content-user-check" %>
                     <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
                     <%= label_tag :administratorname,administrator.name, class: "channel-modal-content-user-name" %>
@@ -78,7 +78,7 @@
               <div class ="channel-modal-content-administrator">
                 <% @users.each do |user| %>
                   <div class ="channel-modal-content-user">
-                    <% checked = @channel.channel_users.exists?(user_id: user.id) %>
+                    <% checked = @channel.channel_users.exists?(user_id: user.id, administrator: false) %>
                     <%= check_box_tag 'users[]', user.id, checked, class: "channel-modal-content-user-check" %>
                     <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
                     <%= label_tag :username,user.name, class: "channel-modal-content-user-name" %>

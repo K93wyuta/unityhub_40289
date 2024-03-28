@@ -40,12 +40,22 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
     @administrators = User.all
     @users = User.all
+    unless @channel.administrators.include?(current_user)
+      redirect_to channel_path(@channel), alert: 'あなたはこのチャンネルの管理者ではありません。'
+    end
   end
 
   def update
     channel = Channel.find(params[:id])
     if channel.update(channel_params)
-    redirect_to channel_path(params[:id])
+      channel.channel_users.destroy_all
+      (params[:administrators]||[]).each do |administrator_id|
+        channel.channel_users.create(user_id:administrator_id, administrator:true)
+      end
+      (params[:users]||[]).each do |user_id|
+        channel.channel_users.create(user_id:user_id,administrator:false)
+      end
+      redirect_to channel_path(params[:id])
     else
       @channel = Channel.find(params[:id])
       @administrators = User.all

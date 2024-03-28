@@ -12,6 +12,7 @@
 .loginbox-top{
   display: flex;
   align-items: flex-end;
+  margin-bottom: 20px;
 }
 
 .loginbox-top-maintitle{
@@ -68,6 +69,12 @@
   margin-top: 60px;
 }
 
+.actions-button:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #313E52;
+}
+
 .password{
   margin-top: 10px;
   text-align: center;
@@ -105,6 +112,16 @@
 }
 
 .sign-in-button{
+  width: 100%;
   font-size: 14px;
   color: #F0F0F0;
+}
+
+.sign-in:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+}
+
+.sign-in:hover .sign-in-button{
+  color: #313E52;
 }
