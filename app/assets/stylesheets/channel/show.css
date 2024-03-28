@@ -1,6 +1,6 @@
 .channel-right-content{
   background-color: #ffffff;
-  height: 100vh;
+  height: 100%;
   width: calc(100vw - 220px);
   margin-left: 220px;
 }
@@ -31,7 +31,6 @@
   height: 120px;
   width: 120px;
   border-radius: 10px;
-  background-color: #B9B9B9;
   margin-bottom: 10px;
 }
 
@@ -39,6 +38,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .channel-top-box-name{

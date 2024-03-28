@@ -58,12 +58,14 @@
           <ul class = "channel-Administrator-user-lists">
             <% @administrators.each do |administrator| %>
                 <li class ="channel-Administrator-user-list">
+                  <%= link_to user_path(administrator) do %>
                   <div class = "channel-Administrator-userimage">
                     <%= image_tag administrator.profile_image, class:"channel-Administrator-user-frofile-image" %>
                   </div>
                   <div class ="channel-Administrator-username">
                     <%= administrator.name %>
                   </div>
+                  <% end %>
                 </li>
             <% end %>
           </ul>
