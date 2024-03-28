@@ -4,17 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-# アソシエーション
+  # アソシエーション
   has_one_attached :profile_image
   has_one_attached :background_image
   has_many :channel_users
+  has_many :channels, through: :channel_users
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :gender
   belongs_to :age
   belongs_to :mbti
 
-# バリデーション
+  # バリデーション
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_ID_REGEX = /\A[a-zA-Z0-9_]+\z/
   # validates :image(profile)

@@ -1,2 +1,47 @@
-<div>テスト</div>
-<%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
+<div class = "channel-index-content" >
+  <div class ="channel-index-title">
+    チャンネルを選択してください
+  </div>
+  <div class ="channel-index">
+    <% @channels.each do |channel| %>
+    <div class ="channel-index-box">
+    <%= image_tag(channel.channel_main_image, class:"channel-index-box-image") if channel.channel_background_image.attached? %>
+      <div class ="channel-index-box-check">
+        ✓
+      </div>
+      <div class ="channel-index-box-title">
+        <%= channel.name %>
+      </div>
+    </div>
+    <%# モーダル %>
+    <div class= "modal-channel-login">
+      <div class= "modal-channel-login-back">
+        ×
+      </div>
+      <div class= "modal-channel-login-box">
+        <%= form_with model: @session, url:sessions_path, local: true, method: :post do |f| %>
+          <%= f.hidden_field :channel_id, value: channel.id %>
+        <div class ="modal-channel-login-channelname">
+          <%= channel.name %>
+        </div>
+        <div class ="modal-channel-login-column">
+          ID
+        </div>
+        <%= f.text_field:identification, placeholder: "IDを入力してください", class:"modal-channel-login-form" %>
+        <div class ="modal-channel-login-column">
+          パスワード
+        </div>
+        <%= f.password_field:password, placeholder: "パスワードを入力してください" ,class:"modal-channel-login-form"%>
+        <%= f.submit "参加する" ,class:"modal-channel-login-action"%>
+        <% end %>
+      </div>
+    </div>
+    <%# モーダル %>
+    <% end %>
+  <%= link_to '+' ,new_channel_path ,class:"channel-new-action" %>
+  </div>
+</div>

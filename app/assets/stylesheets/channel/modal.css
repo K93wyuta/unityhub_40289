@@ -1,0 +1,85 @@
+.overlay {
+  display: none;
+  position: fixed; /* 画面に固定 */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* 黒色の半透明 */
+  z-index: 998;
+}
+
+.modal-channel-login{
+  display: none;
+  width: 800px;
+  background-color: #FFFFFF;
+  padding: 20px 20px 40px 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  margin: auto;
+  z-index: 999;
+}
+
+.modal-channel-login-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-channel-login-back{
+  text-align: right;
+  font-size: 20px;
+}
+
+.modal-channel-login-back:hover{
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
+.modal-channel-login-channelname{
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-channel-login-channelid{
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.modal-channel-login-column{
+  margin-bottom: 10px;
+}
+
+.modal-channel-login-form{
+  height: 40px;
+  width: 400px;
+  border: #D8D8D8 solid 1px;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.modal-channel-login-action{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  margin-top: 60px;
+  display: block;
+  margin: auto;
+}
+
+.modal-channel-login-action:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  border: #313E52 solid 1px;
+  color: #313E52;
+}

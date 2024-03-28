@@ -2,6 +2,7 @@ const profilePreview = () => {
   const profilePreviewList = document.getElementById('profileimage-previews');
   const profileFileField = document.querySelector('input[type="file"][name="user[profile_image]"]');
 
+  if (profileFileField !== null) {
   profileFileField.addEventListener('change', (e) => {
     const profileAlreadyPreview = document.querySelector('.preview-profileimage');
     if (profileAlreadyPreview){
@@ -17,12 +18,14 @@ const profilePreview = () => {
 
     profilePreviewList.appendChild(profilePreviewImage);
   });
+ }
 };
 
 const backgroundPreview = () => {
   const backgroundPreviewList = document.getElementById('backgroundimage-previews');
   const backgroundFileField = document.querySelector('input[type="file"][name="user[background_image]"]');
 
+  if (backgroundFileField !== null) {
   backgroundFileField.addEventListener('change', (e) => {
     const backgroundAlreadyPreview = document.querySelector('.preview-backgroundimage');
     if (backgroundAlreadyPreview){
@@ -38,6 +41,7 @@ const backgroundPreview = () => {
 
     backgroundPreviewList.appendChild(backgroundPreviewImage);
   });
+ }
 };
 
 window.addEventListener('turbo:load', profilePreview);
