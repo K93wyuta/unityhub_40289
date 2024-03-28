@@ -13,6 +13,7 @@
   color: #FFFFFF;
   font-size: 20px;
   font-weight: bold;
+  margin-bottom: 40px;
 }
 
 .channel-form-contents{
@@ -36,6 +37,10 @@
 .channel-form-main-image{
   position: relative;
   display: inline-block;
+}
+
+.channel-form-main-image:hover{
+  cursor: pointer;
 }
 
 .channel-form-main-image-preview{
@@ -140,6 +145,10 @@
   display: inline-block;
 }
 
+.channel-form-background-image:hover{
+  cursor: pointer;
+}
+
 .channel-form-background-image-input{
   position: absolute;
   left: 0;
@@ -212,6 +221,8 @@
 }
 
 .channel-actions{
+  display: flex;
+  margin-top: 60px;
 }
 
 .channel-form-actions-button{
@@ -221,7 +232,51 @@
   color: #313E52;
   border: none;
   border-radius: 10px;
-  margin-top: 60px;
+}
+
+.channel-form-actions-button:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
+.channel-form-actions-button-update{
+  height: 40px;
+  width: 200px;
+  background-color: #FFFFFF;
+  color: #313E52;
+  border: none;
+  border-radius: 10px;
+}
+
+.channel-form-actions-button-update:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
+.channel-form-actions-button-delete{
+  height: 40px;
+  width: 200px;
+  background-color: #B9B9B9;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.channel-form-actions-button-delete:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
 }
 
 .channel-modal{
