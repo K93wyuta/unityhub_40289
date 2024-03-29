@@ -79,7 +79,7 @@
 }
 /* left-contentモーダル */
 
-/* index モーダル */
+/* channel index モーダル */
 
 .modal-channel-login{
   display: none;
@@ -155,9 +155,9 @@
   border: #313E52 solid 1px;
   color: #313E52;
 }
-/* index モーダル */
+/* channel index モーダル */
 
-/* edit deleteモーダル */
+/* channel edit deleteモーダル */
 .channel-form-actions-button-delete-modal{
   display: none;
   height: 400px;
@@ -225,4 +225,73 @@
   cursor: pointer;
   transition: .2s
 }
-/* edit deleteモーダル */
+/* channel edit deleteモーダル */
+
+/* user edit deleteモーダル */
+.user-form-actions-button-delete-modal{
+  display: none;
+  height: 400px;
+  width: 800px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding-top: 140px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  z-index: 999;
+}
+
+.user-form-actions-button-delete-modal-title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.user-form-actions-button-delete-modal-button{
+  display: flex;
+  justify-content: center;
+}
+
+.user-form-actions-button-delete-modal-button-y{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-form-actions-button-delete-modal-button-y{
+  background-color: #FFFFFF;
+  color: #313E52;
+  border: #313E52 solid 1px;
+  cursor: pointer;
+  transition: .2s
+}
+
+.user-form-actions-button-delete-modal-button-n{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #B9B9B9;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-form-actions-button-delete-modal-button-n{
+  background-color: #FFFFFF;
+  color: #B9B9B9;
+  border: #B9B9B9 solid 1px;
+  cursor: pointer;
+  transition: .2s
+}

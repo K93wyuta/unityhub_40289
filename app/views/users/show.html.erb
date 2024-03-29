@@ -1,19 +1,8 @@
 <%# モーダル表示時バックグランド %>
 <div class="overlay"></div>
 <%# モーダル表示時バックグランド %>
-<%# モーダル %>
-<div class ="channel-box-modal">
-  <div class ="channel-box-modal-title">
-    チャンネルを退出しますか？
-  </div>
-  <div class ="channel-box-modal-button">
-      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
-    <div class ="channel-box-modal-button-n">
-      No
-    </div>
-  </div>
-</div>
-<%# モーダル %>
+
+<%= render "shared/channel_box_modal" %>
 <div class = "channel">
   <%= render "shared/left-content" %>
   <div class = "channel-right-content" >
@@ -27,11 +16,14 @@
           <div class ="channel-top-box-name">
             <%= @user.name %>
           </div>
+          <div class= "channel-top-box-id">
+            <%= @user.email %>
+          </div>
         </div>
       </div>
-      <% if current_user.id == @user.id %>
+      <% if user_signed_in? && current_user.id == @user.id %>
         <div class ="channel-top-edit">
-          <%# link_to "編集", edit_user_path(@user.id) %>
+          <%= link_to "編集", edit_user_path(@user.id) %>
         </div>
       <% end %>
     </div>

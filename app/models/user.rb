@@ -21,7 +21,10 @@ class User < ApplicationRecord
   # validates :image(profile)
   validates :name, presence: true
   validates :email, presence: true
-  validates_format_of :password, with: VALID_PASSWORD_REGEX
+  validates :password, presence: true, length: { minimum: 6 }, 
+  format: { with: VALID_PASSWORD_REGEX }, on: :create
+  validates :password, length: { minimum: 6 },
+  format: { with: VALID_PASSWORD_REGEX }, allow_blank: true, on: :update
   # validates :gender_id
   # validates :age_id
   # validates :birthday

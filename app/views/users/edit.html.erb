@@ -1,0 +1,124 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%= render "shared/channel_box_modal" %>
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class = "channel-top">
+      <div class ="user-form">
+        <div class ="user-form-back">
+          <%= link_to '< 戻る', user_path(params[:id]),class:"user-form-back" %>
+        </div>
+        <div class ="user-form-title">
+          プロフィール　編集
+        </div>
+        <div class ="user-form-contents">
+        <%= form_with(model:@user, local: true) do |f| %>
+          <div class = "user-form-error">
+            <%= render "shared/error_messages", resource: @user %>
+          </div>
+          <div class= "user-form-top">
+            <div class="user-form-field">
+              <div class = "user-form-main-image">
+                <% f.label :image %>
+                <%= f.file_field :profile_image, class:"user-form-profile-image-input", id:"user_profile_image" %>
+                <span class="custom-user-form-profile-image", id="profileimage-previews"></span>
+                <%= image_tag 'user/registrations/photo-button.png',class:"user-form-profile-image-button" %>
+              </div>
+            </div>
+            <div class="user-form-field">
+              <%= f.label :name, "名前",class:"user-form-field-label" %><br />
+              <%= f.text_field :name, placeholder:"名前を入力してください", autofocus: true, autocomplete: "name",class:"user-form-input1" %>
+            </div>
+          </div>
+          <div class = "user-form-buttom">
+            <div class = "user-form-labels">
+              <div class="user-form-field-label">メールアドレス</div>
+              <div class="user-form-field-label">パスワード</div>
+              <div class="user-form-field-label">確認用</div>
+              <div class="user-form-field-label">性別</div>
+              <div class="user-form-field-label">年齢</div>
+              <div class="user-form-field-label">誕生日</div>
+              <div class="user-form-field-label">MTBI</div>
+              <div class="user-form-field-label">LINE ID</div>
+              <div class="user-form-field-label">PayPay ID</div>
+              <div class="user-form-field-label">背景画像</div>
+              <div class="user-form-field-label-profile">プロフィール</div>
+            </div>
+            <div class = "user-form-field-input">
+              <div class="user-form-field">
+                <% f.label :email %>
+                <%= f.email_field :email, placeholder:"メールアドレスを入力してください", autocomplete: "email", class:"user-form-input2" %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :password %>
+                <%= f.password_field :password, placeholder:"パスワードを入力してください", autocomplete: "password_digest", class:"user-form-input2" %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "password_confirmation", class:"user-form-input2" %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :gender %>
+                <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box"}) %>
+              </div>
+              <div class="user-form-field">
+                <%  f.label :age %>
+                <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box"}) %>
+              </div>
+              <div class="user-form-field">
+                <%  f.label :birthday %>
+                <%= f.date_field :birthday, class:"calendar" %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :mbti %>
+                <%= f.collection_select(:mbti_id, Mbti.all, :id, :name, {}, {class:"select-box"}) %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :line %>
+                <%= f.text_field :line, placeholder:"LINE IDを入力してください", autocomplete: "line",class:"sign-in-field-input2" %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :paypay %>
+                <%= f.text_field :paypay, placeholder:"PayPay IDを入力してください", autocomplete: "paypay",class:"sign-in-field-input2" %>
+              </div>
+              <div class="user-form-field">
+                <div class = "user-form-background-image">
+                  <% f.label :image %>
+                  <%= f.file_field :background_image, class:"user-form-background-image-input", id:"user_background_image" %>
+                <span class="custom-user-form-background-image", id="backgroundimage-previews"></span>
+                <%= image_tag 'user/registrations/photo-button.png',class:"user-form-background-image-button" %>
+              </div>
+              </div>
+              <div class="user-form-field">
+                <% f.label :profile %>
+                <%= f.text_area :profile, placeholder:" プロフィールを入力してください", autocomplete: "profile",class:"user-form-input3" %>
+              </div>
+            </div>
+          </div>
+          <div class="user-form-actions">
+            <%= f.submit "更新する",class:"user-form-actions-button-update"%>
+            <div class="user-form-actions-button-delete">
+            削除する
+            </div>
+            <%# モーダル %>
+            <div class ="user-form-actions-button-delete-modal">
+              <div class ="user-form-actions-button-delete-modal-title">
+                本当に削除しますか？
+              </div>
+              <div class ="user-form-actions-button-delete-modal-button">
+                  <%= link_to 'Yes', user_path(@user.id), data: { turbo_method: :delete }, class:"user-form-actions-button-delete-modal-button-y" %>
+                <div class ="user-form-actions-button-delete-modal-button-n">
+                  No
+                </div>
+              </div>
+            </div>
+            <%# モーダル %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
