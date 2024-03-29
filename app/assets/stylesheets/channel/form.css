@@ -41,6 +41,7 @@
 
 .channel-form-main-image:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .channel-form-main-image-preview{
@@ -147,6 +148,7 @@
 
 .channel-form-background-image:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .channel-form-background-image-input{
@@ -297,6 +299,7 @@
   background-color: #313E52;
   cursor: pointer;
   color: #FFFFFF;
+  transition: .2s
 }
 
 

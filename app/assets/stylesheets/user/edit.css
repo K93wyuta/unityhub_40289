@@ -46,6 +46,7 @@
 
 .user-form-main-image:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .user-form-main-image-preview{
@@ -141,6 +142,7 @@
 
 .user-form-background-image:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .user-form-background-image-input{

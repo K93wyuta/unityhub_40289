@@ -110,6 +110,7 @@
 .modal-channel-login-back:hover{
   filter: brightness(80%);
   cursor: pointer;
+  transition: .2s
 }
 
 .modal-channel-login-channelname{
@@ -154,6 +155,7 @@
   background-color: #FFFFFF;
   border: #313E52 solid 1px;
   color: #313E52;
+  transition: .2s
 }
 /* channel index モーダル */
 

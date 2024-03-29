@@ -29,6 +29,7 @@ margin: 10px 20px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
+  transition: .2s
 }
 
 .channel-image1{
@@ -69,6 +70,7 @@ margin: 10px 20px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
+  transition: .2s
 }
 
 .left-content{
@@ -107,6 +109,7 @@ margin: 10px 20px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
+  transition: .2s
 }
 
 .logout{
@@ -119,4 +122,5 @@ margin: 10px 20px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
+  transition: .2s
 }

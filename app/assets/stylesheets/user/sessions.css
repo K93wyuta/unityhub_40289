@@ -73,6 +73,7 @@
   cursor: pointer;
   background-color: #FFFFFF;
   color: #313E52;
+  transition: .2s
 }
 
 .password{
@@ -120,6 +121,7 @@
 .sign-in:hover{
   cursor: pointer;
   background-color: #FFFFFF;
+  transition: .2s
 }
 
 .sign-in:hover .sign-in-button{

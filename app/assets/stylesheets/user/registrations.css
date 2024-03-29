@@ -55,6 +55,7 @@
 
 .sign-in-profileimage:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .custom-profileimage{
@@ -149,6 +150,7 @@
 
 .select-box:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .calendar{
@@ -162,6 +164,7 @@
 
 .calendar:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .sign-in-backgroundimage{
@@ -175,6 +178,7 @@
 
 .sign-in-backgroundimage:hover{
   cursor: pointer;
+  transition: .2s
 }
 
 .custom-backgroundimage{
@@ -224,4 +228,5 @@
   cursor: pointer;
   background-color: #313E52;
   color: #FFFFFF;
+  transition: .2s
 }
