@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_one_attached :profile_image
   has_one_attached :background_image
-  has_many :channel_users
+  has_many :channel_users, dependent: :destroy
   has_many :channels, through: :channel_users
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -21,7 +21,10 @@ class User < ApplicationRecord
   # validates :image(profile)
   validates :name, presence: true
   validates :email, presence: true
-  validates_format_of :password, with: VALID_PASSWORD_REGEX
+  validates :password, presence: true, length: { minimum: 6 }, 
+  format: { with: VALID_PASSWORD_REGEX }, on: :create
+  validates :password, length: { minimum: 6 },
+  format: { with: VALID_PASSWORD_REGEX }, allow_blank: true, on: :update
   # validates :gender_id
   # validates :age_id
   # validates :birthday

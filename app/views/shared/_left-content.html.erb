@@ -13,12 +13,14 @@
     </div>
     <div class = "nav">
       <ul class = "nav-lists">
-        <li class = "nav-list">
-          <%= image_tag 'channel/index/nav-home.svg',class:"nav-list-image" %>
-          <div class = "nav-list-name">
-            ホーム
-          </div>
-        </li>
+        <%= link_to channel_path(session[:channel_id]) do %>
+          <li class = "nav-list">
+            <%= image_tag 'channel/index/nav-home.svg',class:"nav-list-image" %>
+            <div class = "nav-list-name">
+              ホーム
+            </div>
+          </li>
+        <% end %>
         <li class = "nav-list">
           <%= image_tag 'channel/index/nav-tweet.svg',class:"nav-list-image" %>
           <div class = "nav-list-name">
@@ -43,12 +45,14 @@
             アルバム
           </div>
         </li>
-        <li class = "nav-list">
-          <%= image_tag 'channel/index/nav-profile.svg',class:"nav-list-image" %>
-          <div class = "nav-list-name">
-            プロフィール
-          </div>
-        </li>
+        <%= link_to user_path(current_user.id) do %>
+          <li class = "nav-list">
+            <%= image_tag 'channel/index/nav-profile.svg',class:"nav-list-image" %>
+            <div class = "nav-list-name">
+              プロフィール
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class ="post">

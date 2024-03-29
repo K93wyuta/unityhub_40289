@@ -32,6 +32,7 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
+    session[:channel_id] = @channel.id
     @administrators = @channel.administrators
     @channel_users = @channel.channel_users.where(administrator: false)
   end
