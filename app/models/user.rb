@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # アソシエーション
   has_one_attached :profile_image
   has_one_attached :background_image
-  has_many :channel_users
+  has_many :channel_users, dependent: :destroy
   has_many :channels, through: :channel_users
 
   extend ActiveHash::Associations::ActiveRecordExtensions

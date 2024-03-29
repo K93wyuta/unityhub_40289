@@ -33,9 +33,7 @@
         </div>
       </div>
       <% if @channel.administrators.include?(current_user) %>
-        <div class ="channel-top-edit">
-          <%= link_to "編集", edit_channel_path(@channel.id) %>
-        </div>
+          <%= link_to "編集", edit_channel_path(@channel.id) ,class:"channel-top-edit" %>
       <% end %>
     </div>
     <div class ="channel-content">
@@ -79,12 +77,14 @@
           <ul class = "channel-participant-user-lists">
             <% @channel_users.each do |user| %>
               <li class ="channel-participant-user-list">
+                <%= link_to user_path(user.user.id) do %>
                 <div class = "channel-participant-userimage">
                   <%= image_tag user.user.profile_image, class:"channel-Administrator-user-frofile-image" %>
                 </div>
                 <div class ="channel-participant-username">
                   <%= user.user.name %>
                 </div>
+                <% end %>
               </li>
             <% end %>
           </ul>

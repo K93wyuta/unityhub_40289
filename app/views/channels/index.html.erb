@@ -7,6 +7,14 @@
     チャンネルを選択してください
   </div>
   <div class ="channel-index">
+    <% if @channels.empty? %>
+      <div class = "channel-empty">
+        <div class = "channel-empty-title">
+          登録されているチャンネルがありません。チャンネルの管理者にあなたを登録いただくようお願いいたします。
+        </div>
+        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete ,class:"channel-empty-button"%>
+      </div>
+    <% else %>
     <% @channels.each do |channel| %>
     <div class ="channel-index-box">
     <%= image_tag(channel.channel_main_image, class:"channel-index-box-image") if channel.channel_background_image.attached? %>
@@ -41,6 +49,7 @@
       </div>
     </div>
     <%# モーダル %>
+    <% end %>
     <% end %>
   <%= link_to '+' ,new_channel_path ,class:"channel-new-action" %>
   </div>

@@ -63,6 +63,28 @@ const deleteModal = document.querySelector('.channel-form-actions-button-delete-
   };
 };
 
+const userEditModal = () => {
+  const userDeleteModal = document.querySelector('.user-form-actions-button-delete-modal'); // モーダルを取得
+    const userDeleteTrigger = document.querySelector('.user-form-actions-button-delete'); // トリガーを取得
+    const userDeleteOverlay = document.querySelector('.overlay'); // オーバーレイを取得
+  
+    userDeleteTrigger.addEventListener('click', function() {
+        const userDeleteIsModalHidden = userDeleteModal.style.display === 'none';
+        userDeleteModal.style.display = userDeleteIsModalHidden ? 'block' : 'none';
+        userDeleteOverlay.style.display = userDeleteIsModalHidden ? 'block' : 'none'; 
+      });
+  
+      const userDeleteBack = userDeleteModal.querySelector('.user-form-actions-button-delete-modal-button-n'); // 閉じるボタンを取得
+  
+      if (userDeleteBack !== null) {
+        userDeleteBack.addEventListener('click', function() {
+          userDeleteModal.style.display = 'none';
+          userDeleteOverlay.style.display = 'none';
+      });
+    };
+  };
+
 window.addEventListener('turbo:load', leftContentModal);
 window.addEventListener('turbo:load', indexModal);
 window.addEventListener('turbo:load', editModal);
+window.addEventListener('turbo:load', userEditModal);

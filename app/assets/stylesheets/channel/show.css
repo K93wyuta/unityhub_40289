@@ -58,6 +58,13 @@
   margin: 24px 100px 0 0 ;
 }
 
+.channel-top-edit:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
 .channel-content{
   margin: 0 100px;
 }

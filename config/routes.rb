@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :channels
   resource :sessions, only: [:index, :new, :create, :destroy]
-  resources :users, only: [:show, :edit ,:update]
+  resources :users, only: [:show, :edit ,:update, :destroy]
 end

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @channel = Channel.find(session[:channel_id])
+    session[:channel_id] = @channel.id
   end
 
   def edit
@@ -18,6 +19,12 @@ class UsersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to new_user_session_path
   end
 
   private

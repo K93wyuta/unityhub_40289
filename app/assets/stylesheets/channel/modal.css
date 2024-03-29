@@ -268,7 +268,7 @@
   margin-right: 20px;
 }
 
-.user-form-actions-button-delete-modal-button-y{
+.user-form-actions-button-delete-modal-button-y:hover{
   background-color: #FFFFFF;
   color: #313E52;
   border: #313E52 solid 1px;
@@ -288,7 +288,7 @@
   align-items: center;
 }
 
-.user-form-actions-button-delete-modal-button-n{
+.user-form-actions-button-delete-modal-button-n:hover{
   background-color: #FFFFFF;
   color: #B9B9B9;
   border: #B9B9B9 solid 1px;
