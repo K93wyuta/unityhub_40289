@@ -84,7 +84,31 @@ const userEditModal = () => {
     };
   };
 
+// tweet start
+const tweetModal = () => {
+  const tweetNewModal = document.querySelector('.channel-tweet-modal'); // モーダルを取得
+    const tweetNewTrigger = document.querySelector('.channel-tweet-new-action'); // トリガーを取得
+    const tweetNewOverlay = document.querySelector('.overlay'); // オーバーレイを取得
+  
+    tweetNewTrigger.addEventListener('click', function() {
+        const tweetNewIsModalHidden = tweetNewModal.style.display === 'none';
+        tweetNewModal.style.display = tweetNewIsModalHidden ? 'block' : 'none';
+        tweetNewOverlay.style.display = tweetNewIsModalHidden ? 'block' : 'none'; 
+      });
+  
+      const tweetNewBack = tweetNewModal.querySelector('.channel-tweet-modal-back'); // 閉じるボタンを取得
+  
+      if (tweetNewBack !== null) {
+        tweetNewBack.addEventListener('click', function() {
+          tweetNewModal.style.display = 'none';
+          tweetNewOverlay.style.display = 'none';
+      });
+    };
+  };
+// tweet end
+
 window.addEventListener('turbo:load', leftContentModal);
 window.addEventListener('turbo:load', indexModal);
 window.addEventListener('turbo:load', editModal);
 window.addEventListener('turbo:load', userEditModal);
+window.addEventListener('turbo:load', tweetModal);

@@ -16,6 +16,11 @@
   margin: 10px 20px 0 0;
 }
 
+.channel-tweet-modal-back:hover{
+  cursor: pointer;
+  transition: .2s
+}
+
 .channel-tweet-modal-content{
   padding: 20px;
 }
