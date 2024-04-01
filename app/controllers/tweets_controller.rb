@@ -25,13 +25,10 @@ class TweetsController < ApplicationController
 
   def create
     @channel = Channel.find(session[:channel_id])
+    @channel_user = @channel.channel_users.find(params[:id])
     @tweet = Tweet.new(tweet_params)
 
     if @tweet.save
-      redirect_to channel_tweets_path(@channel)
-    else
-      p @tweet.errors.full_messages
-      render :index
     end
   end
 
