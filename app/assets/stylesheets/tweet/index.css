@@ -1,0 +1,187 @@
+
+.chanel-tweet{
+display: flex;
+}
+
+/* tweet new bottom start */
+.channel-tweet-new-action{
+  height: 60px;
+  width: 60px;
+  background-color: #313E52;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  position: fixed;
+  right: 60px;
+  bottom: 60px; 
+}
+
+.channel-tweet-new-action:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #313E52;
+  box-shadow:  0 5px 10px 0;
+  transition: .2s
+}
+/* tweet new bottom end */
+
+/* tweet leftContents start*/
+.chanel-tweet-left{
+  position: fixed;
+  background-color: #465163;
+  height: 100vh;
+  width: 300px;
+  padding: 20px;
+}
+
+.chanel-tweet-left-search{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.chanel-tweet-left-search-input{
+  width: 220px;
+  background-color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 10px 0 0 10px;
+  font-size: 12px;
+}
+
+.chanel-tweet-left-search-botton{
+  width: 40px;
+  border-radius: 0 10px 10px 0;
+  background-color: #313E52;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chanel-tweet-left-search-botton:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: .2s
+}
+
+.chanel-tweet-left-search-botton-image{
+
+}
+
+.chanel-tweet-left-users{
+
+}
+
+.chanel-tweet-left-userall{
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.chanel-tweet-left-userall:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: .2s
+}
+
+.chanel-tweet-left-userall-image{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  margin-right: 20px;
+}
+
+.chanel-tweet-left-userall-name{
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+.chanel-tweet-left-user{
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.chanel-tweet-left-user:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: .2s
+}
+
+.chanel-tweet-left-user-image{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  margin-right: 20px;
+}
+
+.chanel-tweet-left-user-name{
+  color: #FFFFFF;
+  font-size: 14px;
+}
+/* tweet leftContents end*/
+/* tweet rightContents start*/
+.chanel-tweet-right{
+  margin-left: 300px;
+  padding: 40px;
+}
+
+.chanel-tweet-right-tweets{
+
+}
+
+.chanel-tweet-right-tweet{
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.chanel-tweet-right-tweet-userimage{
+  flex-shrink: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #D8D8D8;
+  margin-right: 20px;
+}
+
+.chanel-tweet-right-tweet-content{
+
+}
+
+.chanel-tweet-right-tweet-content-top{
+  display: flex;
+}
+
+.chanel-tweet-right-tweet-content-top-username{
+  font-size: 12px;
+  margin: 0 20px 6px 0;
+}
+
+.chanel-tweet-right-tweet-content-top-date{
+  font-size: 12px;
+}
+
+.chanel-tweet-right-tweet-content-text{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.chanel-tweet-right-tweet-content-buttom{
+  display: flex;
+}
+
+.chanel-tweet-right-tweet-content-buttom-image{
+  height: 160px;
+  width: 160px;
+  border-radius: 10px;
+  background-color: #D8D8D8;
+  margin-right: 10px;
+}
+/* tweet rightContents end*/

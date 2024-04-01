@@ -21,12 +21,14 @@
             </div>
           </li>
         <% end %>
-        <li class = "nav-list">
-          <%= image_tag 'channel/index/nav-tweet.svg',class:"nav-list-image" %>
-          <div class = "nav-list-name">
-            ツイート
-          </div>
-        </li>
+        <%= link_to channel_tweets_path(@channel) do %>
+          <li class = "nav-list">
+            <%= image_tag 'channel/index/nav-tweet.svg',class:"nav-list-image" %>
+            <div class = "nav-list-name">
+              ツイート
+            </div>
+          </li>
+        <% end %>
         <li class = "nav-list">
           <%= image_tag 'channel/index/nav-calendar.svg',class:"nav-list-image" %>
           <div class = "nav-list-name">

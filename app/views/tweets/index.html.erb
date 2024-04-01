@@ -1,0 +1,174 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%# モーダル %>
+<div class ="channel-box-modal">
+  <div class ="channel-box-modal-title">
+    チャンネルを退出しますか？
+  </div>
+  <div class ="channel-box-modal-button">
+      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
+    <div class ="channel-box-modal-button-n">
+      No
+    </div>
+  </div>
+</div>
+<%# モーダル %>
+<div class ="channel-box-modal">
+  <div class ="channel-box-modal-title">
+    チャンネルを退出しますか？
+  </div>
+  <div class ="channel-box-modal-button">
+      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
+    <div class ="channel-box-modal-button-n">
+      No
+    </div>
+  </div>
+</div>
+<%# モーダル %>
+<%# tweet modal start %>
+<div class ="channel-tweet-modal">
+  <div class ="channel-tweet-modal-back">
+    ×
+  </div>
+  <div class ="channel-tweet-modal-content">
+    <div class ="channel-tweet-modal-content-text">
+      投稿文を入力してください
+    </div>
+    <div class ="channel-tweet-modal-content-buttom">
+      <div class ="channel-tweet-modal-content-images">
+        <div class ="channel-tweet-modal-content-images-input">
+          <div class ="channel-tweet-modal-content-images-input-plus">
+            +
+          </div>
+          <div class ="channel-tweet-modal-content-images-input-add">
+            Add
+          </div>
+        </div>
+        <div class ="channel-tweet-modal-content-images-image">
+        </div>
+        <div class ="channel-tweet-modal-content-images-image">
+        </div>
+        <div class ="channel-tweet-modal-content-images-image">
+        </div>
+        <div class ="channel-tweet-modal-content-images-image">
+        </div>
+      </div>
+      <%= image_tag 'tweet/index/tweet.svg',class:"channel-tweet-modal-content-botton-image" %>
+    </div>
+  </div>
+</div>
+<%# tweet modal end %>
+<%# tweet new start %>
+  <%= link_to '+' ,new_channel_path ,class:"channel-tweet-new-action" %>
+<%# tweet new end %>
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class ="chanel-tweet">
+      
+<%# tweet leftContents start %>
+      <div class ="chanel-tweet-left">
+        <div class ="chanel-tweet-left-search">
+          <div class ="chanel-tweet-left-search-input">
+            キーワード
+          </div>
+          <div class ="chanel-tweet-left-search-botton">
+            <%= image_tag 'tweet/index/search.svg',class:"chanel-tweet-left-search-botton-image" %>
+          </div>
+        </div>
+        <div class ="chanel-tweet-left-users">
+          <div class ="chanel-tweet-left-userall">
+            <div class ="chanel-tweet-left-userall-image">
+            </div>
+            <div class ="chanel-tweet-left-userall-name">
+              All
+            </div>
+          </div>
+          <div class ="chanel-tweet-left-user">
+            <div class ="chanel-tweet-left-user-image">
+            </div>
+            <div class ="chanel-tweet-left-user-name">
+              松原裕太
+            </div>
+          </div>
+          <div class ="chanel-tweet-left-user">
+            <div class ="chanel-tweet-left-user-image">
+            </div>
+            <div class ="chanel-tweet-left-user-name">
+              松原裕太
+            </div>
+          </div>
+        </div>
+      </div>
+<%# tweet leftContents end %>
+<%# tweet rightContents start %>
+      <div class ="chanel-tweet-right">
+        <div class ="chanel-tweet-right-tweets">
+          <div class ="chanel-tweet-right-tweet">
+            <div class ="chanel-tweet-right-tweet-userimage">
+            </div>
+            <div class ="chanel-tweet-right-tweet-content">
+              <div class ="chanel-tweet-right-tweet-content-top">
+                <div class ="chanel-tweet-right-tweet-content-top-username">
+                  松原裕太
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-top-date">
+                  3月29日（金） 19:44
+                </div>
+              </div>
+              <div class ="chanel-tweet-right-tweet-content-text">
+                投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
+              </div>
+              <div class ="chanel-tweet-right-tweet-content-buttom">
+                <div class ="chanel-tweet-right-tweet-content-buttom-image">
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-buttom-image">
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-buttom-image">
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-buttom-image">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class ="chanel-tweet-right-tweet">
+            <div class ="chanel-tweet-right-tweet-userimage">
+            </div>
+            <div class ="chanel-tweet-right-tweet-content">
+              <div class ="chanel-tweet-right-tweet-content-top">
+                <div class ="chanel-tweet-right-tweet-content-top-username">
+                  松原裕太
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-top-date">
+                  3月29日（金） 19:44
+                </div>
+              </div>
+              <div class ="chanel-tweet-right-tweet-content-text">
+                投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
+              </div>
+            </div>
+          </div>
+          <div class ="chanel-tweet-right-tweet">
+            <div class ="chanel-tweet-right-tweet-userimage">
+            </div>
+            <div class ="chanel-tweet-right-tweet-content">
+              <div class ="chanel-tweet-right-tweet-content-top">
+                <div class ="chanel-tweet-right-tweet-content-top-username">
+                  松原裕太
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-top-date">
+                  3月29日（金） 19:44
+                </div>
+              </div>
+              <div class ="chanel-tweet-right-tweet-content-text">
+                投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%# tweet rightContents end %>
