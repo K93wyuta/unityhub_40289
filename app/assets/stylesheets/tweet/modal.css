@@ -27,6 +27,7 @@
 
 .channel-tweet-modal-content-text{
   height: 240px;
+  width: 100%;
   border: #B9B9B9 1px solid;
   border-radius: 10px;
   padding: 10px;
@@ -64,14 +65,35 @@
 }
 
 .channel-tweet-modal-content-images-image{
+
+}
+
+.tweet-image-input{
+  position: absolute;
   height: 60px;
   width: 60px;
-  background-color: #B9B9B9;
+  opacity: 0;
+  left: 10;
+  top: 60;
+}
+.tweet-image-input:hover{
+  cursor: pointer;
+  transition: .2s
+}
+
+.preview-tweet-image{
+  border-radius: 10px;
+}
+
+.custom-tweet-image{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
   border-radius: 10px;
   margin-right: 10px;
 }
 
 .channel-tweet-modal-content-botton-image{
   height: 30px;
-  margin: 20px 0 0 360px;
+  margin: 20px 0 0 560px;
 }
