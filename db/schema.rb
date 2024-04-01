@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_29_093056) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_01_102658) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -58,6 +58,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_29_093056) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.date "date_start", null: false
+    t.date "date_end", null: false
+    t.date "time_start", null: false
+    t.date "time_end", null: false
+    t.string "place"
+    t.text "detail"
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_events_on_channel_id"
+  end
+
   create_table "tweets", charset: "utf8", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "channel_user_id", null: false
@@ -92,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_29_093056) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "channel_users", "channels"
   add_foreign_key "channel_users", "users"
+  add_foreign_key "events", "channels"
   add_foreign_key "tweets", "channel_users"
   add_foreign_key "tweets", "channels"
 end

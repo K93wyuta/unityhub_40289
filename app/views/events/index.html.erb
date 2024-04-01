@@ -1,0 +1,35 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%# モーダル %>
+<div class ="channel-box-modal">
+  <div class ="channel-box-modal-title">
+    チャンネルを退出しますか？
+  </div>
+  <div class ="channel-box-modal-button">
+      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
+    <div class ="channel-box-modal-button-n">
+      No
+    </div>
+  </div>
+</div>
+<%# モーダル %>
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class ="chanel-calendar">
+      <div class ="chanel-calendar-left">
+        <%= month_calendar do |date| %>
+          <%= date.day %>
+        <% end %>
+      </div>
+      <div class ="chanel-calendar-right">
+        <% 24.times do |i| %>
+          <div class="chanel-calendar-right-hour">
+            <%= i.to_s.rjust(2, '0') %>:00
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
