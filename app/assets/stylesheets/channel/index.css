@@ -110,5 +110,6 @@
   cursor: pointer;
   background-color: #FFFFFF;
   color: #313E52;
+  box-shadow:  0 5px 10px 0;
   transition: .2s
 }

@@ -1,0 +1,26 @@
+<%# tweet leftContents start %>
+      <div class ="chanel-tweet-left">
+        <%= form_tag channel_tweets_path(@channel), method: :get, class: "chanel-tweet-left-search" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力してください", class:"chanel-tweet-left-search-input" %>
+           <div class = "chanel-tweet-left-search-botton" >
+            <%= image_submit_tag 'tweet/index/search.svg', class: "chanel-tweet-left-search-button-image" %>
+          </div>
+        <% end %>
+        <div class ="chanel-tweet-left-users">
+          <%= link_to channel_tweets_path(@channel), class:"chanel-tweet-left-userall" do %>
+            <%= image_tag(@channel.channel_main_image, class: "chanel-tweet-left-userall-image") %>
+            <div class ="chanel-tweet-left-userall-name">
+              All
+            </div>
+          <% end %>
+          <% @channel_users.each do |channel_user| %>
+            <%= link_to channel_tweet_path(channel_user.channel,channel_user), class:"chanel-tweet-left-user" do %>
+              <%= image_tag(channel_user.user.profile_image, class: "chanel-tweet-left-user-image") %>
+              <div class ="chanel-tweet-left-user-name">
+                <%= channel_user.user.name %>
+              </div>
+            <% end%>
+          <% end%>
+        </div>
+      </div>
+<%# tweet leftContents end %>

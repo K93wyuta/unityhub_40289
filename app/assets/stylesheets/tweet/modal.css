@@ -1,0 +1,99 @@
+.channel-tweet-modal{
+  display: none;
+  height: 400px;
+  width: 800px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 68%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.channel-tweet-modal-back{
+  text-align: right;
+  margin: 10px 20px 0 0;
+}
+
+.channel-tweet-modal-back:hover{
+  cursor: pointer;
+  transition: .2s
+}
+
+.channel-tweet-modal-content{
+  padding: 20px;
+}
+
+.channel-tweet-modal-content-text{
+  height: 240px;
+  width: 100%;
+  border: #B9B9B9 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.channel-tweet-modal-content-buttom{
+  display: flex;
+}
+
+.channel-tweet-modal-content-images{
+  display: flex;
+}
+
+.channel-tweet-modal-content-images-input{
+  height: 60px;
+  width: 60px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0;
+  margin-right: 10px;
+}
+
+.channel-tweet-modal-content-images-input-plus{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.channel-tweet-modal-content-images-input-add{
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+.channel-tweet-modal-content-images-image{
+
+}
+
+.tweet-image-input{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  opacity: 0;
+  left: 10;
+  top: 60;
+}
+.tweet-image-input:hover{
+  cursor: pointer;
+  transition: .2s
+}
+
+.preview-tweet-image{
+  border-radius: 10px;
+}
+
+.custom-tweet-image{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.channel-tweet-modal-content-botton-image{
+  height: 30px;
+  margin: 20px 0 0 560px;
+}

@@ -52,6 +52,7 @@
 ### Association
 - belongs_to :channel
 - belongs_to :user
+- has_many :tweets
 
 ## tweetモデル
 ### テーブル
