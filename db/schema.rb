@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_01_102658) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_02_010534) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_01_102658) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "channel_event_users", charset: "utf8", force: :cascade do |t|
+    t.bigint "channel_user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_user_id"], name: "index_channel_event_users_on_channel_user_id"
+    t.index ["event_id"], name: "index_channel_event_users_on_event_id"
+  end
+
   create_table "channel_users", charset: "utf8", force: :cascade do |t|
     t.bigint "channel_id", null: false
     t.bigint "user_id", null: false
@@ -62,8 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_01_102658) do
     t.string "name", null: false
     t.date "date_start", null: false
     t.date "date_end", null: false
-    t.date "time_start", null: false
-    t.date "time_end", null: false
+    t.time "time_start", null: false
+    t.time "time_end", null: false
     t.string "place"
     t.text "detail"
     t.bigint "channel_id", null: false
@@ -104,6 +113,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_01_102658) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "channel_event_users", "channel_users"
+  add_foreign_key "channel_event_users", "events"
   add_foreign_key "channel_users", "channels"
   add_foreign_key "channel_users", "users"
   add_foreign_key "events", "channels"

@@ -67,12 +67,14 @@
             News&Topics
           </div>
         </li>
+        <%= link_to new_channel_event_path(@channel) do %>
         <li class = "post-list">
           <%= image_tag 'channel/index/post-event.svg',class:"nav-list-image" %>
           <div class = "nav-list-name">
             イベント申請
           </div>
         </li>
+        <% end %>
       </ul>
     </div>
     <div class = "logout">
