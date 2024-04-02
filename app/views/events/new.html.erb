@@ -67,7 +67,9 @@
                   <% @channel_users.each do |channel_user| %>
                     <div class ="channel-modal-content-user">
                       <%= check_box_tag 'users[]', channel_user.user.id, false, class: "channel-modal-content-user-check" %>
-                      <%= image_tag channel_user.user.profile_image, class:"channel-modal-content-user-image" %>
+                      <% if channel_user.user&.profile_image.present? %>
+                        <%= image_tag channel_user.user.profile_image, class:"channel-modal-content-user-image" %>
+                      <% end %>
                       <%= label_tag :username,channel_user.user.name, class: "channel-modal-content-user-name" %>
                     </div>
                   <% end %>

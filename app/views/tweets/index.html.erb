@@ -65,7 +65,9 @@
         <div class ="chanel-tweet-right-tweets">
           <% @tweets.each do |tweet| %>
             <div class ="chanel-tweet-right-tweet">
-              <%= image_tag(tweet.channel_user.user.profile_image, class: "chanel-tweet-right-tweet-userimage") %>
+              <% if tweet.channel_user&.user&.profile_image.present? %>
+                <%= image_tag(tweet.channel_user.user.profile_image, class: "chanel-tweet-right-tweet-userimage") %>
+              <% end %>
               <div class ="chanel-tweet-right-tweet-content">
                 <div class ="chanel-tweet-right-tweet-content-top">
                   <div class ="chanel-tweet-right-tweet-content-top-username">

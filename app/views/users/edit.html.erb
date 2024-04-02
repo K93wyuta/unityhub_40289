@@ -96,6 +96,7 @@
               </div>
             </div>
           </div>
+        </div>
           <div class="user-form-actions">
             <%= f.submit "更新する",class:"user-form-actions-button-update"%>
             <div class="user-form-actions-button-delete">
@@ -107,7 +108,7 @@
                 本当に削除しますか？
               </div>
               <div class ="user-form-actions-button-delete-modal-button">
-                  <%= link_to 'Yes', user_path(@user.id), data: { turbo_method: :delete }, class:"user-form-actions-button-delete-modal-button-y" %>
+                <%= link_to 'Yes', user_path(@user.id), data: { turbo_method: :delete }, class:"user-form-actions-button-delete-modal-button-y" %>
                 <div class ="user-form-actions-button-delete-modal-button-n">
                   No
                 </div>

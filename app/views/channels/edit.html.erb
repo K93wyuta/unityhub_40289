@@ -85,7 +85,9 @@
                   <div class ="channel-modal-content-user">
                     <% checked = @channel.channel_users.exists?(user_id: administrator.id, administrator: true) %>
                     <%= check_box_tag 'administrators[]', administrator.id, checked, class: "channel-modal-content-user-check" %>
-                    <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
+                    <% if administrator&.profile_image.present? %>
+                      <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
+                    <% end %>
                     <%= label_tag :administratorname,administrator.name, class: "channel-modal-content-user-name" %>
                   </div>
                 <% end %>
@@ -97,7 +99,9 @@
                   <div class ="channel-modal-content-user">
                     <% checked = @channel.channel_users.exists?(user_id: user.id, administrator: false) %>
                     <%= check_box_tag 'users[]', user.id, checked, class: "channel-modal-content-user-check" %>
-                    <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
+                    <% if user&.profile_image.present? %>
+                      <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
+                    <% end %>
                     <%= label_tag :username,user.name, class: "channel-modal-content-user-name" %>
                   </div>
                 <% end %>

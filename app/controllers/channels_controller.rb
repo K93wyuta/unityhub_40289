@@ -51,6 +51,8 @@ class ChannelsController < ApplicationController
   def update
     channel = Channel.find(params[:id])
     if channel.update(channel_params)
+      channel.tweets.destroy_all
+      channel.topics.destroy_all
       channel.channel_users.destroy_all
       (params[:administrators] || []).each do |administrator_id|
         channel.channel_users.create(user_id: administrator_id, administrator: true)

@@ -7,15 +7,19 @@
           </div>
         <% end %>
         <div class ="chanel-tweet-left-users">
-          <%= link_to channel_tweets_path(@channel), class:"chanel-tweet-left-userall" do %>
-            <%= image_tag(@channel.channel_main_image, class: "chanel-tweet-left-userall-image") %>
-            <div class ="chanel-tweet-left-userall-name">
-              All
-            </div>
+          <% if @channel&.channel_main_image.present? %>
+            <%= link_to channel_tweets_path(@channel), class:"chanel-tweet-left-userall" do %>
+              <%= image_tag(@channel.channel_main_image, class: "chanel-tweet-left-userall-image") %>
+              <div class ="chanel-tweet-left-userall-name">
+                All
+              </div>
+            <% end %>
           <% end %>
           <% @channel_users.each do |channel_user| %>
             <%= link_to channel_tweet_path(channel_user.channel,channel_user), class:"chanel-tweet-left-user" do %>
-              <%= image_tag(channel_user.user.profile_image, class: "chanel-tweet-left-user-image") %>
+              <% if channel_user.user&.profile_image.present? %>
+                <%= image_tag(channel_user.user.profile_image, class: "chanel-tweet-left-user-image") %>
+              <% end %>
               <div class ="chanel-tweet-left-user-name">
                 <%= channel_user.user.name %>
               </div>

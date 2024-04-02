@@ -5,7 +5,7 @@
     </h1>
     <div class = "channel-box">
       <div class = "channel-image1">
-        <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image-nav" %>
+        <%= image_tag(@channel.channel_main_image, class: "channel-top-box-main-image-nav") if @channel&.channel_main_image.present? %>
       </div>
       <div class = "channel-name">
         <%= @channel.name %>

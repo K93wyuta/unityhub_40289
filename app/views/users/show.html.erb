@@ -8,10 +8,14 @@
   <div class = "channel-right-content" >
     <div class = "channel-top">
       <div class = "channel-top-background">
-        <%= image_tag @user.background_image, class:"channel-top-background-image" %>
+        <% if @user&.background_image.present? %>
+          <%= image_tag @user.background_image, class:"channel-top-background-image" %>
+        <% end %>
         <div class ="channel-top-box">
           <div class = "channel-top-box-image2">
-            <%= image_tag @user.profile_image ,class: "channel-top-box-main-image"%>
+            <% if @user&.profile_image.present? %>
+              <%= image_tag @user.profile_image ,class: "channel-top-box-main-image"%>
+            <% end %>
           </div>
           <div class ="channel-top-box-name">
             <%= @user.name %>

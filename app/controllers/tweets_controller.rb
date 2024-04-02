@@ -27,10 +27,10 @@ class TweetsController < ApplicationController
 
   def create
     @channel = Channel.find(session[:channel_id])
-    @channel_user = @channel.channel_users.find(params[:id])
     @tweet = Tweet.new(tweet_params)
 
     if @tweet.save
+      redirect_to channel_tweet_path(@channel, @tweet)
     end
   end
 
@@ -39,6 +39,6 @@ class TweetsController < ApplicationController
   def tweet_params
     channel_users = ChannelUser.where(user_id: current_user.id, channel_id: @channel.id)
     channel_user_id = channel_users.find_by(administrator: 0)&.id || channel_users.find_by(administrator: 1)&.id
-    params.require(:tweet).permit(:text, :tweet_image).merge(channel_user_id:, channel_id: @channel.id)
+    params.require(:tweet).permit(:text, :tweet_image).merge(channel_user_id: channel_user_id, channel_id: @channel.id)
   end
 end

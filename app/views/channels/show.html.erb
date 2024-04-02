@@ -19,10 +19,10 @@
   <div class = "channel-right-content" >
     <div class = "channel-top">
       <div class = "channel-top-background">
-        <%= image_tag @channel.channel_background_image, class:"channel-top-background-image" %>
+        <%= image_tag @channel.channel_background_image, class:"channel-top-background-image" if @channel&.channel_background_image.present?%>
         <div class ="channel-top-box">
           <div class = "channel-top-box-image2">
-            <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image"%>
+            <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image" if @channel&.channel_main_image.present?%>
           </div>
           <div class ="channel-top-box-name">
             <%= @channel.name %>
@@ -58,7 +58,7 @@
                 <li class ="channel-Administrator-user-list">
                   <%= link_to user_path(administrator) do %>
                   <div class = "channel-Administrator-userimage">
-                    <%= image_tag administrator.profile_image, class:"channel-Administrator-user-frofile-image" %>
+                    <%= image_tag administrator.profile_image, class:"channel-Administrator-user-frofile-image" if administrator&.profile_image.present?  %>
                   </div>
                   <div class ="channel-Administrator-username">
                     <%= administrator.name %>
@@ -79,7 +79,7 @@
               <li class ="channel-participant-user-list">
                 <%= link_to user_path(user.user.id) do %>
                 <div class = "channel-participant-userimage">
-                  <%= image_tag user.user.profile_image, class:"channel-Administrator-user-frofile-image" %>
+                  <%= image_tag user.user.profile_image, class:"channel-Administrator-user-frofile-image" if user&.user&.profile_image.present? %>
                 </div>
                 <div class ="channel-participant-username">
                   <%= user.user.name %>
@@ -121,7 +121,7 @@
               <li class ="channel-topics-content-list">
                 <div class ="channel-topics-content-list-left">
                   <div class ="channel-topics-content-list-image">
-                    <%= image_tag topic.channel_user.user.profile_image, class:"channel-Administrator-user-frofile-image" %>
+                    <%= image_tag topic.channel_user.user.profile_image, class:"channel-Administrator-user-frofile-image"  if topic.channel_user&.user&.profile_image.present? %>
                   </div>
                 </div>
                 <div class ="channel-topics-content-list-right">

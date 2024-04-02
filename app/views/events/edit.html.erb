@@ -68,7 +68,9 @@
                     <div class ="channel-modal-content-user">
                       <% checked = @event.channel_event_users.exists?(channel_user_id: channel_user.id) %>
                       <%= check_box_tag 'users[]', channel_user.user.id, checked, class: "channel-modal-content-user-check" %>
-                      <%= image_tag channel_user.user.profile_image, class:"channel-modal-content-user-image" %>
+                      <% if channel_user.user&.profile_image.present? %>
+                        <%= image_tag channel_user.user.profile_image, class:"channel-modal-content-user-image" %>
+                      <% end %>
                       <%= label_tag :username,channel_user.user.name, class: "channel-modal-content-user-name" %>
                     </div>
                   <% end %>

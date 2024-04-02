@@ -58,7 +58,9 @@
               <% @channel_event_users.each do |channel_event_user| %>
                 <li class ="event-show-participant-user-list">
                   <%= link_to user_path(channel_event_user.channel_user.user.id) do %>
-                    <%= image_tag channel_event_user.channel_user.user.profile_image, class:"event-show-participant-user-list-image" %>
+                    <% if channel_event_user.channel_user&.user&.profile_image.present? %>
+                      <%= image_tag channel_event_user.channel_user.user.profile_image, class:"event-show-participant-user-list-image" %>
+                    <% end %>
                     <div class ="event-show-participant-user-list-name">
                       <%= channel_event_user.channel_user.user.name %>
                     </div>

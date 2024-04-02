@@ -64,7 +64,9 @@
             <% @administrators.each do |administrator| %>
               <div class ="channel-modal-content-user">
                 <%= check_box_tag 'administrators[]', administrator.id, false, class: "channel-modal-content-user-check" %>
-                <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
+                <% if administrator&.profile_image.present? %>
+                  <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
+                <% end %>
                 <%= label_tag :administratorname,administrator.name, class: "channel-modal-content-user-name" %>
               </div>
             <% end %>
@@ -75,7 +77,9 @@
             <% @users.each do |user| %>
               <div class ="channel-modal-content-user">
                 <%= check_box_tag 'users[]', user.id, false, class: "channel-modal-content-user-check" %>
-                <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
+                <% if user&.profile_image.present? %>
+                  <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
+                <% end %>
                 <%= label_tag :username,user.name, class: "channel-modal-content-user-name" %>
               </div>
             <% end %>
