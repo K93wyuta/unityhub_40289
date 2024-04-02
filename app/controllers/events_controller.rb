@@ -25,6 +25,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    @channel = Channel.find(session[:channel_id])
+    @event = @channel.events.find(params[:id])
+    @channel_event_users = @event.channel_event_users
+  end
+
   private
 
   def event_params

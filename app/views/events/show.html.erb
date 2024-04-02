@@ -1,0 +1,77 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%= render "shared/channel_box_modal" %>
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class = "event">
+      <div class ="event-show">
+        <div class ="event-show-back">
+          <%= link_to '< 戻る', :back %>
+        </div>
+        <div class ="event-show-title">
+          <div class ="event-show-title-name">
+            ゴルフ
+          </div>
+          <div class ="event-show-title-updated">
+            最終更新日：2023年3月18日
+          </div>
+        </div>
+        <div class ="event-show-line">
+        </div>
+        <div class ="event-show-item">
+          <div class ="event-show-item-name">
+            日時
+          </div>
+          <div class ="event-show-item-output">
+            2023年3月18日（月）　08：00〜15：00
+          </div>
+        </div>
+        <div class ="event-show-item">
+          <div class ="event-show-item-name">
+            場所
+          </div>
+          <div class ="event-show-item-output">
+            ダミー拠点
+          </div>
+        </div>
+        <div class ="event-show-participant">
+          <div class ="event-show-participant-name">
+            参加者
+          </div>
+          <div class ="event-show-participant-user">
+            <ul class = "event-show-participant-user-lists">
+              <% @channel_event_users.each do |channel_event_user| %>
+                <li class ="event-show-participant-user-list">
+                  <%= link_to user_path(channel_event_user.channel_user.user.id) do %>
+                    <%= image_tag channel_event_user.channel_user.user.profile_image, class:"event-show-participant-user-list-image" %>
+                    <div class ="event-show-participant-user-list-name">
+                      <%= channel_event_user.channel_user.user.name %>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class ="event-show-item">
+          <div class ="event-show-item-name">
+            詳細
+          </div>
+          <div class ="event-show-item-output">
+            イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。
+          </div>
+        </div>
+        <div class ="event-show-button">
+          <div class ="event-show-button-y">
+            参加
+          </div>
+          <div class ="event-show-button-n">
+            不参加
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

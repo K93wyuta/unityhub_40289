@@ -96,16 +96,18 @@
         </div>
         <ul class ="channel-event-lists">
           <% @events.each do |event| %>
-            <li class ="channel-event-list">
-              <div class ="channel-event-list-box">
-                <div class ="channel-event-box-date">
-                  <%= event.date_start %>
+            <%= link_to channel_event_path(@channel,event) do %>
+              <li class ="channel-event-list">
+                <div class ="channel-event-list-box">
+                  <div class ="channel-event-box-date">
+                    <%= event.date_start %>
+                  </div>
+                  <div class ="channel-event-box-name">
+                    <%= event.name %>
+                  </div>
                 </div>
-                <div class ="channel-event-box-name">
-                  <%= event.name %>
-                </div>
-              </div>
-            </li>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>

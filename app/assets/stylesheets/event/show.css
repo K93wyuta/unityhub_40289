@@ -1,0 +1,130 @@
+.event-show{
+  padding: 50px 100px 50px;
+}
+
+.event-show-back{
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.event-show-title{
+  margin-bottom: 40px;
+}
+
+.event-show-title-name{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.event-show-title-updated{
+  font-size: 10px;
+}
+
+.event-show-line{
+  border: #D8D8D8 1px solid;
+  margin-bottom: 40px;
+}
+
+.event-show-item{
+  margin-bottom: 50px;
+}
+
+.event-show-item-name{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.event-show-item-output{
+  font-size: 14px;
+}
+
+.event-show-participant{
+
+}
+
+.event-show-participant-name{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.event-show-participant-user{
+
+}
+
+.event-show-participant-user-lists{
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.event-show-participant-user-list{
+  margin-right: 20px;
+}
+
+.event-show-participant-user-list-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #D8D8D8;
+  object-fit: cover;
+  margin: 20px 0 10px 0;
+  transition: transform 0.3s ease; 
+}
+
+.event-show-participant-user-list-image:hover{
+  cursor: pointer;
+  transition: .2s;
+  transform: scale(1.05); 
+}
+
+.event-show-participant-user-list-name{
+  font-size: 14px;
+  text-align: center;
+}
+
+.event-show-button{
+  display: flex;
+}
+
+.event-show-button-y{
+  height: 40px;
+  width: 200px;
+  background-color: #B9B9B9;
+  color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.event-show-button-y:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
+.event-show-button-n{
+  height: 40px;
+  width: 200px;
+  background-color: #B9B9B9;
+  color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.event-show-button-n:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
