@@ -1,0 +1,86 @@
+.chanel-calendar{
+  padding: 40px 120px;
+}
+
+.channel-calender-event{
+  width: 80px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  opacity:0.8;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+  transition: transform 0.3s ease; 
+}
+
+.channel-calender-event:hover{
+  cursor: pointer;
+  transition: .2s;
+  transform: scale(1.2); 
+}
+
+.channel-calender-event-box{
+  background-color: #313E52;
+  opacity: 0.5;
+}
+
+/* month_calender start */
+.simple-calendar{
+
+}
+
+.calendar-heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.calendar-heading-button{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: #313E52 1px solid;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.calendar-title{
+  text-align: center;
+  font-family: '游明朝', serif;
+  margin: 0 200px;
+}
+
+.calendar-title-year{
+}
+
+.calendar-title-month{
+  font-size: 40px;
+}
+
+.table-table-striped{
+  font-family: '游明朝', serif;
+}
+
+.table-table-striped-week{
+  text-align: center;
+}
+
+.simple-calendar table {
+  border-collapse: collapse;
+  border: none;
+}
+
+.simple-calendar td, .simple-calendar th {
+  border: none;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.today{
+  background-color: #313E52;
+}
+/* month_calender end */

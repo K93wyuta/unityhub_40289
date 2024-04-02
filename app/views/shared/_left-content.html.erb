@@ -29,12 +29,14 @@
             </div>
           </li>
         <% end %>
+        <%= link_to channel_events_path(@channel) do %>
         <li class = "nav-list">
           <%= image_tag 'channel/index/nav-calendar.svg',class:"nav-list-image" %>
           <div class = "nav-list-name">
             カレンダー
           </div>
         </li>
+        <% end %>
         <li class = "nav-list">
           <%= image_tag 'channel/index/nav-chat.svg',class:"nav-list-image" %>
           <div class = "nav-list-name">
@@ -65,12 +67,14 @@
             News&Topics
           </div>
         </li>
+        <%= link_to new_channel_event_path(@channel) do %>
         <li class = "post-list">
           <%= image_tag 'channel/index/post-event.svg',class:"nav-list-image" %>
           <div class = "nav-list-name">
             イベント申請
           </div>
         </li>
+        <% end %>
       </ul>
     </div>
     <div class = "logout">

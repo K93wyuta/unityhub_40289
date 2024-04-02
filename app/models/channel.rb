@@ -9,7 +9,7 @@ class Channel < ApplicationRecord
   has_many :albums
   has_many :tweets
   has_many :topics
-  has_many :events
+  has_many :events, dependent: :destroy
 
   # バリデーション
   validates :name, presence: true

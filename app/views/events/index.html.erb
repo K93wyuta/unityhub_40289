@@ -1,0 +1,35 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%# モーダル %>
+<div class ="channel-box-modal">
+  <div class ="channel-box-modal-title">
+    チャンネルを退出しますか？
+  </div>
+  <div class ="channel-box-modal-button">
+      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
+    <div class ="channel-box-modal-button-n">
+      No
+    </div>
+  </div>
+</div>
+<%# モーダル %>
+<%= link_to "+", new_channel_event_path(@channel) ,class:"channel-tweet-new-action" %>
+
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class ="chanel-calendar">
+      <%= month_calendar events: @events, attribute: :date_start do |date, events| %>
+        <%= date.day %>
+        <% events.each do |event| %>
+          <%= link_to channel_event_path(event.channel, event) do %>
+            <div class ="channel-calender-event">
+              <%= event.name %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

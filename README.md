@@ -40,7 +40,7 @@
 - has_many :albums
 - has_many :tweets
 - has_many :topics
-- has_many :events
+- has_many :channel_event_users
 
 ## channel_userモデル
 ### テーブル
@@ -53,6 +53,7 @@
 - belongs_to :channel
 - belongs_to :user
 - has_many :tweets
+- has_many :events
 
 ## tweetモデル
 ### テーブル
@@ -142,6 +143,7 @@
 | channel    | references | null: false,foreign_key: true |
 
 ### Association
+- has_one_attached :event_image
 - has_many :channel_event_users
 - belongs_to :channel
 

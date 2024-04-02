@@ -1,0 +1,37 @@
+.event-form-field-label-participant{
+  color: #FFFFFF;
+  font-size: 12px;
+  margin: 50px 0 140px 0;
+}
+
+.event-form-date{
+  display: flex;
+}
+
+.event-form-date-input{
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.event-form-date-kara{
+  font-size: 30px;
+  color: #FFFFFF;
+  margin: 0 20px;
+}
+
+.event-form-time{
+  display: flex;
+}
+
+.event-form-time-input{
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+}

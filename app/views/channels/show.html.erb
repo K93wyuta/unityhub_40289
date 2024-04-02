@@ -95,61 +95,21 @@
           イベント
         </div>
         <ul class ="channel-event-lists">
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
-          <li class ="channel-event-list">
-            <div class ="channel-event-list-box">
-              <div class ="channel-event-box-date">
-                2024年3月19日（火）
-              </div>
-              <div class ="channel-event-box-name">
-                イベント名
-              </div>
-            </div>
-          </li>
+          <% @events.each do |event| %>
+            <%= link_to channel_event_path(@channel,event) do %>
+              <li class ="channel-event-list">
+                <div class ="channel-event-list-box">
+                  <div class ="channel-event-box-date">
+                    <%= event.date_start %>
+                  </div>
+                  <div class ="channel-event-box-name">
+                    <%= event.name %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
         </ul>
-        <div class ="channel-event-button">
-          <button id="leftButton" class ="botton"><</button>
-          <button id="rightButton" class ="botton">></button>
-        </div>
       </div>
       <div class ="channel-topics">
         <div class ="channel-topics-title">
