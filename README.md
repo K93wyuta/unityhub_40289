@@ -54,6 +54,7 @@
 - belongs_to :user
 - has_many :tweets
 - has_many :events
+- has_many :topics
 
 ## tweetモデル
 ### テーブル
