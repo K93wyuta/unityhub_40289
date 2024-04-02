@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   def show
     @user = User.find(params[:id])
     @channel = Channel.find(session[:channel_id])
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile_image, :background_image, :name,:email, :password, :password_confirmation, :gender_id, :age_id, :birthday, :mbti_id,
-    :line, :paypay, :profile)
+    params.require(:user).permit(:profile_image, :background_image, :name, :email, :password, :password_confirmation, :gender_id, :age_id, :birthday, :mbti_id,
+                                 :line, :paypay, :profile)
   end
 end

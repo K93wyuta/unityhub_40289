@@ -20,8 +20,8 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       (params[:users] || []).each do |user_id|
-        channel_user = ChannelUser.find_by(user_id: user_id, channel_id: @channel.id)
-        @event.channel_event_users.create(channel_user_id:channel_user.id) if channel_user
+        channel_user = ChannelUser.find_by(user_id:, channel_id: @channel.id)
+        @event.channel_event_users.create(channel_user_id: channel_user.id) if channel_user
       end
       redirect_to channel_event_path(@event.channel, @event)
     else
@@ -42,8 +42,8 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       @event.channel_event_users.destroy_all
       (params[:users] || []).each do |user_id|
-        channel_user = ChannelUser.find_by(user_id: user_id, channel_id: @channel.id,administrator: false)
-        @event.channel_event_users.create(channel_user_id:channel_user.id) if channel_user
+        channel_user = ChannelUser.find_by(user_id:, channel_id: @channel.id, administrator: false)
+        @event.channel_event_users.create(channel_user_id: channel_user.id) if channel_user
       end
       redirect_to channel_event_path(params[:id])
     else
@@ -68,6 +68,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date_start, :date_end, :time_start, :time_end, :place, :detail).merge(channel_id: @channel.id)
+    params.require(:event).permit(:name, :date_start, :date_end, :time_start, :time_end, :place,
+                                  :detail).merge(channel_id: @channel.id)
   end
 end

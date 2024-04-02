@@ -20,7 +20,7 @@ class ChannelsController < ApplicationController
         @channel.channel_users.create(user_id: administrator_id, administrator: true)
       end
       (params[:users] || []).each do |user_id|
-        @channel.channel_users.create(user_id:user_id, administrator: false)
+        @channel.channel_users.create(user_id:, administrator: false)
       end
       redirect_to channels_path, notice: 'Channel was successfully created.'
     else
@@ -56,7 +56,7 @@ class ChannelsController < ApplicationController
         channel.channel_users.create(user_id: administrator_id, administrator: true)
       end
       (params[:users] || []).each do |user_id|
-        channel.channel_users.create(user_id: user_id, administrator: false)
+        channel.channel_users.create(user_id:, administrator: false)
       end
       redirect_to channel_path(params[:id])
     else

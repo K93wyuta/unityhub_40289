@@ -6,9 +6,10 @@ class Tweet < ApplicationRecord
   validate :either_text_or_image
 
   private
-    def either_text_or_image
-      unless text.present? || tweet_image.attached?
-        errors.add(:base, "Either text or image must be present.")
-      end
-    end
+
+  def either_text_or_image
+    return if text.present? || tweet_image.attached?
+
+    errors.add(:base, 'Either text or image must be present.')
+  end
 end

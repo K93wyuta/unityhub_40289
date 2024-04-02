@@ -8,7 +8,7 @@ FactoryBot.define do
     end
 
     name { Faker::Name.name }
-    identification { "test_0000" }
+    identification { 'test_0000' }
     password { Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
     introduction { Faker::Lorem.paragraph(sentence_count: 2) }

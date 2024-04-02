@@ -13,8 +13,8 @@ RSpec.describe Event, type: :model do
         expect(@event).to be_valid
       end
       it 'placeとdetailが存在しなくても、新規投稿できる' do
-        @event.place = ""
-        @event.detail = ""
+        @event.place = ''
+        @event.detail = ''
         expect(@event).to be_valid
       end
     end

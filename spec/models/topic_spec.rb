@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
   before do
-    user = FactoryBot.create(:user) 
-    channel = FactoryBot.create(:channel) 
-    channel_user = FactoryBot.create(:channel_user, user: user, channel: channel) 
-    @topic = FactoryBot.create(:topic,channel_user_id: channel_user.id, channel_id: channel.id)
+    user = FactoryBot.create(:user)
+    channel = FactoryBot.create(:channel)
+    channel_user = FactoryBot.create(:channel_user, user:, channel:)
+    @topic = FactoryBot.create(:topic, channel_user_id: channel_user.id, channel_id: channel.id)
 
     sleep 0.1
   end
@@ -18,12 +18,12 @@ RSpec.describe Topic, type: :model do
     end
     context 'News&Topics新規投稿ができない場合' do
       it 'titleが存在しないと作成できない' do
-        @topic.title = ""
+        @topic.title = ''
         @topic.valid?
         expect(@topic.errors.full_messages).to include("Title can't be blank")
       end
       it 'textが存在しないと作成できない' do
-        @topic.text = ""
+        @topic.text = ''
         @topic.valid?
         expect(@topic.errors.full_messages).to include("Text can't be blank")
       end

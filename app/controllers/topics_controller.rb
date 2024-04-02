@@ -1,5 +1,4 @@
 class TopicsController < ApplicationController
-
   def new
     @channel = Channel.find(session[:channel_id])
     @topic = Topic.new
@@ -44,6 +43,6 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :text).merge(channel_id: @channel.id,channel_user_id: @channel_user.id)
+    params.require(:topic).permit(:title, :text).merge(channel_id: @channel.id, channel_user_id: @channel_user.id)
   end
 end
