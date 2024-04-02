@@ -35,8 +35,8 @@ class ChannelsController < ApplicationController
     session[:channel_id] = @channel.id
     @administrators = @channel.administrators
     @channel_users = @channel.channel_users.where(administrator: false)
-    @events = @channel.events
-    @topics = @channel.topics
+    @events = @channel.events.order(created_at: :desc)
+    @topics = @channel.topics.order(created_at: :desc)
   end
 
   def edit
