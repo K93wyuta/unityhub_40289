@@ -61,19 +61,21 @@
     </div>
     <div class ="post">
       <ul class = "post-lists">
-        <li class = "post-list">
-          <%= image_tag 'channel/index/post-topics.svg',class:"nav-list-image" %>
-          <div class = "nav-list-name">
-            News&Topics
-          </div>
-        </li>
+        <%= link_to new_channel_topic_path(@channel) do %>
+          <li class = "post-list">
+            <%= image_tag 'channel/index/post-topics.svg',class:"nav-list-image" %>
+            <div class = "nav-list-name">
+              News&Topics
+            </div>
+          </li>
+        <% end %>
         <%= link_to new_channel_event_path(@channel) do %>
-        <li class = "post-list">
-          <%= image_tag 'channel/index/post-event.svg',class:"nav-list-image" %>
-          <div class = "nav-list-name">
-            イベント申請
-          </div>
-        </li>
+          <li class = "post-list">
+            <%= image_tag 'channel/index/post-event.svg',class:"nav-list-image" %>
+            <div class = "nav-list-name">
+              イベント申請
+            </div>
+          </li>
         <% end %>
       </ul>
     </div>
