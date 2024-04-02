@@ -296,6 +296,7 @@
 .channel-topics-content-list-center{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 
@@ -303,6 +304,10 @@
   font-size: 18px;
   font-weight: bold;
   margin-right: 100px;
+}
+
+.channel-topics-content-list-center-button{
+  display: flex;
 }
 
 .channel-topics-content-list-center-edit{
@@ -313,12 +318,25 @@
   margin-right: 20px;
 }
 
+.channel-topics-content-list-center-edit:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
 .channel-topics-content-list-center-delete{
   font-size: 12px;
   border: 1px #313E52 solid;
   border-radius: 40px;
   padding: 5px 20px;
-  margin-right: 20px;
+}
+
+.channel-topics-content-list-center-delete:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
 }
 
 .channel-topics-content-list-buttom{
@@ -326,6 +344,7 @@
 }
 
 .channel-topics-content-list-line{
+  width: 960px;
   border-bottom: 1px #D8D8D8 solid;
   margin: 40px 0;
 }

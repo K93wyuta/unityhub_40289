@@ -117,70 +117,54 @@
         </div>
         <div class ="channel-topics-content">
           <ul class ="channel-topics-content-lists">
-            <li class ="channel-topics-content-list">
-              <div class ="channel-topics-content-list-left">
-                <div class ="channel-topics-content-list-image">
-                </div>
-              </div>
-              <div class ="channel-topics-content-list-right">
-                <div class ="channel-topics-content-list-top">
-                  <div class ="channel-topics-content-list-top-name">
-                    松原裕太
-                  </div>
-                  <div class ="channel-topics-content-list-top-time">
-                    17:42
+            <% @topics.each do |topic| %>
+              <li class ="channel-topics-content-list">
+                <div class ="channel-topics-content-list-left">
+                  <div class ="channel-topics-content-list-image">
+                    <%= image_tag topic.channel_user.user.profile_image, class:"channel-Administrator-user-frofile-image" %>
                   </div>
                 </div>
-                <div class ="channel-topics-content-list-center">
-                  <div class ="channel-topics-content-list-center-title">
-                    タイトル
+                <div class ="channel-topics-content-list-right">
+                  <div class ="channel-topics-content-list-top">
+                    <div class ="channel-topics-content-list-top-name">
+                      <%= topic.channel_user.user.name %>
+                    </div>
+                    <div class ="channel-topics-content-list-top-time">
+                      <%= topic.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[topic.created_at.wday] + ')' %>
+                    </div>
                   </div>
-                  <div class ="channel-topics-content-list-center-edit">
-                    編集
+                  <div class ="channel-topics-content-list-center">
+                    <div class ="channel-topics-content-list-center-title">
+                      <%= topic.title %>
+                    </div>
+                    <div class ="channel-topics-content-list-center-button">
+                      <%= link_to "編集", edit_channel_topic_path(@channel.id, topic) ,class:"channel-topics-content-list-center-edit" %>
+                      <div class ="channel-topics-content-list-center-delete">
+                        削除
+                      </div>
+                      <%# モーダル %>
+                      <div class ="channel-form-actions-button-delete-modal">
+                        <div class ="channel-form-actions-button-delete-modal-title">
+                          本当に削除しますか？
+                        </div>
+                        <div class ="channel-form-actions-button-delete-modal-button">
+                            <%= link_to 'Yes', channel_topic_path(@channel.id,topic), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
+                          <div class ="channel-form-actions-button-delete-modal-button-n">
+                            No
+                          </div>
+                        </div>
+                      </div>
+                      <%# モーダル %>
+                    </div>
                   </div>
-                  <div class ="channel-topics-content-list-center-delete">
-                    削除
+                  <div class ="channel-topics-content-list-buttom">
+                    <%= topic.text %>
                   </div>
-                </div>
-                <div class ="channel-topics-content-list-buttom">
-                  投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
-                </div>
-                <div class ="channel-topics-content-list-line">
-                </div>
-              </div>
-            </li>
-            <li class ="channel-topics-content-list">
-              <div class ="channel-topics-content-list-left">
-                <div class ="channel-topics-content-list-image">
-                </div>
-              </div>
-              <div class ="channel-topics-content-list-right">
-                <div class ="channel-topics-content-list-top">
-                  <div class ="channel-topics-content-list-top-name">
-                    松原裕太
-                  </div>
-                  <div class ="channel-topics-content-list-top-time">
-                    17:42
-                  </div>
-                </div>
-                <div class ="channel-topics-content-list-center">
-                  <div class ="channel-topics-content-list-center-title">
-                    タイトル
-                  </div>
-                  <div class ="channel-topics-content-list-center-edit">
-                    編集
-                  </div>
-                  <div class ="channel-topics-content-list-center-delete">
-                    削除
+                  <div class ="channel-topics-content-list-line">
                   </div>
                 </div>
-                <div class ="channel-topics-content-list-buttom">
-                  投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。投稿文がはいります。
-                </div>
-                <div class ="channel-topics-content-list-line">
-                </div>
-              </div>
-            </li>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

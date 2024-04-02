@@ -1,0 +1,45 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%= render "shared/channel_box_modal" %>
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class = "channel-top">
+      <div class ="topic-form">
+        <div class ="user-form-back">
+          <%= link_to '< 戻る', :back, class: "user-form-back" %>
+        </div>
+        <div class ="user-form-title">
+          News&Topics　編集
+        </div>
+        <div class ="user-form-contents">
+        <%= form_with(model:[@channel ,@topic], local: true) do |f| %>
+          <div class = "user-form-error">
+            <%= render "shared/error_messages", resource: @topic %>
+          </div>
+          <div class = "user-form-buttom">
+            <div class = "user-form-labels">
+              <div class="user-form-field-label">タイトル</div>
+              <div class="user-form-field-label">投稿文</div>
+            </div>
+            <div class = "user-form-field-input">
+              <div class="user-form-field">
+                <% f.label :title %>
+                <%= f.text_field :title, placeholder:"タイトルを入力してください", autocomplete: "title", class:"user-form-input2" %>
+              </div>
+              <div class="user-form-field">
+                <% f.label :text %>
+                <%= f.text_area :text, placeholder:" 投稿文を入力してください", autocomplete: "text",class:"user-form-input3" %>
+              </div>
+            </div>
+          </div>
+          <div class="user-form-actions">
+            <%= f.submit "更新する",class:"user-form-actions-button-update"%>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
