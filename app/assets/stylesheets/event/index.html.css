@@ -1,35 +1,27 @@
 .chanel-calendar{
-  display: flex;
-}
-
-.chanel-calendar-left{
-  position: fixed;
-  width: 900px;
   padding: 40px 120px;
 }
 
-.chanel-calendar-right{
-  margin-left: 900px;
-  width: calc(100vw - 1120px);
-  background-color: #F7F7F7;
-  padding: 20px;
+.channel-calender-event{
+  width: 80px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  opacity:0.8;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+  transition: transform 0.3s ease; 
 }
 
-.chanel-calendar-right-hour{
-  position: relative;
-  margin-bottom: 20px;
-  font-family: '游明朝', serif;
-  font-size: 12px;
+.channel-calender-event:hover{
+  cursor: pointer;
+  transition: .2s;
+  transform: scale(1.2); 
 }
 
-.chanel-calendar-right-hour::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50px;
-  right: 0;
-  border-top: 1px solid #D8D8D8;
-  transform: translateY(-50%);
+.channel-calender-event-box{
+  background-color: #313E52;
+  opacity: 0.5;
 }
 
 /* month_calender start */
@@ -88,4 +80,7 @@
   margin: 0;
 }
 
+.today{
+  background-color: #313E52;
+}
 /* month_calender end */

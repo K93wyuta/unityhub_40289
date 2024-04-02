@@ -14,22 +14,22 @@
   </div>
 </div>
 <%# モーダル %>
+<%= link_to "+", new_channel_event_path(@channel) ,class:"channel-tweet-new-action" %>
+
 <div class = "channel">
   <%= render "shared/left-content" %>
   <div class = "channel-right-content" >
     <div class ="chanel-calendar">
-      <div class ="chanel-calendar-left">
-        <%= month_calendar do |date| %>
-          <%= date.day %>
+      <%= month_calendar events: @events, attribute: :date_start do |date, events| %>
+        <%= date.day %>
+        <% events.each do |event| %>
+          <%= link_to channel_event_path(event.channel, event) do %>
+            <div class ="channel-calender-event">
+              <%= event.name %>
+            </div>
+          <% end %>
         <% end %>
-      </div>
-      <div class ="chanel-calendar-right">
-        <% 24.times do |i| %>
-          <div class="chanel-calendar-right-hour">
-            <%= i.to_s.rjust(2, '0') %>:00
-          </div>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

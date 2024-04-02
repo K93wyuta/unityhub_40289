@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
   def index
     @channel = Channel.find(session[:channel_id])
-    @events = Event.all
+    if params[:date]
+      @date = Date.parse(params[:date])
+      @events = Event.where(date_start: @date.beginning_of_day..@date.end_of_day)
+    else
+      @events = Event.all
+    end
   end
 
   def new
