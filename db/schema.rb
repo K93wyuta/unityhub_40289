@@ -71,8 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_02_111627) do
     t.string "name", null: false
     t.date "date_start", null: false
     t.date "date_end", null: false
-    t.time "time_start", null: false
-    t.time "time_end", null: false
     t.string "place"
     t.text "detail"
     t.bigint "channel_id", null: false
