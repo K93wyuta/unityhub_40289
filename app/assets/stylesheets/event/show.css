@@ -8,7 +8,26 @@
 }
 
 .event-show-title{
-  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-show-title-edit{
+  height: 36px;
+  width: 80px;
+  border: 1px #313E52 solid;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.event-show-title-edit:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
 }
 
 .event-show-title-name{
@@ -19,6 +38,7 @@
 
 .event-show-title-updated{
   font-size: 10px;
+  margin-bottom: 40px;
 }
 
 .event-show-line{
@@ -88,12 +108,13 @@
   display: flex;
 }
 
-.event-show-button-y{
+.event-show-button-joined{
   height: 40px;
   width: 200px;
-  background-color: #B9B9B9;
+  background-color: #313E52;
   color: #FFFFFF;
   border-radius: 10px;
+  border: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,27 +123,29 @@
   margin-right: 20px;
 }
 
-.event-show-button-y:hover{
-  background-color: #313E52;
+.event-show-button-joined:hover{
+  background-color: #B9B9B9;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.event-show-button-n{
+.event-show-button-not-joined{
   height: 40px;
   width: 200px;
   background-color: #B9B9B9;
   color: #FFFFFF;
   border-radius: 10px;
+  border: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 14px;
+  margin-right: 20px;
 }
 
-.event-show-button-n:hover{
+.event-show-button-not-joined:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;

@@ -12,12 +12,13 @@
         </div>
         <div class ="event-show-title">
           <div class ="event-show-title-name">
-            ゴルフ
+            <%= @event.name %>
           </div>
-          <div class ="event-show-title-updated">
-            最終更新日：2023年3月18日
-          </div>
+          <%= link_to "編集", edit_channel_event_path(@event.id) ,class:"event-show-title-edit" %>
         </div>
+          <div class ="event-show-title-updated">
+            最終更新日：<%= @event.updated_at %>
+          </div>
         <div class ="event-show-line">
         </div>
         <div class ="event-show-item">
@@ -25,7 +26,19 @@
             日時
           </div>
           <div class ="event-show-item-output">
-            2023年3月18日（月）　08：00〜15：00
+            <% if @event.date_start == @event.date_end %>
+              <%= @event.date_start.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_start.wday]}）") %>
+            <% else %>
+              <%= @event.date_start.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_start.wday]}）") %> 〜 <%= @event.date_end.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_end.wday]}）") %>
+            <% end %>
+          </div>
+        </div>
+        <div class ="event-show-item">
+          <div class ="event-show-item-name">
+            時刻
+          </div>
+          <div class ="event-show-item-output">
+            <%= @event.time_start.strftime("%H:%M") %> 〜 <%= @event.time_end.strftime("%H:%M") %>
           </div>
         </div>
         <div class ="event-show-item">
@@ -33,7 +46,7 @@
             場所
           </div>
           <div class ="event-show-item-output">
-            ダミー拠点
+            <%= @event.place %>
           </div>
         </div>
         <div class ="event-show-participant">
@@ -60,16 +73,20 @@
             詳細
           </div>
           <div class ="event-show-item-output">
-            イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。イベントの説明がはいります。
+            <%= @event.detail %>
           </div>
         </div>
-        <div class ="event-show-button">
-          <div class ="event-show-button-y">
-            参加
-          </div>
-          <div class ="event-show-button-n">
-            不参加
-          </div>
+        <div class="event-show-button">
+          <% channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id) %>
+          <% is_joined = ChannelEventUser.where(channel_user_id: channel_user.id, event_id: @event.id).exists? %>
+          
+          <%= form_with url: channel_event_channel_event_users_path(@channel, @event), method: :post do |form| %>
+            <%= form.submit "参加", class: is_joined ? "event-show-button-joined" : "event-show-button-not-joined", disabled: is_joined %>
+          <% end %>
+
+          <%= form_with url: channel_event_channel_event_user_path(@channel, @event), method: :delete do |form| %>
+            <%= form.submit "不参加", class: is_joined ? "event-show-button-not-joined" : "event-show-button-joined", disabled: !is_joined %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,0 +1,107 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+<%= render "shared/channel_box_modal" %>
+<div class = "channel">
+  <%= render "shared/left-content" %>
+  <div class = "channel-right-content" >
+    <div class = "channel-top">
+      <div class ="user-form">
+        <div class ="user-form-back">
+          <%= link_to '< 戻る', :back, class: "user-form-back" %>
+        </div>
+        <div class ="user-form-title">
+          イベント　編集
+        </div>
+        <div class ="user-form-contents">
+        <%= form_with(model:[@channel ,@event], local: true) do |f| %>
+          <div class = "user-form-error">
+            <%= render "shared/error_messages", resource: @event %>
+          </div>
+          <div class = "user-form-buttom">
+            <div class = "user-form-labels">
+              <div class="user-form-field-label">イベント名</div>
+              <div class="user-form-field-label">日時</div>
+              <div class="user-form-field-label">時刻</div>
+              <div class="user-form-field-label">場所</div>
+              <div class="event-form-field-label-participant">参加者</div>
+              <div class="user-form-field-label">詳細</div>
+            </div>
+            <div class = "user-form-field-input">
+              <div class="user-form-field">
+                <% f.label :name %>
+                <%= f.text_field :name, placeholder:"タイトルを入力してください", autocomplete: "name", class:"user-form-input2" %>
+              </div>
+              <div class="event-form-date">
+                <div class="user-form-field">
+                  <% f.label :date_start %>
+                  <%= f.date_field :date_start, placeholder:"日時を入力してください", autocomplete: "date_start", class:"event-form-date-input" %>
+                </div>
+                <div class="event-form-date-kara">
+                  ~
+                </div>
+                <div class="user-form-field">
+                  <% f.label :date_end %>
+                  <%= f.date_field :date_end, placeholder:"日時を入力してください", autocomplete: "date_end", class:"event-form-date-input" %>
+                </div>
+              </div>
+              <div class="event-form-time">
+                <div class="user-form-field">
+                <% f.label :time_start %>
+                <%= f.time_field :time_start, placeholder:"時間を入力してください", autocomplete: "time_start", class:"event-form-time-input" %>
+                </div>
+                <div class="event-form-date-kara">
+                  ~
+                </div>
+                <div class="user-form-field">
+                <% f.label :time_end %>
+                <%= f.time_field :time_end, placeholder:"時間を入力してください", autocomplete: "time_end", class:"event-form-time-input" %>
+                </div>
+              </div>
+              <div class="user-form-field">
+                <% f.label :place %>
+                <%= f.text_field :place, placeholder:"場所を入力してください", autocomplete: "place", class:"user-form-input2" %>
+              </div>
+               <div class="channel-form-field">
+                <div class ="channel-modal-content-administrator">
+                  <% @channel_users.each do |channel_user| %>
+                    <div class ="channel-modal-content-user">
+                      <% checked = @event.channel_event_users.exists?(channel_user_id: channel_user.id) %>
+                      <%= check_box_tag 'users[]', channel_user.user.id, checked, class: "channel-modal-content-user-check" %>
+                      <%= image_tag channel_user.user.profile_image, class:"channel-modal-content-user-image" %>
+                      <%= label_tag :username,channel_user.user.name, class: "channel-modal-content-user-name" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="user-form-field">
+                <% f.label :detail %>
+                <%= f.text_area :detail, placeholder:" 詳細を入力してください", autocomplete: "detail",class:"user-form-input3" %>
+              </div>
+            </div>
+          </div>
+          <div class="channel-actions">
+          <%= f.submit "更新する",class:"channel-form-actions-button-update"%>
+          <div class="channel-form-actions-button-delete">
+          削除する
+          </div>
+          <%# モーダル %>
+          <div class ="channel-form-actions-button-delete-modal">
+            <div class ="channel-form-actions-button-delete-modal-title">
+              本当に削除しますか？
+            </div>
+            <div class ="channel-form-actions-button-delete-modal-button">
+                <%= link_to 'Yes', channel_event_path(@event.id), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
+              <div class ="channel-form-actions-button-delete-modal-button-n">
+                No
+              </div>
+            </div>
+          </div>
+          <%# モーダル %>
+        </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
