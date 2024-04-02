@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :channel_user do
-    channel { nil }
-    user { nil }
+    association :user
+    association :channel
   end
 end
