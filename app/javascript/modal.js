@@ -107,8 +107,32 @@ const tweetModal = () => {
   };
 // tweet end
 
+// topic delete modal start
+const topicModal = () => {
+  const topicDeleteModal = document.querySelector('.channel-form-actions-button-delete-modal'); // モーダルを取得
+    const topicDeleteTrigger = document.querySelector('.channel-topics-content-list-center-delete'); // トリガーを取得
+    const topicDeleteOverlay = document.querySelector('.overlay'); // オーバーレイを取得
+  
+    topicDeleteTrigger.addEventListener('click', function() {
+        const topicDeleteIsModalHidden = topicDeleteModal.style.display === 'none';
+        topicDeleteModal.style.display = topicDeleteIsModalHidden ? 'block' : 'none';
+        topicDeleteOverlay.style.display = topicDeleteIsModalHidden ? 'block' : 'none'; 
+      });
+  
+      const topicDeleteBack = topicDeleteModal.querySelector('.channel-form-actions-button-delete-modal-button-n'); // 閉じるボタンを取得
+  
+      if (topicDeleteBack !== null) {
+        topicDeleteBack.addEventListener('click', function() {
+          topicDeleteModal.style.display = 'none';
+          topicDeleteOverlay.style.display = 'none';
+      });
+    };
+  };
+// topic delete modal start
+
 window.addEventListener('turbo:load', leftContentModal);
 window.addEventListener('turbo:load', indexModal);
 window.addEventListener('turbo:load', editModal);
 window.addEventListener('turbo:load', userEditModal);
 window.addEventListener('turbo:load', tweetModal);
+window.addEventListener('turbo:load', topicModal);

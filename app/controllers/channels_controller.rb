@@ -36,6 +36,7 @@ class ChannelsController < ApplicationController
     @administrators = @channel.administrators
     @channel_users = @channel.channel_users.where(administrator: false)
     @events = @channel.events
+    @topics = @channel.topics
   end
 
   def edit
