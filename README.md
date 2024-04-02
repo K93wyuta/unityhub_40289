@@ -143,6 +143,7 @@
 | channel    | references | null: false,foreign_key: true |
 
 ### Association
+- has_one_attached :event_image
 - has_many :channel_event_users
 - belongs_to :channel
 
