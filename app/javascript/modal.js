@@ -130,9 +130,33 @@ const topicModal = () => {
   };
 // topic delete modal start
 
+// album delete modal start
+const albumModal = () => {
+  const albumDeleteModal = document.querySelector('.channel-form-actions-button-delete-modal'); // モーダルを取得
+    const albumDeleteTrigger = document.querySelector('.general-actions-delete'); // トリガーを取得
+    const albumDeleteOverlay = document.querySelector('.overlay'); // オーバーレイを取得
+  
+    albumDeleteTrigger.addEventListener('click', function() {
+        const albumDeleteIsModalHidden = albumDeleteModal.style.display === 'none';
+        albumDeleteModal.style.display = albumDeleteIsModalHidden ? 'block' : 'none';
+        albumDeleteOverlay.style.display = albumDeleteIsModalHidden ? 'block' : 'none'; 
+      });
+  
+      const albumDeleteBack = albumDeleteModal.querySelector('.channel-form-actions-button-delete-modal-button-n'); // 閉じるボタンを取得
+  
+      if (albumDeleteBack !== null) {
+        albumDeleteBack.addEventListener('click', function() {
+          albumDeleteModal.style.display = 'none';
+          albumDeleteOverlay.style.display = 'none';
+      });
+    };
+  };
+// topic delete modal start
+
 window.addEventListener('turbo:load', leftContentModal);
 window.addEventListener('turbo:load', indexModal);
 window.addEventListener('turbo:load', editModal);
 window.addEventListener('turbo:load', userEditModal);
 window.addEventListener('turbo:load', tweetModal);
 window.addEventListener('turbo:load', topicModal);
+window.addEventListener('turbo:load', albumModal);

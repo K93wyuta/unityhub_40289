@@ -20,7 +20,7 @@
         <%= link_to '< 戻る', :back %>
       </div>
       <div class ="form-title">
-        アルバム新規作成
+        アルバム　編集
       </div>
       <%= form_with(model:[@channel ,@album], local: true) do |f| %>
         <div class = "form-error">
@@ -50,8 +50,24 @@
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "作成する",class:"form-actions-new" ,id:"album-form" %>
+          <%= f.submit "更新する",class:"form-actions-new",id:"album-form"%>
+          <%# 削除モーダル %>
+          <div class ="general-actions-delete">
+            削除
+          </div>
         </div>
+        <div class ="channel-form-actions-button-delete-modal">
+          <div class ="channel-form-actions-button-delete-modal-title">
+            本当に削除しますか？
+          </div>
+          <div class ="channel-form-actions-button-delete-modal-button">
+              <%= link_to 'Yes', channel_album_path(@channel.id,@album), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
+            <div class ="channel-form-actions-button-delete-modal-button-n">
+              No
+            </div>
+          </div>
+        </div>
+        <%# 削除モーダル %>
       <% end %>
       </div>
     </div>

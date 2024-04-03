@@ -1,0 +1,56 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
+<%# チャンネル退出 モーダル %>
+<%= render "shared/channel_box_modal" %>
+<%# チャンネル退出 モーダル %>
+
+<%# 共通 %>
+<div class = "channel">
+
+  <%# グロナビ %>
+  <%= render "shared/left-content" %>
+  <%# グロナビ %>
+
+  <%# アルバム共通 %>
+  <div class = "channel-right-content" >
+    <div class ="chanel-album">
+      
+      <%# アルバム show top %>
+      <div class = "general-back">
+        <%= link_to '< 戻る', :back %>
+      </div>
+      <div class = "chanel-album-top" >
+        <div class = "chanel-album-top-left" >
+          <div class ="general-title">
+            <%= @album.title %>
+          </div>
+          <div class ="general-date">
+            <%= @album.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@album.created_at.wday] + ')' %>
+          </div>
+        </div>
+        <%# アルバム show ボタン %>
+        <div class ="general-actions">
+          <div class ="general-actions-edit">
+            <%= link_to "編集", edit_channel_album_path(@channel.id, @album)  %>
+          </div>
+        </div>
+         <%# アルバム show ボタン %>
+      </div>
+      <%# アルバム show top %>
+
+      <%# アルバム show 一覧 %>
+      <div class="chanel-album-images">
+        <% @album.album_images.each do |image| %>
+          <%= image_tag image.blob, class: "chanel-album-image" if image.persisted? %>
+        <% end %>
+      </div>
+      <%# アルバム show 一覧 %>
+      
+    </div>
+  </div>
+  <%# アルバム共通 %>
+
+</div>
+<%# 共通コンテンツ %>

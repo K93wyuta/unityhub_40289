@@ -1,0 +1,67 @@
+.general-back{
+  margin-bottom: 40px;
+}
+
+.chanel-album-top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.chanel-album-top-left{
+
+}
+
+.general-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.general-date{
+  font-size: 12px;
+  margin-bottom: 40px;
+}
+
+.chanel-album-top-right{
+
+}
+
+.general-actions{
+  display: flex;
+  justify-content: right;
+}
+
+.general-actions-edit{
+  height: 34px;
+  width: 74px;
+  border: 1px #313E52 solid;
+  border-radius: 40px;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.general-actions-edit:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
+.general-actions-edit a:hover{
+  color: #FFFFFF;
+}
+
+.chanel-album-images{
+  display: flex;
+  flex-wrap: wrap; 
+  margin-bottom: 40px;
+}
+
+.chanel-album-image{
+  height: 250px;
+  width: 250px;
+  background-color: #FFFFFF;
+  object-fit: cover;
+}

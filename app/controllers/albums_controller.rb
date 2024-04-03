@@ -1,7 +1,11 @@
 class AlbumsController < ApplicationController
   def index
     @channel = Channel.find(session[:channel_id])
-    @albums = @channel.albums.order(created_at: :desc)
+    if params[:search].blank?
+      @albums = @channel.albums.order(created_at: :desc)
+    else
+      @albums = @channel.albums.where('title LIKE ?', "%#{params[:search]}%").order(created_at: :desc)
+    end
   end
 
   def new
@@ -20,6 +24,36 @@ class AlbumsController < ApplicationController
       render :new 
     end
   end
+
+  def show
+    @channel = Channel.find(session[:channel_id])
+    @album = @channel.albums.find(params[:id])
+  end
+
+  def edit
+    @channel = Channel.find(session[:channel_id])
+    @album = Album.find(params[:id])
+  end
+
+  def update
+    @channel = Channel.find(session[:channel_id])
+    @album = Album.find(params[:id])
+
+    if @album.update(album_params)
+      redirect_to channel_albums_path(@channel)
+    else
+      @channel = Channel.find(session[:channel_id])
+      render :edit
+    end
+  end
+
+  def destroy
+    @channel = Channel.find(session[:channel_id])
+    @album = Album.find(params[:id])
+    @album.destroy
+    redirect_to channel_albums_path(@channel)
+  end
+
 
   private
 
