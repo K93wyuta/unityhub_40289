@@ -1,3 +1,14 @@
+// フォームを取得
+const form = document.querySelector('#album-form');
+
+// フォームの送信イベントを監視
+form.addEventListener('submit', function(e) {
+  // デフォルトのフォーム送信をキャンセル
+  e.preventDefault();
+  albumPreview();
+});
+
+
 const albumPreview = () => {
   // プレビューを表示するためのスペースを取得
   const albumPreviewList = document.getElementById('form-field-preview');
@@ -30,15 +41,30 @@ const albumPreview = () => {
     albumPreviewList.appendChild(albumPreviewWrapper);
   };
 
+  // 指定したdata-indexを持つプレビューとfile_fieldを削除する
+  const albumDeleteImage = (albumDataIndex) => {
+    const albumDeletePreviewImage = document.querySelector(`.form-field-preview[data-index="${albumDataIndex}"]`);
+    albumDeletePreviewImage.remove();
+    const albumDeleteFileField = document.querySelector(`input[type="file"][data-index="${albumDataIndex}"]`);
+    albumDeleteFileField.remove();
+
+    // 画像の枚数が最大のときに削除ボタンを押した場合、file_fieldを1つ追加する
+    const albumImageCount = document.querySelectorAll(".form-field-preview").length;
+    if (albumImageCount == albumImageLimits - 1) albumBuildNewFileField();
+  };
+  
   // file_fieldを生成・表示する関数
   const albumBuildNewFileField = () =>{
+    // 最後のfile_fieldを取得
+    const albumLastFileField = document.querySelector('input[type="file"][name="album[album_images][]"]:last-child');
+
+    // 最後のfile_fieldをクリア
+    albumLastFileField.value = null;
+
     // 2枚目用のfile_fieldを作成
     const albumNewFileField = document.createElement('input');
     albumNewFileField.setAttribute('type', 'file');
     albumNewFileField.setAttribute('name', 'album[album_images][]');
-
-    // 最後のfile_fieldを取得
-    const albumLastFileField = document.querySelector('input[type="file"][name="album[album_images][]"]:last-child');
 
     // nextDataIndex = 最後のfile_fieldのdata-index + 1
     const albumNextDataIndex = Number(albumLastFileField.getAttribute('data-index')) +1;
@@ -47,57 +73,47 @@ const albumPreview = () => {
     // 生成したfile_fieldを表示
     const albumFileFieldArea = document.querySelector('.form-field-image-input2');
     albumFileFieldArea.appendChild(albumNewFileField);
-
-    // 指定したdata-indexを持つプレビューとfile_fieldを削除する
-    const albumDeleteImage = (albumDataIndex) => {
-    const albumDeletePreviewImage = document.querySelector('.form-field-preview[data-index="${albumDataIndex}"]');
-    albumDeletePreviewImage.remove();
-    const albumDeleteFileField = document.querySelector('input[type="file"][data-index="${albumDataIndex}"]');
-    albumDeleteFileField.remove();
-
-    // 画像の枚数が最大のときに削除ボタンを押した場合、file_fieldを1つ追加する
-    const albumImageCount = document.querySelectorAll(".form-field-preview").length;
-    if (albumImageCount == albumImageLimits - 1) albumBuildNewFileField();
-    };
   };
 
   // input要素で値の変化が起きた際に呼び出される関数の中身
-  const changedFileField = (e) => {
+  const albumChangedFileField = (e) => {
     // data-index（何番目を操作しているか）を取得
     const albumDataIndex = e.target.getAttribute('data-index');
 
-    const albumFile = e.target.files[0];
-
+    const files = e.target.files;
     // fileが空 = 何も選択しなかったのでプレビュー等を削除して終了する
-    if (!albumFile) {
-      albumDeleteImage(albumDataIndex);
-      return null;
-    };
+    if (!files.length) {
+    albumDeleteImage(albumDataIndex);
+    return null;
+  };
 
-    const albumBlob = window.URL.createObjectURL(albumFile);
+  // 複数ファイルが選択された場合を考慮し、forEachを使用
+  Array.from(files).forEach((file, index) => {
+    const albumBlob = window.URL.createObjectURL(file);
 
     // data-indexを使用して、既にプレビューが表示されているかを確認する
-    const albumAlreadyPreview = document.querySelector('.form-field-preview[data-index="${albumDataIndex}"]');
+    const albumAlreadyPreview = document.querySelector(`.form-field-preview[data-index="${albumDataIndex + index}"]`);
 
     if (albumAlreadyPreview) {
       // クリックしたfile_fieldのdata-indexと、同じ番号のプレビュー画像が既に表示されている場合は、画像の差し替えのみを行う
       const albumAlreadyPreviewImage = albumAlreadyPreview.querySelector("img");
       albumAlreadyPreviewImage.setAttribute("src", albumBlob);
-      return null;
+    } else {
+      // 新規にプレビューを作成
+      albumBuildPreviewImage(albumDataIndex + index, albumBlob);
     };
+  });
 
-    albumBuildPreviewImage(albumDataIndex, albumBlob);
-
-    // 画像の枚数制限に引っかからなければ、新しいfile_fieldを追加する
-    const albumImageCount = document.querySelectorAll(".form-field-preview").length;
-    if (albumImageCount < albumImageLimits) albumBuildNewFileField();
-  };
+  // 画像の枚数制限に引っかからなければ、新しいfile_fieldを追加する
+  const albumImageCount = document.querySelectorAll(".form-field-preview").length;
+  if (albumImageCount < albumImageLimits) albumBuildNewFileField();
+};
 
   // input要素を取得
   const albumFileField = document.querySelector('input[type="file"][name="album[album_images][]"]');
 
   // input要素で値の変化が起きた際に呼び出される関数
-  albumFileField.addEventListener('change', changedFileField);
+  albumFileField.addEventListener('change', albumChangedFileField);
 };
 
 window.addEventListener('turbo:load', albumPreview);

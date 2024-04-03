@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   def index
     @channel = Channel.find(session[:channel_id])
+    @albums = @channel.albums.order(created_at: :desc)
   end
 
   def new
@@ -12,12 +13,11 @@ class AlbumsController < ApplicationController
     @channel = Channel.find(session[:channel_id])
     @album = Album.new(album_params)
 
-    params[:album][:album_images].each do |image|
-      @album.album_images.attach(image)
-    end
-
     if @album.save
       redirect_to channel_albums_path(@channel)
+    else
+      @channel = Channel.find(session[:channel_id])
+      render :new 
     end
   end
 

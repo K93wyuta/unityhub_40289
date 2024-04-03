@@ -40,7 +40,7 @@
               <div class="form-field-images">
                 <div class="form-field-image">
                   <% f.label :image %>
-                  <%= f.file_field :album_image, name: 'album[album_images][]', data: {index: 0} ,class:"form-field-image-input" %>
+                  <%= f.file_field :album_image, name: 'album[album_images][]', multiple: true, data: {index: 0} ,class:"form-field-image-input" %>
                   <span class="form-field-image-custom">+</span>
                 </div>
                 <div class="form-field-preview"  id = "form-field-preview" >
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="form-actions">
-          <%= f.submit "作成する",class:"form-actions-new"%>
+          <%= f.submit "作成する",class:"form-actions-new" ,id:"album-form" %>
         </div>
       <% end %>
       </div>

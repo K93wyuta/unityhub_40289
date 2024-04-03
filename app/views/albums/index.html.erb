@@ -34,96 +34,22 @@
 
       <%# アルバムコンテンツ 一覧 %>
       <div class ="chanel-album-lists">
-        <div class ="chanel-album-list">
-          <div class ="chanel-album-list-image">
-          </div>
-          <div class ="chanel-album-list-content">
-            <div class ="chanel-album-list-content-title">
-              タイトル
-            </div>
-            <div class ="chanel-album-list-content-date">
-              2024年3月19日(火)
-            </div>
-            <div class ="chanel-album-list-content-sum">
-              100
-            </div>
-          </div>
-        </div>
-        <div class ="chanel-album-list">
-          <div class ="chanel-album-list-image">
-          </div>
-          <div class ="chanel-album-list-content">
-            <div class ="chanel-album-list-content-title">
-              タイトル
-            </div>
-            <div class ="chanel-album-list-content-date">
-              2024年3月19日(火)
-            </div>
-            <div class ="chanel-album-list-content-sum">
-              100
+        <% @albums.each do |album| %>
+          <div class ="chanel-album-list">
+            <%= image_tag url_for(album.album_images.first) ,class:"chanel-album-list-image" if album.album_images.attached? %>
+            <div class ="chanel-album-list-content">
+              <div class ="chanel-album-list-content-title">
+                <%= album.title %>
+              </div>
+              <div class ="chanel-album-list-content-date">
+                <%= album.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[album.created_at.wday] + ')' %>
+              </div>
+              <div class ="chanel-album-list-content-sum">
+                <%= album.album_images.count %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class ="chanel-album-list">
-          <div class ="chanel-album-list-image">
-          </div>
-          <div class ="chanel-album-list-content">
-            <div class ="chanel-album-list-content-title">
-              タイトル
-            </div>
-            <div class ="chanel-album-list-content-date">
-              2024年3月19日(火)
-            </div>
-            <div class ="chanel-album-list-content-sum">
-              100
-            </div>
-          </div>
-        </div>
-        <div class ="chanel-album-list">
-          <div class ="chanel-album-list-image">
-          </div>
-          <div class ="chanel-album-list-content">
-            <div class ="chanel-album-list-content-title">
-              タイトル
-            </div>
-            <div class ="chanel-album-list-content-date">
-              2024年3月19日(火)
-            </div>
-            <div class ="chanel-album-list-content-sum">
-              100
-            </div>
-          </div>
-        </div>
-        <div class ="chanel-album-list">
-          <div class ="chanel-album-list-image">
-          </div>
-          <div class ="chanel-album-list-content">
-            <div class ="chanel-album-list-content-title">
-              タイトル
-            </div>
-            <div class ="chanel-album-list-content-date">
-              2024年3月19日(火)
-            </div>
-            <div class ="chanel-album-list-content-sum">
-              100
-            </div>
-          </div>
-        </div>
-        <div class ="chanel-album-list">
-          <div class ="chanel-album-list-image">
-          </div>
-          <div class ="chanel-album-list-content">
-            <div class ="chanel-album-list-content-title">
-              タイトル
-            </div>
-            <div class ="chanel-album-list-content-date">
-              2024年3月19日(火)
-            </div>
-            <div class ="chanel-album-list-content-sum">
-              100
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
       <%# アルバムコンテンツ 一覧 %>
       
