@@ -10,6 +10,7 @@ class Channel < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   # バリデーション
   validates :name, presence: true

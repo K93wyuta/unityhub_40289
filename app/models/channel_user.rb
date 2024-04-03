@@ -4,6 +4,7 @@ class ChannelUser < ApplicationRecord
   has_many :tweets
   has_many :channel_event_users, dependent: :destroy
   has_many :topics
+  has_many :chats
 
   def administrator?
     administrator == 1
