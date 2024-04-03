@@ -36,11 +36,17 @@
 | administrator      | references              | null: false,foreign_key:{ to_table: :users } |
 
 ### Association
-- has_many :channel_users
-- has_many :albums
-- has_many :tweets
-- has_many :topics
-- has_many :channel_event_users
+- has_one_attached :channel_main_image
+- has_one_attached :channel_background_image
+- has_secure_password
+- has_many :channel_users, dependent: :destroy
+- has_many :users, through: :channel_users
+- has_many :administrators, -> { where(channel_users: { administrator: true }) }, through: :channel_users, source: :user
+- has_many :albums, dependent: :destroy
+- has_many :tweets, dependent: :destroy
+- has_many :topics, dependent: :destroy
+- has_many :events, dependent: :destroy
+- has_many :chats, dependent: :destroy
 
 ## channel_userモデル
 ### テーブル
@@ -55,6 +61,7 @@
 - has_many :tweets
 - has_many :events
 - has_many :topics
+- has_many :chats
 
 ## tweetモデル
 ### テーブル
@@ -69,19 +76,31 @@
 - belongs_to :channel_user
 - belongs_to :channel
 
-## groupモデル
+## chatモデル
 ### テーブル
-| Column       | Type               | Options                       |
-| ------- | ----------------------- | ------------------------------|
-| (image) | has_one_attachedにて実装 |                               |
-| name    | string                  | null: false                   |
-| channel | references              | null: false,foreign_key: true |
+| Column       | Type                    | Options                       |
+| ------------ | ----------------------- | ------------------------------|
+| (image)      | has_one_attachedにて実装 |                               |
+| text         | text                    | null: false                   |
+| channel_user | references              | null: false,foreign_key: true |
+| channel      | references              | null: false,foreign_key: true |
 
 ### Association
-- has_many :channel_group_users
-- has_many :message
+- belongs_to :channel_user
+- belongs_to :channel
 
-## channel_group_userモデル
+## groupモデル
+### テーブル
+| Column       | Type                    | Options                       |
+| ------------ | ----------------------- | ------------------------------|
+| (image)      | has_one_attachedにて実装 |                               |
+| name         | string                  | null: false                   |
+| channel      | references              | null: false,foreign_key: true |
+
+### Association
+- belongs_to :channel
+
+## channel_chat_userモデル
 ### テーブル
 | Column       | Type       | Options                       |
 | ------------ | ---------- | ------------------------------|
@@ -89,22 +108,8 @@
 | channel_user | references | null: false,foreign_key: true |
 
 ### Association
-- has_many :messages
 - belongs_to :group
 - belongs_to :channel_user
-
-## messageモデル
-### テーブル
-| Column             | Type                    | Options                       |
-| ------------------ | ----------------------- | ------------------------------|
-| (image)            | has_one_attachedにて実装 |                               |
-| content            | text                    | null: false                   |
-| channel_group_user | references              | null: false,foreign_key: true |
-| group              | references              | null: false,foreign_key: true |
-
-### Association
-- belongs_to :channel_group_user
-- belongs_to :group
 
 ## albumモデル
 ### テーブル
