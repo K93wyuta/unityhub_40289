@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_03_002359) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_03_004511) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -37,6 +37,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_03_002359) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "albums", charset: "utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_albums_on_channel_id"
   end
 
   create_table "channel_event_users", charset: "utf8", force: :cascade do |t|
@@ -123,6 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_03_002359) do
   end
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "albums", "channels"
   add_foreign_key "channel_event_users", "channel_users"
   add_foreign_key "channel_event_users", "events"
   add_foreign_key "channel_users", "channels"
