@@ -43,12 +43,14 @@
             チャット
           </div>
         </li>
-        <li class = "nav-list">
-          <%= image_tag 'channel/index/nav-album.svg',class:"nav-list-image" %>
-          <div class = "nav-list-name">
-            アルバム
-          </div>
-        </li>
+        <%= link_to channel_albums_path(@channel) do %>
+          <li class = "nav-list">
+            <%= image_tag 'channel/index/nav-album.svg',class:"nav-list-image" %>
+            <div class = "nav-list-name">
+              アルバム
+            </div>
+          </li>
+        <% end %>
         <%= link_to user_path(current_user.id) do %>
           <li class = "nav-list">
             <%= image_tag 'channel/index/nav-profile.svg',class:"nav-list-image" %>

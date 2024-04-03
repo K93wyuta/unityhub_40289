@@ -1,0 +1,78 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
+<%# チャンネル退出 モーダル %>
+<%= render "shared/channel_box_modal" %>
+<%# チャンネル退出 モーダル %>
+
+<%# 共通 %>
+<div class = "channel">
+
+  <%# グロナビ %>
+  <%= render "shared/left-content" %>
+  <%# グロナビ %>
+
+  <%# アルバム new %>
+  <div class = "right-content" >
+    <div class = "form">
+      <div class = "form-back">
+        <%= link_to '< 戻る', :back %>
+      </div>
+      <div class ="form-title">
+        アルバム　編集
+      </div>
+      <%= form_with(model:[@channel ,@album], local: true) do |f| %>
+        <div class = "form-error">
+          <%= render "shared/error_messages", resource: @album %>
+        </div>
+        <div class ="form-contents">
+          <div class = "form-labels">
+            <div class="form-label">タイトル</div>
+            <div class="form-label">画像</div>
+          </div>
+          <div class = "form-fields">
+            <div class="form-field">
+              <% f.label :title %>
+              <%= f.text_field :title, placeholder:"タイトルを入力してください", autocomplete: "title", class:"form-field-string" %>
+            </div>
+            <div class="form-field">
+              <div class="form-field-images">
+                <div class="form-field-image">
+                  <% f.label :image %>
+                  <%= f.file_field :album_image, name: 'album[album_images][]', multiple: true, data: {index: 0} ,class:"form-field-image-input" %>
+                  <span class="form-field-image-custom">+</span>
+                </div>
+                <div class="form-field-preview"  id = "form-field-preview" >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "更新する",class:"form-actions-new",id:"album-form"%>
+          <%# 削除モーダル %>
+          <div class ="general-actions-delete">
+            削除
+          </div>
+        </div>
+        <div class ="channel-form-actions-button-delete-modal">
+          <div class ="channel-form-actions-button-delete-modal-title">
+            本当に削除しますか？
+          </div>
+          <div class ="channel-form-actions-button-delete-modal-button">
+              <%= link_to 'Yes', channel_album_path(@channel.id,@album), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
+            <div class ="channel-form-actions-button-delete-modal-button-n">
+              No
+            </div>
+          </div>
+        </div>
+        <%# 削除モーダル %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <%# アルバム new %>
+
+</div>
+<%# アルバム共通コンテンツ %>

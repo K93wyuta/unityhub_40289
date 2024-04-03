@@ -1,0 +1,61 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
+<%# チャンネル退出 モーダル %>
+<%= render "shared/channel_box_modal" %>
+<%# チャンネル退出 モーダル %>
+
+<%# アルバム新規作成ボタン %>
+<%= link_to "+", new_channel_album_path(@channel) ,class:"channel-tweet-new-action" %>
+<%# アルバム新規作成ボタン %>
+
+<%# 共通 %>
+<div class = "channel">
+
+  <%# グロナビ %>
+  <%= render "shared/left-content" %>
+  <%# グロナビ %>
+
+  <%# アルバム共通 %>
+  <div class = "channel-right-content" >
+    <div class ="chanel-album">
+
+      <%# アルバム index  検索ボックス %>
+      <%= form_tag channel_albums_path(@channel), method: :get, class: "chanel-album-search" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力してください", class:"chanel-album-search-input" %>
+          <div class = "chanel-album-search-button" >
+          <%= image_submit_tag 'album/index/search.svg', class: "chanel-album-search-button-image" %>
+        </div>
+      <% end %>
+      <%# アルバム index 検索ボックス %>
+
+      <%# アルバム index 一覧 %>
+      <div class ="chanel-album-lists">
+        <% @albums.each do |album| %>
+          <%= link_to channel_album_path(@channel, album) do %>
+            <div class ="chanel-album-list">
+              <%= image_tag url_for(album.album_images.first) ,class:"chanel-album-list-image" if album.album_images.attached? %>
+              <div class ="chanel-album-list-content">
+                <div class ="chanel-album-list-content-title">
+                  <%= album.title %>
+                </div>
+                <div class ="chanel-album-list-content-date">
+                  <%= album.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[album.created_at.wday] + ')' %>
+                </div>
+                <div class ="chanel-album-list-content-sum">
+                  <%= album.album_images.count %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <%# アルバム index 一覧 %>
+      
+    </div>
+  </div>
+  <%# アルバム共通 %>
+
+</div>
+<%# 共通 %>
