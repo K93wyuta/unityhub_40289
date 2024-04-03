@@ -1,0 +1,80 @@
+.chanel-album{
+  padding: 40px 100px;
+}
+
+.chanel-album-search{
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.chanel-album-search-input{
+  height: 40px;
+  width: 400px;
+  border: #B9B9B9 1px solid;
+  border-radius: 10px 0 0 10px;
+  padding: 10px;
+}
+
+.chanel-album-search-button{
+  width: 40px;
+  border-radius: 0 10px 10px 0;
+  background-color: #313E52;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chanel-album-search-button-image{
+
+}
+
+.chanel-album-lists{
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+}
+
+.chanel-album-list{
+  margin-bottom: 20px;
+  transition: transform 0.3s ease; 
+}
+
+.chanel-album-list:hover{
+  cursor: pointer;
+  transition: .2s;
+  transform: scale(1.05); 
+}
+
+.chanel-album-list-image{
+  height: 220px;
+  width: 320px;
+  background-color: #D8D8D8;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.chanel-album-list-content{
+  height: 100px;
+  width: 320px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  padding: 15px;
+  border-radius: 0 0 10px 10px;
+}
+
+.chanel-album-list-content-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.chanel-album-list-content-date{
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.chanel-album-list-content-sum{
+  text-align: right;
+  font-size: 12px;
+}

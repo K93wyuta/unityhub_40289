@@ -1,0 +1,138 @@
+<%# モーダル表示時バックグランド %>
+<div class="overlay"></div>
+<%# モーダル表示時バックグランド %>
+
+<%# モーダル %>
+<div class ="channel-box-modal">
+  <div class ="channel-box-modal-title">
+    チャンネルを退出しますか？
+  </div>
+  <div class ="channel-box-modal-button">
+      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
+    <div class ="channel-box-modal-button-n">
+      No
+    </div>
+  </div>
+</div>
+<%# モーダル %>
+
+<%# アルバム新規作成ボタン %>
+<%= link_to "+", new_channel_album_path(@channel) ,class:"channel-tweet-new-action" %>
+<%# アルバム新規作成ボタン %>
+
+<%# コンテンツ %>
+<div class = "channel">
+
+  <%# leftコンテンツ %>
+  <%= render "shared/left-content" %>
+  <%# leftコンテンツ %>
+
+  <%# rightコンテンツ %>
+  <div class = "channel-right-content" >
+    <div class ="chanel-album">
+      <div class ="chanel-album-search">
+        <div class ="chanel-album-search-input">
+          キーワードを入力してください。
+        </div>
+        <div class ="chanel-album-search-button">
+          <%= image_submit_tag 'album/index/search.svg', class: "chanel-album-search-button-image" %>
+        </div>
+      </div>
+      <div class ="chanel-album-lists">
+        <div class ="chanel-album-list">
+          <div class ="chanel-album-list-image">
+          </div>
+          <div class ="chanel-album-list-content">
+            <div class ="chanel-album-list-content-title">
+              タイトル
+            </div>
+            <div class ="chanel-album-list-content-date">
+              2024年3月19日(火)
+            </div>
+            <div class ="chanel-album-list-content-sum">
+              100
+            </div>
+          </div>
+        </div>
+        <div class ="chanel-album-list">
+          <div class ="chanel-album-list-image">
+          </div>
+          <div class ="chanel-album-list-content">
+            <div class ="chanel-album-list-content-title">
+              タイトル
+            </div>
+            <div class ="chanel-album-list-content-date">
+              2024年3月19日(火)
+            </div>
+            <div class ="chanel-album-list-content-sum">
+              100
+            </div>
+          </div>
+        </div>
+        <div class ="chanel-album-list">
+          <div class ="chanel-album-list-image">
+          </div>
+          <div class ="chanel-album-list-content">
+            <div class ="chanel-album-list-content-title">
+              タイトル
+            </div>
+            <div class ="chanel-album-list-content-date">
+              2024年3月19日(火)
+            </div>
+            <div class ="chanel-album-list-content-sum">
+              100
+            </div>
+          </div>
+        </div>
+        <div class ="chanel-album-list">
+          <div class ="chanel-album-list-image">
+          </div>
+          <div class ="chanel-album-list-content">
+            <div class ="chanel-album-list-content-title">
+              タイトル
+            </div>
+            <div class ="chanel-album-list-content-date">
+              2024年3月19日(火)
+            </div>
+            <div class ="chanel-album-list-content-sum">
+              100
+            </div>
+          </div>
+        </div>
+        <div class ="chanel-album-list">
+          <div class ="chanel-album-list-image">
+          </div>
+          <div class ="chanel-album-list-content">
+            <div class ="chanel-album-list-content-title">
+              タイトル
+            </div>
+            <div class ="chanel-album-list-content-date">
+              2024年3月19日(火)
+            </div>
+            <div class ="chanel-album-list-content-sum">
+              100
+            </div>
+          </div>
+        </div>
+        <div class ="chanel-album-list">
+          <div class ="chanel-album-list-image">
+          </div>
+          <div class ="chanel-album-list-content">
+            <div class ="chanel-album-list-content-title">
+              タイトル
+            </div>
+            <div class ="chanel-album-list-content-date">
+              2024年3月19日(火)
+            </div>
+            <div class ="chanel-album-list-content-sum">
+              100
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%# rightコンテンツ %>
+
+</div>
+<%# コンテンツ %>
