@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :tweets, only: [:index, :show, :create]
     resources :topics, only: [:new ,:create,  :edit ,:update ,:destroy] 
     resources :albums
+    resources :chats, only: [:index] 
     resources :events do
       resources :channel_event_users, only: [:create, :destroy]
     end
