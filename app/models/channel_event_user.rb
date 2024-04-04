@@ -1,4 +1,7 @@
 class ChannelEventUser < ApplicationRecord
-  belongs_to :event
+  # Association
   belongs_to :channel_user
+  belongs_to :event
+
+  # Validation
 end

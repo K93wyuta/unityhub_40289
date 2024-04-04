@@ -1,8 +1,11 @@
 class Tweet < ApplicationRecord
+  # Association
+  has_one_attached :tweet_image
+  
   belongs_to :channel_user
   belongs_to :channel
-  has_one_attached :tweet_image
 
+  # Validation
   validate :either_text_or_image
 
   private
