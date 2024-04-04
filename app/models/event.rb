@@ -1,10 +1,13 @@
 class Event < ApplicationRecord
-  # アソシエーション
+  # Association
   has_one_attached :event_image
+
   has_many :channel_event_users, dependent: :destroy
+  has_many :channel_users, through: :channel_event_users
+
   belongs_to :channel
 
-  # バリデーション
+  # Validation
   validates :name, presence: true
   validates :date_start, presence: true
   validates :date_end, presence: true

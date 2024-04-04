@@ -3,9 +3,9 @@ class EventsController < ApplicationController
     @channel = Channel.find(session[:channel_id])
     if params[:date]
       @date = Date.parse(params[:date])
-      @events = Event.where(date_start: @date.beginning_of_day..@date.end_of_day)
+      @events = @channel.events.where(date_start: @date.beginning_of_day..@date.end_of_day)
     else
-      @events = Event.all
+      @events = @channel.events
     end
   end
 

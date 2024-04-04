@@ -1,9 +1,9 @@
 class Topic < ApplicationRecord
-  # アソシエーション
-  belongs_to :channel_user
+  # Association
   belongs_to :channel
+  belongs_to :channel_user
 
-  # バリデーション
+  # Validation
   validates :title, presence: true
   validates :text, presence: true
 end
