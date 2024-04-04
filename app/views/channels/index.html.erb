@@ -10,7 +10,7 @@
     <% if @channels.empty? %>
       <div class = "channel-empty">
         <div class = "channel-empty-title">
-          登録されているチャンネルがありません。チャンネルの管理者にあなたを登録いただくようお願いいたします。
+          登録されているチャンネルがありません。新規で作成するか、チャンネルの管理者にあなたを登録いただくようお願いいたします。
         </div>
         <%= button_to 'ログアウト', destroy_user_session_path, method: :delete ,class:"channel-empty-button"%>
       </div>
