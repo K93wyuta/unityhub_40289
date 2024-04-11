@@ -120,29 +120,31 @@
                     <div class ="channel-show-buttom-topics-list-right-center-title">
                       <%= topic.title %>
                     </div>
-                    <div class ="channel-show-buttom-topics-list-right-center-actions">
-                      <%= link_to "編集", edit_channel_topic_path(@channel.id, topic) ,class:"channel-show-buttom-topics-list-right-center-actions-edit" %>
-                      <div class ="channel-show-buttom-topics-list-right-center-actions-delete">
-                        削除
-                      </div>
+                    <% if topic.channel_user.user == current_user %>
+                      <div class ="channel-show-buttom-topics-list-right-center-actions">
+                        <%= link_to "編集", edit_channel_topic_path(@channel.id, topic) ,class:"channel-show-buttom-topics-list-right-center-actions-edit" %>
+                        <div class ="channel-show-buttom-topics-list-right-center-actions-delete">
+                          削除
+                        </div>
 
-                      <%# チャンネル詳細ページ チャンネル削除 モーダル Start %>
-                      <div class ="modal" id="modal-show-topics-deleate">
-                        <div class= "modal-box">
-                          <div class ="modal-box-title">
-                            本当に削除しますか？
-                          </div>
-                          <div class ="modal-actions">
-                            <%= link_to 'Yes', channel_topic_path(@channel.id,topic), data: { turbo_method: :delete }, class:"modal-actions-y" %>
-                            <div class ="modal-actions-n">
-                              No
+                        <%# チャンネル詳細ページ チャンネル削除 モーダル Start %>
+                        <div class ="modal" id="modal-show-topics-delete">
+                          <div class= "modal-box">
+                            <div class ="modal-box-title">
+                              本当に削除しますか？
+                            </div>
+                            <div class ="modal-actions">
+                              <%= link_to 'Yes', channel_topic_path(@channel.id,topic), data: { turbo_method: :delete }, class:"modal-actions-y" %>
+                              <div class ="modal-actions-n">
+                                No
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <%# チャンネル詳細ページ チャンネル削除 モーダル End %>
+                        <%# チャンネル詳細ページ チャンネル削除 モーダル End %>
 
-                    </div>
+                      </div>
+                    <% end %>
                   </div>
                   <div class ="channel-show-buttom-topics-list-right-buttom">
                     <%= topic.text %>

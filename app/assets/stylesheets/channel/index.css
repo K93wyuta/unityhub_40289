@@ -26,6 +26,7 @@
   border: none;
   border-radius: 40px;
   padding: 5px 20px;
+  margin-bottom: 20px;
 }
 
 .channel-index-empty-logout:hover{

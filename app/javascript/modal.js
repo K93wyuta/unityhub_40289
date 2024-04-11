@@ -119,7 +119,7 @@ const tweetModal = () => {
 
 // topic delete modal start
 const topicModal = () => {
-  const topicDeleteModal = document.querySelector('.#modal-show-topics-deleate'); // モーダルを取得
+  const topicDeleteModal = document.querySelector('#modal-show-topics-delete'); // モーダルを取得
     const topicDeleteTrigger = document.querySelector('.channel-show-buttom-topics-list-right-center-actions-delete'); // トリガーを取得
     const topicDeleteOverlay = document.querySelector('.overlay'); // オーバーレイを取得
   

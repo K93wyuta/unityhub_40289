@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_channel, only: [:show, :edit]
+
   def show
-    @user = User.find(params[:id])
-    @channel = Channel.find(session[:channel_id])
     session[:channel_id] = @channel.id
   end
 
   def edit
-    @user = User.find(params[:id])
-    @channel = Channel.find(session[:channel_id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_without_password(user_params)
       bypass_sign_in(@user)
       redirect_to user_path(@user)
@@ -21,12 +20,24 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    user.destroy
+    @user.destroy
     redirect_to new_user_session_path
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def correct_user
+    @channel = Channel.find(session[:channel_id])
+    redirect_to channel_path(@channel) unless @user == current_user
+  end
+
+  def set_channel
+    @channel = Channel.find(session[:channel_id])
+  end
 
   def user_params
     params.require(:user).permit(:profile_image, :background_image, :name, :email, :password, :password_confirmation, :gender_id, :age_id, :birthday, :mbti_id,

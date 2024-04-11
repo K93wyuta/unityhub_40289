@@ -1,6 +1,8 @@
 class AlbumsController < ApplicationController
+  before_action :set_channel, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :set_album, only: [:show, :edit, :update, :destroy]
+
   def index
-    @channel = Channel.find(session[:channel_id])
     if params[:search].blank?
       @albums = @channel.albums.order(created_at: :desc)
     else
@@ -9,53 +11,50 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @channel = Channel.find(session[:channel_id])
     @album = Album.new
   end
 
   def create
-    @channel = Channel.find(session[:channel_id])
     @album = Album.new(album_params)
 
     if @album.save
       redirect_to channel_albums_path(@channel)
     else
-      @channel = Channel.find(session[:channel_id])
-      render :new 
+      render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @channel = Channel.find(session[:channel_id])
-    @album = @channel.albums.find(params[:id])
+
   end
 
   def edit
-    @channel = Channel.find(session[:channel_id])
-    @album = Album.find(params[:id])
+
   end
 
   def update
-    @channel = Channel.find(session[:channel_id])
-    @album = Album.find(params[:id])
-
     if @album.update(album_params)
       redirect_to channel_albums_path(@channel)
     else
-      @channel = Channel.find(session[:channel_id])
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @channel = Channel.find(session[:channel_id])
-    @album = Album.find(params[:id])
     @album.destroy
     redirect_to channel_albums_path(@channel)
   end
 
 
   private
+
+  def set_channel
+    @channel = Channel.find(session[:channel_id])
+  end
+
+  def set_album
+    @album = @channel.albums.find(params[:id])
+  end
 
   def album_params
     params.require(:album).permit(:title, {album_images: []}).merge(channel_id: @channel.id)

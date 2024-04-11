@@ -21,7 +21,9 @@
         <div class ="channel-event-title-name">
           <%= @event.name %>
         </div>
-        <%= link_to "編集", edit_channel_event_path(@event.id) ,class:"channel-event-title-edit" %>
+        <% if @event.channel_user.user == current_user %>
+          <%= link_to "編集", edit_channel_event_path(@event.id) ,class:"channel-event-title-edit" %>
+        <% end %>
       </div>
       <div class ="channel-event-updated">
         最終更新日：<%= @event.updated_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@event.updated_at.wday] + ')' %>

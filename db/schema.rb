@@ -86,7 +86,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_04_153501) do
     t.datetime "updated_at", null: false
     t.datetime "time_start"
     t.datetime "time_end"
+    t.bigint "channel_user_id", null: false
     t.index ["channel_id"], name: "index_events_on_channel_id"
+    t.index ["channel_user_id"], name: "index_events_on_channel_user_id"
   end
 
   create_table "topics", charset: "utf8", force: :cascade do |t|

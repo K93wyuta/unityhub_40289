@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   has_many :channel_users, through: :channel_event_users
 
   belongs_to :channel
+  belongs_to :channel_user
 
   # Validation
   validates :name, presence: true

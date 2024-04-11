@@ -1,5 +1,12 @@
 ja:
   activerecord:
+    models:
+      user: ユーザー
+      channel: チャンネル
+      tweet: ツイート
+      event: イベント
+      album: アルバム
+
     attributes:
       user:
         name: 名前
@@ -7,3 +14,14 @@ ja:
         password: パスワード
         name: 名前
         identification: ID
+      event:
+        name: イベント名
+        date_start: 開始日
+        date_end: 終了日
+        time_start: 開始時刻
+        time_end: 終了時刻
+      album:
+        title: アルバム名
+      topic: 
+        title: タイトル
+        text: 投稿文

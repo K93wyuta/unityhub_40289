@@ -43,10 +43,20 @@
 /* ================================================== */
 
 /* ===== エラー ====================================== */
-.form-error{
+.field_with_errors {
+  display: contents;
+}
+
+.form-error-center{
   font-size: 14px;
   color: #FFFFFF;
   text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-error-left{
+  font-size: 14px;
+  color: #FFFFFF;
   margin-bottom: 40px;
 }
 /* ================================================== */
