@@ -1,0 +1,216 @@
+/* ===== モーダル表示 バックグラウンド ==================== */
+.overlay {
+  display: none;
+  position: fixed; /* 画面に固定 */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* 黒色の半透明 */
+  z-index: 998;
+}
+/* ================================================== */
+
+/* ===== モーダル レイアウト =========================== */
+.modal{
+  display: none;
+  width: 80%;
+  max-width: 600px;
+  background-color: #FFFFFF;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.modal-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* ================================================== */
+
+/* ===== モーダル タイトル ============================= */
+.modal-box-title{
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* ================================================== */
+
+/* ===== モーダル その他 =============================== */
+.modal-back{
+  text-align: right;
+  font-size: 20px;
+}
+
+.modal-back:hover{
+  cursor: pointer;
+}
+.modal-box-field{
+  margin-bottom: 20px;
+}
+
+.modal-box-field-label{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.modal-box-field-string{
+  height: 40px;
+  width: 400px;
+  border: #D8D8D8 solid 1px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.modal-box-submit{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  border: none;
+  margin-top: 60px;
+  display: block;
+  margin: auto;
+}
+
+.modal-box-submit:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  border: #313E52 solid 1px;
+  color: #313E52;
+  transition: .2s
+}
+
+.modal-actions{
+  display: flex;
+  justify-content: center;
+}
+
+.modal-actions-y{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.modal-actions-y:hover{
+  background-color: #FFFFFF;
+  color: #313E52;
+  border: #313E52 solid 1px;
+  cursor: pointer;
+  transition: .2s
+}
+
+.modal-actions-n{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #B9B9B9;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-actions-n:hover{
+  background-color: #FFFFFF;
+  color: #B9B9B9;
+  border: #B9B9B9 solid 1px;
+  cursor: pointer;
+  transition: .2s
+}
+
+.modal-box-error{
+
+}
+
+.modal-box-text{
+  height: 240px;
+  width: 500px;
+  border: #B9B9B9 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-box-buttom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-box-buttom-image{
+  display: flex;
+}
+
+.modal-box-buttom-image-button{
+  height: 60px;
+  width: 60px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0;
+  margin-right: 10px;
+}
+
+.modal-box-buttom-image-button-plus{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.modal-box-buttom-image-button-add{
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+.modal-box-buttom-image-input{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  opacity: 0;
+  left: 10;
+  top: 60;
+}
+
+.modal-box-buttom-image-input:hover{
+  cursor: pointer;
+  transition: .2s
+}
+
+.modal-box-buttom-image-input-custom{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+}
+
+.tweet-preview{
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.modal-box-buttom-botton-image{
+  height: 30px;
+}
+/* ================================================== */

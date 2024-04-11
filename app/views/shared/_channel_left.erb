@@ -1,0 +1,93 @@
+<%# チャンネル ナビゲーション Start %>
+<div class = "channel-left">
+
+  <%# ロゴ Start %>
+  <h1 class = "logo">
+    UnityHub
+  </h1>
+  <%# ロゴ End %>
+
+  <%# チャンネル表示部分 Start %>
+  <div class = "channel-left-channel">
+    <%= image_tag(@channel.channel_main_image, class: "channel-left-channel-image") if @channel&.channel_main_image.present? %>
+    <div class = "channel-left-channel-name">
+      <%= @channel.name %>
+    </div>
+  </div>
+  <%# チャンネル表示部分 End %>
+
+  <%# ナビゲーション部分 Start %>
+  <ul class = "channel-left-nav">
+    <%= link_to channel_path(session[:channel_id]) do %>
+      <li class = "channel-left-nav-list">
+        <%= image_tag 'channel/index/nav-home.svg',class:"list-image" %>
+        <div class = "list-text">
+          ホーム
+        </div>
+      </li>
+    <% end %>
+    <%= link_to channel_tweets_path(@channel) do %>
+      <li class = "channel-left-nav-list">
+        <%= image_tag 'channel/index/nav-tweet.svg',class:"list-image" %>
+        <div class = "list-text">
+          ツイート
+        </div>
+      </li>
+    <% end %>
+    <%= link_to channel_events_path(@channel) do %>
+    <li class = "channel-left-nav-list">
+      <%= image_tag 'channel/index/nav-calendar.svg',class:"list-image" %>
+      <div class = "list-text">
+        カレンダー
+      </div>
+    </li>
+    <% end %>
+    <%= link_to channel_albums_path(@channel) do %>
+      <li class = "channel-left-nav-list">
+        <%= image_tag 'channel/index/nav-album.svg',class:"list-image" %>
+        <div class = "list-text">
+          アルバム
+        </div>
+      </li>
+    <% end %>
+    <%= link_to user_path(current_user.id) do %>
+      <li class = "channel-left-nav-list">
+        <%= image_tag 'channel/index/nav-profile.svg',class:"list-image" %>
+        <div class = "list-text">
+          プロフィール
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%# ナビゲーション部分 End %>
+
+  <%# フォーム部分 Start %>
+  <ul class = "channel-left-post">
+    <%= link_to new_channel_topic_path(@channel) do %>
+      <li class = "channel-left-post-list">
+        <%= image_tag 'channel/index/post-topics.svg',class:"list-image" %>
+        <div class = "list-text">
+          News&Topics
+        </div>
+      </li>
+    <% end %>
+    <%= link_to new_channel_event_path(@channel) do %>
+      <li class = "channel-left-post-list">
+        <%= image_tag 'channel/index/post-event.svg',class:"list-image" %>
+        <div class = "list-text">
+          イベント申請
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%# フォーム部分 End %>
+
+  <%# ユーザー ログアウト Start %>
+  <div class = "channel-left-logout">
+    <%= image_tag 'channel/index/logout.svg',class:"list-image" %>
+    <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "list-text" %>
+  </div>
+  <%# ユーザー ログアウト End %>
+
+</div>
+<%# チャンネル ナビゲーション End %>

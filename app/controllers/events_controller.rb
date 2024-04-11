@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
   def new
     @channel = Channel.find(session[:channel_id])
-    @channel_users = @channel.channel_users.where(administrator: false)
+    @channel_users = @channel.channel_users
     @event = Event.new
   end
 
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
 
   def edit
     @channel = Channel.find(session[:channel_id])
-    @channel_users = @channel.channel_users.where(administrator: false)
+    @channel_users = @channel.channel_users
     @event = Event.find(params[:id])
   end
 

@@ -1,36 +1,10 @@
-
-.chanel-tweet{
-display: flex;
-}
-
-/* tweet new bottom start */
-.channel-tweet-new-action{
-  height: 60px;
-  width: 60px;
-  background-color: #313E52;
-  border-radius: 50%;
-  color: #FFFFFF;
-  font-size: 30px;
+/* ===== ツイート ==================================== */
+.channel-tweet{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 5px;
-  position: fixed;
-  right: 60px;
-  bottom: 60px; 
 }
+/* ================================================== */
 
-.channel-tweet-new-action:hover{
-  cursor: pointer;
-  background-color: #FFFFFF;
-  color: #313E52;
-  box-shadow:  0 5px 10px 0;
-  transition: .2s
-}
-/* tweet new bottom end */
-
-/* tweet leftContents start*/
+/* ===== ツイート ユーザー選択 ========================= */
 .chanel-tweet-left{
   position: fixed;
   background-color: #465163;
@@ -54,7 +28,7 @@ display: flex;
   border: none;
 }
 
-.chanel-tweet-left-search-botton{
+.chanel-tweet-left-search-button{
   width: 40px;
   border-radius: 0 10px 10px 0;
   background-color: #313E52;
@@ -64,43 +38,18 @@ display: flex;
   align-items: center;
 }
 
-.chanel-tweet-left-search-botton:hover{
+.chanel-tweet-left-search-button:hover{
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
   transition: .2s
 }
 
-.chanel-tweet-left-search-botton-image{
+.chanel-tweet-left-search-button-image{
 
 }
 
 .chanel-tweet-left-users{
 
-}
-
-.chanel-tweet-left-userall{
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
-.chanel-tweet-left-userall:hover{
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: .2s
-}
-
-.chanel-tweet-left-userall-image{
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-  margin-right: 20px;
-}
-
-.chanel-tweet-left-userall-name{
-  color: #FFFFFF;
-  font-size: 14px;
 }
 
 .chanel-tweet-left-user{
@@ -127,8 +76,9 @@ display: flex;
   color: #FFFFFF;
   font-size: 14px;
 }
-/* tweet leftContents end*/
-/* tweet rightContents start*/
+/* ================================================== */
+
+/* ===== ツイート ツイート表示部分 ====================== */
 .chanel-tweet-right{
   margin-left: 300px;
   padding: 40px;
@@ -144,11 +94,10 @@ display: flex;
 }
 
 .chanel-tweet-right-tweet-userimage{
-  flex-shrink: 0;
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: #D8D8D8;
+  object-fit: cover;
   margin-right: 20px;
 }
 
@@ -185,4 +134,31 @@ display: flex;
   margin-right: 10px;
   box-shadow: 0 1px 2px 0;
 }
-/* tweet rightContents end*/
+/* ================================================== */
+
+/* ===== ツイート 新規投稿 ============================= */
+.channel-tweet-action{
+  height: 60px;
+  width: 60px;
+  background-color: #313E52;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  position: fixed;
+  right: 60px;
+  bottom: 60px; 
+}
+
+.channel-tweet-action:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #313E52;
+  box-shadow:  0 5px 10px 0;
+  transition: .2s
+}
+/* ================================================== */

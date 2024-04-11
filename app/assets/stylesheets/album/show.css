@@ -1,58 +1,45 @@
-.general-back{
+/* ===== イベント詳細ページ ヘッダー ==================== */
+.channel-album-back{
+  font-size: 14px;
   margin-bottom: 40px;
 }
 
-.chanel-album-top{
+.channel-album-title{
   display: flex;
   justify-content: space-between;
 }
 
-.chanel-album-top-left{
-
-}
-
-.general-title{
-  font-size: 20px;
+.channel-album-title-name{
+  font-size: 30px;
   font-weight: bold;
-}
-.general-date{
-  font-size: 12px;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 
-.chanel-album-top-right{
-
-}
-
-.general-actions{
-  display: flex;
-  justify-content: right;
-}
-
-.general-actions-edit{
-  height: 34px;
-  width: 74px;
+.channel-album-title-edit{
+  height: 36px;
+  width: 80px;
   border: 1px #313E52 solid;
   border-radius: 40px;
-  padding: 5px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
 }
 
-.general-actions-edit:hover{
+.channel-album-title-edit:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.general-actions-edit a:hover{
-  color: #FFFFFF;
+.channel-event-date{
+  font-size: 10px;
+  margin-bottom: 40px;
 }
+/* ================================================== */
 
+/* ===== イベント詳細ページ 一覧 ======================== */
 .chanel-album-images{
   display: flex;
   flex-wrap: wrap; 
@@ -65,3 +52,4 @@
   background-color: #FFFFFF;
   object-fit: cover;
 }
+/* ================================================== */

@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
 
   def create
     @channel = Channel.find(session[:channel_id])
-    @channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id, administrator: false)
+    @channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id)
     @topic = Topic.new(topic_params)
     if @topic.save
       redirect_to channel_path(@channel)
@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
 
   def update
     @channel = Channel.find(session[:channel_id])
-    @channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id, administrator: false)
+    @channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id)
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
       redirect_to channel_path(@channel)

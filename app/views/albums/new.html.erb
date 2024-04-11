@@ -1,62 +1,66 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
-<%# チャンネル退出 モーダル %>
-<%= render "shared/channel_box_modal" %>
-<%# チャンネル退出 モーダル %>
-
-<%# 共通 %>
+<%# チャンネル 共通 Start %>
 <div class = "channel">
 
-  <%# グロナビ %>
-  <%= render "shared/left-content" %>
-  <%# グロナビ %>
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
 
-  <%# アルバム new %>
-  <div class = "right-content" >
-    <div class = "form">
-      <div class = "form-back">
-        <%= link_to '< 戻る', :back %>
-      </div>
-      <div class ="form-title">
-        アルバム新規作成
-      </div>
+  <%# アルバム 新規作成 Start %>
+  <div class = "channel-right">
+
+    <%# アルバム 新規作成フォーム Start %>
+    <div class = "form-left">
       <%= form_with(model:[@channel ,@album], local: true) do |f| %>
+
+        <%# アルバム 新規作成フォーム ヘッダー Start %>
+        <div class ="form-back">
+          <%= link_to '< 戻る', :back, class:"form-back-text" %>
+        </div>
+        <div class ="form-title-left">
+          アルバム　新規作成
+        </div>
+        <%# アルバム 新規作成フォーム ヘッダー End %>
+
+        <%# アルバム 新規作成フォーム エラー表示 Start %>
         <div class = "form-error">
-          <%= render "shared/error_messages", resource: @album %>
+          <%= render 'shared/error_messages', resource: @album %>
         </div>
-        <div class ="form-contents">
-          <div class = "form-labels">
-            <div class="form-label">タイトル</div>
-            <div class="form-label">画像</div>
+        <%# アルバム 新規作成フォーム エラー表示 End %>
+
+        <%# アルバム 新規作成フォーム 入力部分 Start %>
+        <div class = "form-vertical">
+          <div class = "form-vertical-field">
+            <%= f.label :title, "アルバム名",class:"form-field-label" %>
+            <%= f.text_field :title, placeholder:"アルバム名を入力してください", autocomplete: "title", class:"form-field-string" %>
           </div>
-          <div class = "form-fields">
-            <div class="form-field">
-              <% f.label :title %>
-              <%= f.text_field :title, placeholder:"タイトルを入力してください", autocomplete: "title", class:"form-field-string" %>
-            </div>
-            <div class="form-field">
-              <div class="form-field-images">
-                <div class="form-field-image">
-                  <% f.label :image %>
-                  <%= f.file_field :album_image, name: 'album[album_images][]', multiple: true, data: {index: 0} ,class:"form-field-image-input" %>
-                  <span class="form-field-image-custom">+</span>
-                </div>
-                <div class="form-field-preview"  id = "form-field-preview" >
-                </div>
-              </div>
+          <div class="form-vertical-field">
+            <%= f.label :alubum_image, "画像",class:"form-field-label" %>
+            <div class="form-field-albumimage">
+              <%= f.file_field :album_image, name: 'album[album_images][]', multiple: true, data: {index: 0} ,class:"form-field-albumimage-image" %>
+            <span class="form-field-albumimage-custom">+</span>
+                        </div>
+            <div class="album-preview" id = "album-preview">
             </div>
           </div>
         </div>
-        <div class="form-actions">
-          <%= f.submit "作成する",class:"form-actions-new" ,id:"album-form" %>
+        <%# アルバム 新規作成フォーム 入力部分 End %>
+
+        <%# アルバム 新規作成フォーム アクション Start %>
+        <div class="form-action">
+          <%= f.submit "作成する",class:"form-action-submit"%>
         </div>
+        <%# アルバム 新規作成フォーム アクション End %>
+
       <% end %>
-      </div>
     </div>
+    <%# アルバム 新規作成フォーム End %>
+
   </div>
-  <%# アルバム new %>
+  <%# アルバム 新規作成 End %>
 
 </div>
-<%# アルバム共通コンテンツ %>
+<%# チャンネル 共通 End %>

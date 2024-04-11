@@ -1,30 +1,22 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%# モーダル %>
-<div class ="channel-box-modal">
-  <div class ="channel-box-modal-title">
-    チャンネルを退出しますか？
-  </div>
-  <div class ="channel-box-modal-button">
-      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
-    <div class ="channel-box-modal-button-n">
-      No
-    </div>
-  </div>
-</div>
-<%# モーダル %>
-<%= link_to "+", new_channel_event_path(@channel) ,class:"channel-tweet-new-action" %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class ="chanel-calendar">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# カレンダー Start %>
+  <div class = "channel-right">
+    <div class = "channel-event">
       <%= month_calendar events: @events, attribute: :date_start do |date, events| %>
         <%= date.day %>
         <% events.each do |event| %>
           <%= link_to channel_event_path(event.channel, event) do %>
-            <div class ="channel-calender-event">
+            <div class ="channel-event-list">
               <%= event.name %>
             </div>
           <% end %>
@@ -32,4 +24,10 @@
       <% end %>
     </div>
   </div>
+  <%# カレンダー End %>
+
 </div>
+
+<%# イベント 新規作成 Start %>
+<%= link_to "+", new_channel_event_path(@channel) ,class:"channel-event-action" %>
+<%# イベント 新規作成 End %>

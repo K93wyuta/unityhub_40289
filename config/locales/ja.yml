@@ -3,6 +3,7 @@ ja:
     attributes:
       user:
         name: 名前
-      tweet:
-        text: テキスト
-        image: 画像
+      channel:
+        password: パスワード
+        name: 名前
+        identification: ID

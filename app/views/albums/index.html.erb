@@ -1,36 +1,28 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
-<%# チャンネル退出 モーダル %>
-<%= render "shared/channel_box_modal" %>
-<%# チャンネル退出 モーダル %>
-
-<%# アルバム新規作成ボタン %>
-<%= link_to "+", new_channel_album_path(@channel) ,class:"channel-tweet-new-action" %>
-<%# アルバム新規作成ボタン %>
-
-<%# 共通 %>
+<%# チャンネル 共通 Start %>
 <div class = "channel">
 
-  <%# グロナビ %>
-  <%= render "shared/left-content" %>
-  <%# グロナビ %>
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
 
-  <%# アルバム共通 %>
-  <div class = "channel-right-content" >
-    <div class ="chanel-album">
+  <%# アルバム Start %>
+  <div class = "channel-right">
+    <div class = "channel-album">
 
-      <%# アルバム index  検索ボックス %>
+      <%# アルバム 検索ボックス Start %>
       <%= form_tag channel_albums_path(@channel), method: :get, class: "chanel-album-search" do %>
         <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力してください", class:"chanel-album-search-input" %>
           <div class = "chanel-album-search-button" >
           <%= image_submit_tag 'album/index/search.svg', class: "chanel-album-search-button-image" %>
         </div>
       <% end %>
-      <%# アルバム index 検索ボックス %>
+      <%# アルバム 検索ボックス End %>
 
-      <%# アルバム index 一覧 %>
+      <%# アルバム 一覧 Start %>
       <div class ="chanel-album-lists">
         <% @albums.each do |album| %>
           <%= link_to channel_album_path(@channel, album) do %>
@@ -51,11 +43,15 @@
           <% end %>
         <% end %>
       </div>
-      <%# アルバム index 一覧 %>
+      <%# アルバム 一覧 End %>
       
     </div>
   </div>
-  <%# アルバム共通 %>
+  <%# アルバム End %>
 
 </div>
-<%# 共通 %>
+<%# チャンネル 共通 End %>
+
+<%# アルバム 新規作成 Start %>
+<%= link_to "+", new_channel_album_path(@channel) ,class:"channel-album-action" %>
+<%# アルバム 新規作成 End %>

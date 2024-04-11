@@ -1,10 +1,10 @@
 const profilePreview = () => {
-  const profilePreviewList = document.getElementById('profileimage-previews');
+  const profilePreviewList = document.getElementById('user-profile-image');
   const profileFileField = document.querySelector('input[type="file"][name="user[profile_image]"]');
 
   if (profileFileField !== null) {
   profileFileField.addEventListener('change', (e) => {
-    const profileAlreadyPreview = document.querySelector('.preview-profileimage');
+    const profileAlreadyPreview = document.querySelector('.firstimage-preview');
     if (profileAlreadyPreview){
       profileAlreadyPreview.remove();
     };
@@ -13,7 +13,7 @@ const profilePreview = () => {
     const profileBlob = window.URL.createObjectURL(profileFile);
 
     const profilePreviewImage = document.createElement('img');
-    profilePreviewImage.setAttribute('class', 'preview-profileimage');
+    profilePreviewImage.setAttribute('class', 'firstimage-preview');
     profilePreviewImage.setAttribute('src', profileBlob);
 
     profilePreviewList.appendChild(profilePreviewImage);
@@ -22,12 +22,12 @@ const profilePreview = () => {
 };
 
 const backgroundPreview = () => {
-  const backgroundPreviewList = document.getElementById('backgroundimage-previews');
+  const backgroundPreviewList = document.getElementById('user-backgroundimage-image');
   const backgroundFileField = document.querySelector('input[type="file"][name="user[background_image]"]');
 
   if (backgroundFileField !== null) {
   backgroundFileField.addEventListener('change', (e) => {
-    const backgroundAlreadyPreview = document.querySelector('.preview-backgroundimage');
+    const backgroundAlreadyPreview = document.querySelector('.secondimage-preview');
     if (backgroundAlreadyPreview){
       backgroundAlreadyPreview.remove();
     };
@@ -36,7 +36,7 @@ const backgroundPreview = () => {
     const backgroundBlob = window.URL.createObjectURL(backgroundFile);
 
     const backgroundPreviewImage = document.createElement('img');
-    backgroundPreviewImage.setAttribute('class', 'preview-backgroundimage');
+    backgroundPreviewImage.setAttribute('class', 'secondimage-preview');
     backgroundPreviewImage.setAttribute('src', backgroundBlob);
 
     backgroundPreviewList.appendChild(backgroundPreviewImage);
@@ -45,4 +45,6 @@ const backgroundPreview = () => {
 };
 
 window.addEventListener('turbo:load', profilePreview);
+window.addEventListener('turbo:render', profilePreview);
 window.addEventListener('turbo:load', backgroundPreview);
+window.addEventListener('turbo:render', backgroundPreview);

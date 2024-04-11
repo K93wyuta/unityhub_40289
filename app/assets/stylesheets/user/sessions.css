@@ -1,129 +1,148 @@
-.loginbox {
-  width: 80vw;
+/* ===== ログイン Start ============================== */
+.login{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ================================================== */
+  
+/* ===== ログインボックス Start ======================== */
+.login-box{
+  width: 80%;
   border-radius: 10px;
   background-color: #F0F0F0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 50px 80px;
+  padding: 80px 100px;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+}
+/* ================================================== */
+
+/* ===== ログインボックス ユーザーログイン Start ========== */
+.login-box-left{
+
 }
 
-.loginbox-top{
+.login-box-left-title{
   display: flex;
   align-items: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-.loginbox-top-maintitle{
+.login-box-left-main{
   font-family: '游明朝', serif;
   font-size: 50px;
   line-height: 1;
 }
 
-.login-flash-message{
-}
-
-.loginbox-top-subtitle{
+.login-box-left-sub{
   font-size: 16px;
   margin-left: 20px;
   line-height: 2;
 }
 
-.loginbox-buttom{
-  display: flex;
-  align-items: flex-start;
-  margin-top: 30px;
+.login-box-left-error{
+  margin-bottom: 40px;
 }
 
-.loginbox-buttom-left{
+.login-box-left-input{
 
 }
 
-.field{
-  margin-top: 30px;
+.login-box-left-input-field{
+  margin-bottom: 20px;
 }
 
-.field-label{
+.login-box-left-input-field-label{
   font-size: 12px;
 }
 
-.field-input{
+.login-box-left-input-field-string{
   height: 40px;
   width: 400px;
   border: none;
-  margin-top: 10px;
 }
 
-.remember-label{
+.login-box-left-input-remember{
+
+}
+
+.login-box-left-input-remember-checkbox{
+
+}
+
+.login-box-left-input-remember-label{
   font-size: 12px;
 }
 
-.actions-button{
+.login-box-left-input-action{
+}
+
+.login-box-left-input-action-submit{
   height: 40px;
   width: 400px;
   background-color: #313E52;
   color: #F0F0F0;
   border: none;
   border-radius: 10px;
-  margin-top: 60px;
 }
 
-.actions-button:hover{
-  cursor: pointer;
+.login-box-left-input-action-submit:hover{
   background-color: #FFFFFF;
   color: #313E52;
+  cursor: pointer;
   transition: .2s
 }
 
-.password{
-  margin-top: 10px;
-  text-align: center;
-}
-.password-forget{
-  font-size: 12px;
-  text-decoration: underline;
-}
+/* ================================================== */
 
-.loginbox-buttom-right{
-  text-align: center;
-  margin-left: 180px;
+/* ===== ログインボックス ユーザー新規登録 Start ========== */
+.login-box-right{
   margin-top: 80px;
 }
 
-.right-maintitle{
-  font-size: 20px;
-  font-weight: bold;
+.login-box-right-title{
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.right-subtitle{
-  margin-top: 10px;
+.login-box-right-title-main{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.login-box-right-title-sub{
   font-size: 12px;
 }
 
-.sign-in{
+.login-box-right-action{
   height: 40px;
   width: 400px;
   background-color: #313E52;
+  border: none;
   border-radius: 10px;
-  margin-top: 60px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.sign-in-button{
-  width: 100%;
-  font-size: 14px;
+.login-box-right-action-new{
   color: #F0F0F0;
+  font-size: 14px;
 }
 
-.sign-in:hover{
-  cursor: pointer;
+.login-box-right-action:hover{
   background-color: #FFFFFF;
+  cursor: pointer;
   transition: .2s
 }
 
-.sign-in:hover .sign-in-button{
+.login-box-right-action:hover .login-box-right-action-new{
   color: #313E52;
+  transition: .2s
 }
+
+/* ================================================== */

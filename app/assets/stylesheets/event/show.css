@@ -1,18 +1,27 @@
-.event-show{
-  padding: 50px 100px 50px;
-}
+/* ===== イベント詳細ページ ============================ */
+.channel-event{
 
-.event-show-back{
+}
+/* ================================================== */
+
+/* ===== イベント詳細ページ ヘッダー ==================== */
+.channel-event-back{
   font-size: 14px;
   margin-bottom: 40px;
 }
 
-.event-show-title{
+.channel-event-title{
   display: flex;
   justify-content: space-between;
 }
 
-.event-show-title-edit{
+.channel-event-title-name{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.channel-event-title-edit{
   height: 36px;
   width: 80px;
   border: 1px #313E52 solid;
@@ -23,92 +32,75 @@
   align-items: center;
 }
 
-.event-show-title-edit:hover{
+.channel-event-title-edit:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.event-show-title-name{
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.event-show-title-updated{
+.channel-event-updated{
   font-size: 10px;
   margin-bottom: 40px;
 }
 
-.event-show-line{
+.channel-event-line{
   border: #D8D8D8 1px solid;
   margin-bottom: 40px;
 }
+/* ================================================== */
 
-.event-show-item{
-  margin-bottom: 50px;
+/* ===== イベント詳細ページ 詳細 ======================== */
+.channel-event-item{
+  margin-bottom: 40px;
 }
 
-.event-show-item-name{
+.channel-event-item-name{
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.event-show-item-output{
+.channel-event-item-output{
   font-size: 14px;
 }
 
-.event-show-participant{
-
-}
-
-.event-show-participant-name{
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.event-show-participant-user{
-
-}
-
-.event-show-participant-user-lists{
+.channel-event-item-users{
   display: flex;
   margin-bottom: 50px;
 }
 
-.event-show-participant-user-list{
+.channel-event-item-user{
   margin-right: 20px;
 }
 
-.event-show-participant-user-list-image{
+.channel-event-item-user-image{
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  background-color: #D8D8D8;
   object-fit: cover;
   margin: 20px 0 10px 0;
   transition: transform 0.3s ease; 
 }
 
-.event-show-participant-user-list-image:hover{
+.channel-event-item-user-image:hover{
   cursor: pointer;
   transition: .2s;
   transform: scale(1.05); 
 }
 
-.event-show-participant-user-list-name{
+.channel-event-item-users-name{
   font-size: 14px;
   text-align: center;
 }
+/* ================================================== */
 
-.event-show-button{
+/* ===== イベント詳細ページ 参加可否 ==================== */
+.channel-event-action{
   display: flex;
 }
 
-.event-show-button-joined{
+.channel-event-action-joined{
   height: 40px;
   width: 200px;
   background-color: #313E52;
@@ -123,14 +115,14 @@
   margin-right: 20px;
 }
 
-.event-show-button-joined:hover{
+.channel-event-action-joined:hover{
   background-color: #B9B9B9;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.event-show-button-not-joined{
+.channel-event-action-not-joined{
   height: 40px;
   width: 200px;
   background-color: #B9B9B9;
@@ -145,9 +137,10 @@
   margin-right: 20px;
 }
 
-.event-show-button-not-joined:hover{
+.channel-event-action-not-joined:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
+/* ================================================== */

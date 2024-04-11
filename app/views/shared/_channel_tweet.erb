@@ -1,0 +1,121 @@
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
+<div class = "channel">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# ツイート Start %>
+  <div class = "channel-right">
+    <div class = "channel-tweet">
+      
+      <%# ツイート ユーザー選択 Start %>
+      <div class ="chanel-tweet-left">
+        <%= form_tag channel_tweets_path(@channel), method: :get, class: "chanel-tweet-left-search" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力してください", class:"chanel-tweet-left-search-input" %>
+            <div class = "chanel-tweet-left-search-button" >
+            <%= image_submit_tag 'tweet/index/search.svg', class: "chanel-tweet-left-search-button-image" %>
+          </div>
+        <% end %>
+        <div class ="chanel-tweet-left-users">
+          <% if @channel&.channel_main_image.present? %>
+            <%= link_to channel_tweets_path(@channel), class:"chanel-tweet-left-user" do %>
+              <%= image_tag(@channel.channel_main_image, class: "chanel-tweet-left-user-image") %>
+              <div class ="chanel-tweet-left-user-name">
+                All
+              </div>
+            <% end %>
+          <% end %>
+          <% @channel_users.each do |channel_user| %>
+            <%= link_to channel_tweet_path(channel_user.channel,channel_user), class:"chanel-tweet-left-user" do %>
+              <% if channel_user.user&.profile_image.present? %>
+                <%= image_tag(channel_user.user.profile_image, class: "chanel-tweet-left-user-image") %>
+              <% end %>
+              <div class ="chanel-tweet-left-user-name">
+                <%= channel_user.user.name %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%# ツイート ユーザー選択 End %>
+
+      <%# ツイート ツイート表示部分 Start %>
+      <div class ="chanel-tweet-right">
+        <div class ="chanel-tweet-right-tweets">
+          <% @tweets.each do |tweet| %>
+            <div class ="chanel-tweet-right-tweet">
+              <% if tweet.channel_user&.user&.profile_image.present? %>
+                <%= image_tag(tweet.channel_user.user.profile_image, class: "chanel-tweet-right-tweet-userimage") %>
+              <% end %>
+              <div class ="chanel-tweet-right-tweet-content">
+                <div class ="chanel-tweet-right-tweet-content-top">
+                  <div class ="chanel-tweet-right-tweet-content-top-username">
+                    <%= tweet.channel_user.user.name %>
+                  </div>
+                  <div class ="chanel-tweet-right-tweet-content-top-date">
+                    <%= tweet.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[tweet.created_at.wday] + ')' %>
+                  </div>
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-text">
+                  <%= tweet.text %>
+                </div>
+                <div class ="chanel-tweet-right-tweet-content-buttom">
+                  <% if tweet.tweet_image.attached? %>
+                    <%= image_tag(tweet.tweet_image, class: "chanel-tweet-right-tweet-content-buttom-image") %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%# ツイート ツイート表示部分 End %>
+
+    </div>
+  </div>
+  <%# ツイート End %>
+
+</div>
+<%# チャンネル 共通 End %>
+
+<%# ツイート 新規投稿 Start %>
+<div class ="channel-tweet-action" >
+  +
+</div>
+<%# ツイート 新規投稿 End %>
+
+<%# ツイート 新規投稿 モーダル Start %>
+<div class ="modal" id ="modal-tweet-new">
+  <div class= "modal-back">
+    ×
+  </div>
+  <div class= "modal-box">
+    <%= form_with model:[@channel, @tweet], local: true do |f| %>
+      <div class = "modal-box-error">
+        <%= render "shared/error_messages", resource: @channel %>
+      </div>
+      <%= f.text_area :text, placeholder:"投稿文を入力してください", autocomplete: "text",class:"modal-box-text" %>
+      <div class ="modal-box-buttom">
+        <div class ="modal-box-buttom-image">
+          <div class ="modal-box-buttom-image-button">
+            <div class ="modal-box-buttom-image-button-plus">
+              +
+            </div>
+            <div class ="modal-box-buttom-image-button-add">
+              Add
+            </div>
+          </div>
+          <%= f.file_field :tweet_image, class:"modal-box-buttom-image-input" %>
+          <span class="modal-box-buttom-image-input-custom", id="tweet-image"></span>
+        </div>
+      <%= image_submit_tag 'tweet/index/tweet.svg', class: "modal-box-buttom-botton-image",id: "tweet-submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%# ツイート 新規投稿 モーダル End %>

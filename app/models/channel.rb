@@ -18,4 +18,5 @@ class Channel < ApplicationRecord
   validates :identification, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6, maximum: 128 }
   # validates :introduction
+
 end

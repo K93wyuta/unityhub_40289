@@ -1,45 +1,57 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%= render "shared/channel_box_modal" %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "channel-top">
-      <div class ="topic-form">
-        <div class ="user-form-back">
-          <%= link_to '< 戻る', :back, class: "user-form-back" %>
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# News&Topics 新規投稿フォーム Start %>
+  <div class = "channel-right">
+    <div class = "form-left">
+      <%= form_with(model:[@channel ,@topic], local: true) do |f| %>
+        
+        <%# News&Topics 新規投稿フォーム ヘッダー Start %>
+        <div class ="form-back">
+          <%= link_to '< 戻る', :back, class:"form-back-text" %>
         </div>
-        <div class ="user-form-title">
+        <div class ="form-title-left">
           News&Topics　新規投稿
         </div>
-        <div class ="user-form-contents">
-        <%= form_with(model:[@channel ,@topic], local: true) do |f| %>
-          <div class = "user-form-error">
-            <%= render "shared/error_messages", resource: @topic %>
-          </div>
-          <div class = "user-form-buttom">
-            <div class = "user-form-labels">
-              <div class="user-form-field-label">タイトル</div>
-              <div class="user-form-field-label">投稿文</div>
-            </div>
-            <div class = "user-form-field-input">
-              <div class="user-form-field">
-                <% f.label :title %>
-                <%= f.text_field :title, placeholder:"タイトルを入力してください", autocomplete: "title", class:"user-form-input2" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :text %>
-                <%= f.text_area :text, placeholder:" 投稿文を入力してください", autocomplete: "text",class:"user-form-input3" %>
-              </div>
-            </div>
-          </div>
-          <div class="user-form-actions">
-            <%= f.submit "作成する",class:"user-form-actions-button-update"%>
-          </div>
-        <% end %>
+        <%# News&Topics 新規投稿フォーム ヘッダー End %>
+
+        <%# News&Topics 新規投稿フォーム エラー表示 Start %>
+        <div class = "form-error">
+          <%= render 'shared/error_messages', resource: @topic %>
         </div>
-      </div>
+        <%# News&Topics 新規投稿フォーム エラー表示 End %>
+
+        <%# News&Topics 新規投稿フォーム 入力部分 Start %>
+        <div class = "form-vertical">
+          <div class = "form-vertical-field">
+            <%= f.label :title, "タイトル",class:"form-field-label" %>
+            <%= f.text_field :title, placeholder:"タイトルを入力してください", autocomplete: "title", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :text, "投稿文",class:"form-field-label" %>
+            <%= f.text_area :text, placeholder:"投稿文を入力してください", autocomplete: "text",class:"form-field-text" %>
+          </div>
+        </div>
+        <%# News&Topics 新規投稿フォーム 入力部分 End %>
+
+        <%# News&Topics 新規投稿フォーム アクション Start %>
+        <div class="form-action">
+          <%= f.submit "投稿する",class:"form-action-submit"%>
+        </div>
+        <%# News&Topics 新規投稿フォーム アクション End %>
+
+      <% end %>
     </div>
   </div>
+  <%# News&Topics 新規投稿フォーム End %>
+
 </div>
+<%# チャンネル 共通 End %>

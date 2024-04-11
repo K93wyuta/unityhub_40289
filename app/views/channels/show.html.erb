@@ -1,166 +1,153 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%# モーダル %>
-<div class ="channel-box-modal">
-  <div class ="channel-box-modal-title">
-    チャンネルを退出しますか？
-  </div>
-  <div class ="channel-box-modal-button">
-      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
-    <div class ="channel-box-modal-button-n">
-      No
-    </div>
-  </div>
-</div>
-<%# モーダル %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "channel-top">
-      <div class = "channel-top-background">
-        <%= image_tag @channel.channel_background_image, class:"channel-top-background-image" if @channel&.channel_background_image.present?%>
-        <div class ="channel-top-box">
-          <div class = "channel-top-box-image2">
-            <%= image_tag @channel.channel_main_image ,class: "channel-top-box-main-image" if @channel&.channel_main_image.present?%>
-          </div>
-          <div class ="channel-top-box-name">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# チャンネル詳細ページ  Start %>
+  <div class = "channel-right">
+    <div class = "channel-show">
+
+      <%# チャンネル詳細ページ ヘッダー Start %>
+      <div class = "channel-show-top">
+        <%= image_tag @channel.channel_background_image, class:"channel-show-top-background" if @channel&.channel_background_image.present?%>
+        <div class ="channel-show-top-channel">
+          <%= image_tag @channel.channel_main_image ,class: "channel-show-top-channel-image" if @channel&.channel_main_image.present?%>
+          <div class ="channel-show-top-channel-name">
             <%= @channel.name %>
           </div>
-          <div class= "channel-top-box-id">
+          <div class= "channel-show-top-channel-id">
             <%= @channel.identification %>
           </div>
         </div>
+        <% if @channel.administrators.include?(current_user) %>
+          <%= link_to "編集", edit_channel_path(@channel.id) ,class:"channel-show-top-channel-edit" %>
+        <% end %>
       </div>
-      <% if @channel.administrators.include?(current_user) %>
-          <%= link_to "編集", edit_channel_path(@channel.id) ,class:"channel-top-edit" %>
-      <% end %>
-    </div>
-    <div class ="channel-content">
-      <div class ="channel-profile">
-        <%= image_tag 'channel/index/profile.svg',class:"channel-profile-image" %>
-        <div class = "channel-profile-content">
-          <div class = "channel-profile-title">
-            紹介文
-          </div>
-          <div class ="channel-profile-text">
-            <%= @channel.introduction %>
+      <%# チャンネル詳細ページ ヘッダー End %>
+
+      <%# チャンネル詳細ページ 各コンテンツ一覧 Start %>
+      <div class ="channel-show-buttom">
+        <div class ="channel-show-buttom-profile">
+          <%= image_tag 'channel/index/profile.svg',class:"channel-show-buttom-profile-image" %>
+          <div class = "channel-show-buttom-profile-content">
+            <div class = "channel-show-buttom-title">
+              紹介文
+            </div>
+            <div class ="channel-show-buttom-text">
+              <%= @channel.introduction %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class ="channel-Administrator">
-        <div class ="channel-Administrator-title">
-          管理者
-        </div>
-        <div class ="channel-Administrator-user">
-          <ul class = "channel-Administrator-user-lists">
+        <div class ="channel-show-buttom-administrator">
+          <div class ="channel-show-buttom-title">
+            管理者
+          </div>
+          <ul class = "channel-show-buttom-users">
             <% @administrators.each do |administrator| %>
-                <li class ="channel-Administrator-user-list">
-                  <%= link_to user_path(administrator) do %>
-                  <div class = "channel-Administrator-userimage">
-                    <%= image_tag administrator.profile_image, class:"channel-Administrator-user-frofile-image" if administrator&.profile_image.present?  %>
-                  </div>
-                  <div class ="channel-Administrator-username">
+              <li class ="channel-show-buttom-user">
+                <%= link_to user_path(administrator) do %>
+                  <%= image_tag administrator.profile_image, class:"channel-show-buttom-user-image" if administrator&.profile_image.present?  %>
+                  <div class ="channel-show-buttom-user-name">
                     <%= administrator.name %>
                   </div>
-                  <% end %>
-                </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      <div class ="channel-participant">
-        <div class ="channel-participant-title">
-          参加者
-        </div>
-        <div class ="channel-participant-user">
-          <ul class = "channel-participant-user-lists">
-            <% @channel_users.each do |user| %>
-              <li class ="channel-participant-user-list">
-                <%= link_to user_path(user.user.id) do %>
-                <div class = "channel-participant-userimage">
-                  <%= image_tag user.user.profile_image, class:"channel-Administrator-user-frofile-image" if user&.user&.profile_image.present? %>
-                </div>
-                <div class ="channel-participant-username">
-                  <%= user.user.name %>
-                </div>
                 <% end %>
               </li>
             <% end %>
           </ul>
         </div>
-      </div>
-      <div class ="channel-event">
-        <div class ="channel-event-title">
-          イベント
-        </div>
-        <ul class ="channel-event-lists">
-          <% @events.each do |event| %>
-            <%= link_to channel_event_path(@channel,event) do %>
-              <li class ="channel-event-list">
-                <div class ="channel-event-list-box">
-                  <div class ="channel-event-box-date">
-                    <%= event.date_start %>
+        <div class ="channel-show-buttom-participant">
+          <div class ="channel-show-buttom-title">
+            参加者
+          </div>
+          <ul class = "channel-show-buttom-users">
+            <% @channel_users.each do |user| %>
+              <li class ="channel-show-buttom-user">
+                <%= link_to user_path(user.user.id) do %>
+                  <%= image_tag user.user.profile_image, class:"channel-show-buttom-user-image" if user&.user&.profile_image.present? %>
+                  <div class ="channel-show-buttom-user-name">
+                    <%= user.user.name %>
                   </div>
-                  <div class ="channel-event-box-name">
-                    <%= event.name %>
-                  </div>
-                </div>
+                <% end %>
               </li>
             <% end %>
-          <% end %>
-        </ul>
-      </div>
-      <div class ="channel-topics">
-        <div class ="channel-topics-title">
-          News&Topics
+          </ul>
         </div>
-        <div class ="channel-topics-content">
-          <ul class ="channel-topics-content-lists">
-            <% @topics.each do |topic| %>
-              <li class ="channel-topics-content-list">
-                <div class ="channel-topics-content-list-left">
-                  <div class ="channel-topics-content-list-image">
-                    <%= image_tag topic.channel_user.user.profile_image, class:"channel-Administrator-user-frofile-image"  if topic.channel_user&.user&.profile_image.present? %>
+        <div class ="channel-show-buttom-event">
+          <div class ="channel-show-buttom-title">
+            イベント
+          </div>
+          <ul class ="channel-show-buttom-event-lists">
+            <% @events.each do |event| %>
+              <%= link_to channel_event_path(@channel,event) do %>
+                <li class ="channel-show-buttom-event-list">
+                  <div class ="channel-show-buttom-event-list-date">
+                    <%= event.date_start.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[event.date_start.wday] + ')' %>
                   </div>
+                  <div class ="channel-show-buttom-event-list-name">
+                    <%= event.name %>
+                  </div>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class ="channel-show-buttom-topics">
+          <div class ="channel-show-buttom-title">
+            News&Topics
+          </div>
+          <ul class ="channel-show-buttom-topics-lists">
+            <% @topics.each do |topic| %>
+              <li class ="channel-show-buttom-topics-list">
+                <div class ="channel-show-buttom-topics-list-left">
+                  <%= image_tag topic.channel_user.user.profile_image, class:"channel-show-buttom-topics-list-left-image"  if topic.channel_user&.user&.profile_image.present? %>
                 </div>
-                <div class ="channel-topics-content-list-right">
-                  <div class ="channel-topics-content-list-top">
-                    <div class ="channel-topics-content-list-top-name">
+                <div class ="channel-show-buttom-topics-list-right">
+                  <div class ="channel-show-buttom-topics-list-right-top">
+                    <div class ="channel-show-buttom-topics-list-right-top-name">
                       <%= topic.channel_user.user.name %>
                     </div>
-                    <div class ="channel-topics-content-list-top-time">
+                    <div class ="channel-show-buttom-topics-list-right-top-time">
                       <%= topic.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[topic.created_at.wday] + ')' %>
                     </div>
                   </div>
-                  <div class ="channel-topics-content-list-center">
-                    <div class ="channel-topics-content-list-center-title">
+                  <div class ="channel-show-buttom-topics-list-right-center">
+                    <div class ="channel-show-buttom-topics-list-right-center-title">
                       <%= topic.title %>
                     </div>
-                    <div class ="channel-topics-content-list-center-button">
-                      <%= link_to "編集", edit_channel_topic_path(@channel.id, topic) ,class:"channel-topics-content-list-center-edit" %>
-                      <div class ="channel-topics-content-list-center-delete">
+                    <div class ="channel-show-buttom-topics-list-right-center-actions">
+                      <%= link_to "編集", edit_channel_topic_path(@channel.id, topic) ,class:"channel-show-buttom-topics-list-right-center-actions-edit" %>
+                      <div class ="channel-show-buttom-topics-list-right-center-actions-delete">
                         削除
                       </div>
-                      <%# モーダル %>
-                      <div class ="channel-form-actions-button-delete-modal">
-                        <div class ="channel-form-actions-button-delete-modal-title">
-                          本当に削除しますか？
-                        </div>
-                        <div class ="channel-form-actions-button-delete-modal-button">
-                            <%= link_to 'Yes', channel_topic_path(@channel.id,topic), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
-                          <div class ="channel-form-actions-button-delete-modal-button-n">
-                            No
+
+                      <%# チャンネル詳細ページ チャンネル削除 モーダル Start %>
+                      <div class ="modal" id="modal-show-topics-deleate">
+                        <div class= "modal-box">
+                          <div class ="modal-box-title">
+                            本当に削除しますか？
+                          </div>
+                          <div class ="modal-actions">
+                            <%= link_to 'Yes', channel_topic_path(@channel.id,topic), data: { turbo_method: :delete }, class:"modal-actions-y" %>
+                            <div class ="modal-actions-n">
+                              No
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <%# モーダル %>
+                      <%# チャンネル詳細ページ チャンネル削除 モーダル End %>
+
                     </div>
                   </div>
-                  <div class ="channel-topics-content-list-buttom">
+                  <div class ="channel-show-buttom-topics-list-right-buttom">
                     <%= topic.text %>
                   </div>
-                  <div class ="channel-topics-content-list-line">
+                  <div class ="channel-show-buttom-topics-list-right-line">
                   </div>
                 </div>
               </li>
@@ -168,6 +155,11 @@
           </ul>
         </div>
       </div>
+      <%# ユーザー詳細ページ 各コンテンツ一覧 Start %>
+
     </div>
   </div>
+  <%# チャンネル詳細ページ  End %>
+
 </div>
+<%# チャンネル 共通 Start %>

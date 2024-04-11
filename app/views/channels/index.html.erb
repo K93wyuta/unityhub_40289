@@ -1,56 +1,65 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-
-<div class = "channel-index-content" >
+<%# チャンネル一覧ページ Start %>
+<div class = "channel-index" >
   <div class ="channel-index-title">
     チャンネルを選択してください
   </div>
-  <div class ="channel-index">
+  <div class ="channel-index-lists">
+
+    <%# 所属しているチャンネルがなかった場合 Start %>
     <% if @channels.empty? %>
-      <div class = "channel-empty">
-        <div class = "channel-empty-title">
-          登録されているチャンネルがありません。新規で作成するか、チャンネルの管理者にあなたを登録いただくようお願いいたします。
+      <div class = "channel-index-empty">
+        <div class = "channel-index-empty-text">
+          登録されているチャンネルがありません。右下の＋ボタンから新規で作成するか、チャンネルの管理者にあなたを登録いただくようお願いいたします。
         </div>
-        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete ,class:"channel-empty-button"%>
       </div>
+    <%# 所属しているチャンネルがなかった場合 End %>
+
+    <%# 所属しているチャンネルがあった場合 Start %>
     <% else %>
-    <% @channels.each do |channel| %>
-    <div class ="channel-index-box">
-    <%= image_tag(channel.channel_main_image, class:"channel-index-box-image") if channel.channel_background_image.attached? %>
-      <div class ="channel-index-box-check">
-        ✓
-      </div>
-      <div class ="channel-index-box-title">
-        <%= channel.name %>
-      </div>
-    </div>
-    <%# モーダル %>
-    <div class= "modal-channel-login">
-      <div class= "modal-channel-login-back">
-        ×
-      </div>
-      <div class= "modal-channel-login-box">
-        <%= form_with model: @session, url:sessions_path, local: true, method: :post do |f| %>
-          <%= f.hidden_field :channel_id, value: channel.id %>
-        <div class ="modal-channel-login-channelname">
-          <%= channel.name %>
+      <% @channels.each do |channel| %>
+        <div class ="channel-index-list">
+          <%= image_tag(channel.channel_main_image, class:"channel-index-list-image") if channel.channel_background_image.attached? %>
+          <div class ="channel-index-list-title">
+            <%= channel.name %>
+          </div>
         </div>
-        <div class ="modal-channel-login-column">
-          ID
+
+        <%# チャンネル一覧ページ チャンネルログイン モーダル Start %>
+        <div class="overlay"></div>
+        <div class= "modal">
+          <div class= "modal-back">
+            ×
+          </div>
+          <div class= "modal-box">
+            <%= form_with model: @session, url:sessions_path, local: true, method: :post do |f| %>
+              <%= f.hidden_field :channel_id, value: channel.id %>
+              <div class ="modal-box-title">
+                <%= channel.name %>
+              </div>
+              <div class ="modal-box-field">
+                <div class ="modal-box-field-label">
+                  ID
+                </div>
+                <%= f.text_field:identification, placeholder: "IDを入力してください", class:"modal-box-field-string" %>
+              </div>
+              <div class ="modal-box-field">
+                <div class ="modal-box-field-label">
+                  パスワード
+                </div>
+                <%= f.password_field:password, placeholder: "パスワードを入力してください" ,class:"modal-box-field-string"%>
+              </div>
+              <%= f.submit "参加する" ,class:"modal-box-submit"%>
+            <% end %>
+          </div>
         </div>
-        <%= f.text_field:identification, placeholder: "IDを入力してください", class:"modal-channel-login-form" %>
-        <div class ="modal-channel-login-column">
-          パスワード
-        </div>
-        <%= f.password_field:password, placeholder: "パスワードを入力してください" ,class:"modal-channel-login-form"%>
-        <%= f.submit "参加する" ,class:"modal-channel-login-action"%>
-        <% end %>
-      </div>
-    </div>
-    <%# モーダル %>
+        <%# チャンネル一覧ページ チャンネルログイン モーダル End %>
+        
+      <% end %>
     <% end %>
-    <% end %>
-  <%= link_to '+' ,new_channel_path ,class:"channel-new-action" %>
+    <%# 所属しているチャンネルがあった場合 End %>
+
   </div>
+  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete ,class:"channel-index-empty-logout"%>
+  <%= link_to '+' ,new_channel_path ,class:"channel-index-new" %>
 </div>
+<%# チャンネル一覧ページ End %>

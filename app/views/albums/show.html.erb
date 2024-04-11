@@ -1,56 +1,44 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
-<%# チャンネル退出 モーダル %>
-<%= render "shared/channel_box_modal" %>
-<%# チャンネル退出 モーダル %>
-
-<%# 共通 %>
+<%# チャンネル 共通 Start %>
 <div class = "channel">
 
-  <%# グロナビ %>
-  <%= render "shared/left-content" %>
-  <%# グロナビ %>
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
 
-  <%# アルバム共通 %>
-  <div class = "channel-right-content" >
-    <div class ="chanel-album">
+  <%# アルバム Start %>
+  <div class = "channel-right">
+    <div class = "channel-album">
       
-      <%# アルバム show top %>
-      <div class = "general-back">
+      <%# アルバム ヘッダー Start %>
+      <div class = "channel-album-back">
         <%= link_to '< 戻る', :back %>
       </div>
-      <div class = "chanel-album-top" >
-        <div class = "chanel-album-top-left" >
-          <div class ="general-title">
+      <div class ="channel-album-title">
+        <div class ="channel-album-title-name">
             <%= @album.title %>
-          </div>
-          <div class ="general-date">
-            <%= @album.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@album.created_at.wday] + ')' %>
-          </div>
         </div>
-        <%# アルバム show ボタン %>
-        <div class ="general-actions">
-          <div class ="general-actions-edit">
-            <%= link_to "編集", edit_channel_album_path(@channel.id, @album)  %>
-          </div>
-        </div>
-         <%# アルバム show ボタン %>
+        <%= link_to "編集", edit_channel_album_path(@channel.id, @album) ,class:"channel-album-title-edit"  %>
       </div>
-      <%# アルバム show top %>
+      <div class ="channel-event-date">
+        <%= @album.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@album.created_at.wday] + ')' %>
+      </div>
+      <%# アルバム ヘッダー End %>
 
-      <%# アルバム show 一覧 %>
+      <%# アルバム 一覧 Start %>
       <div class="chanel-album-images">
         <% @album.album_images.each do |image| %>
           <%= image_tag image.blob, class: "chanel-album-image" if image.persisted? %>
         <% end %>
       </div>
-      <%# アルバム show 一覧 %>
+      <%# アルバム 一覧 End %>
       
     </div>
   </div>
-  <%# アルバム共通 %>
+  <%# アルバム Start %>
 
 </div>
-<%# 共通コンテンツ %>
+<%# チャンネル 共通 Start %>

@@ -1,54 +1,63 @@
-<div class = "loginbox">
-  <div class = "loginbox-top">
-    <div class = "loginbox-top-maintitle">
-      LOGIN
-    </div>
-    <div class = "loginbox-top-subtitle">
-      ログイン
-    </div>
-  </div>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class='login-flash-message'>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-  </div>
-  <div class = "loginbox-buttom">
-    <div class = "loginbox-buttom-left">
-      <div class="field">
-        <%= f.label :email,"メールアドレス",class:"field-label" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"field-input" %>
-      </div>
+<%# ログイン Start %>
+<div class = "login">
+  
+  <%# ログインボックス Start %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-box"}) do |f| %>
 
-      <div class="field">
-        <%= f.label :password,"パスワード",class:"field-label" %><br />
-        <%= f.password_field :password, autocomplete: "current-password",class:"field-input" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="remember">
-          <%= f.check_box :remember_me, class:"remember-checkbox" %>
-          <%= f.label :remember_me, "パスワードを記憶する", class:"remember-label" %>
+    <%# ログインボックス ユーザーログイン Start %>
+    <div class = "login-box-left">
+      <div class = "login-box-left-title">
+        <div class = "login-box-left-main">
+          LOGIN
         </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "ログイン", class:"actions-button" %>
+        <div class = "login-box-left-sub">
+          ログイン
+        </div>
       </div>
-    </div>
-    <div class = "loginbox-buttom-right">
-      <div class = "right-maintitle">
-        はじめてご利用の方
+      <div class='login-box-left-error'>
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
       </div>
-      <div class = "right-subtitle">
-        ご利用には会員登録が必要です
-      </div>
-      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <div class = "sign-in">
-          <%= link_to "新規会員登録", new_registration_path(resource_name), class:"sign-in-button" %><br />
+      <div class = "login-box-left-input">
+        <div class="login-box-left-input-field">
+          <%= f.label :email,"メールアドレス",class:"login-box-left-input-field-label" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"login-box-left-input-field-string" %>
+        </div>
+        <div class="login-box-left-input-field">
+          <%= f.label :password,"パスワード",class:"login-box-left-input-field-label" %><br />
+          <%= f.password_field :password, autocomplete: "current-password",class:"login-box-left-input-field-string" %>
+          <% if devise_mapping.rememberable? %>
+            <div class="login-box-left-input-remember">
+              <%= f.check_box :remember_me, class:"login-box-left-input-remember-checkbox" %>
+              <%= f.label :remember_me, "パスワードを記憶する", class:"login-box-left-input-remember-label" %>
+            </div>
           <% end %>
         </div>
-      <%= render "devise/shared/links" %>
+      </div>
+      <div class="login-box-left-input-action">
+        <%= f.submit "ログイン", class:"login-box-left-input-action-submit" %>
+      </div>
     </div>
-  </div>
+    <%# ログインボックス ユーザーログイン End %>
+
+    <%# ログインボックス ユーザー新規登録 Start %>
+    <div class = "login-box-right">
+      <div class = "login-box-right-title">
+        <div class = "login-box-right-title-main">
+          はじめてご利用の方
+        </div>
+        <div class = "login-box-right-title-sub">
+          ご利用には会員登録が必要です
+        </div>
+      </div>
+      <div class="login-box-right-action">
+        <%= link_to "新規会員登録", new_registration_path(resource_name), class:"login-box-right-action-new" %>
+      </div>
+    </div>
+    <%# ログインボックス ユーザー新規登録 End %>
+      
   <% end %>
+<%# ログインボックス End %>
+
 </div>
+<%# ログイン End %>

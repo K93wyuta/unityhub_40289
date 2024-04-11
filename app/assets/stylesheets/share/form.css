@@ -1,0 +1,354 @@
+/* ===== 全体レイアウト =============================== */
+.form-center{
+  background-color: #465163;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form-left{
+  min-height: 100vh;
+  background-color: #465163;
+  padding: 50px 100px 0 100px;
+  display: flex;
+}
+/* ================================================== */
+
+/* ===== 戻るボタン =================================== */
+.form-back{
+  margin-bottom: 40px;
+}
+
+.form-back-text{
+  color: #FFFFFF;
+  font-size: 14px;
+}
+/* ================================================== */
+
+/* ===== タイトル ===================================== */
+.form-title-center{
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.form-title-left{
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-bottom: 80px;
+}
+/* ================================================== */
+
+/* ===== エラー ====================================== */
+.form-error{
+  font-size: 14px;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 40px;
+}
+/* ================================================== */
+
+/* ===== 名前・画像部分 =============================== */
+.form-beside{
+  display: flex;
+  margin-bottom: 40px;
+  align-items: end;
+}
+
+.form-beside-field{
+}
+
+.form-vertical{
+  min-width: 600px;
+}
+
+.form-vertical-field{
+  display: flex;
+  margin-bottom: 40px;
+}
+/* ================================================== */
+
+/* ===== その他 ====================================== */
+.form-field-label{
+  color: #FFFFFF;
+  font-size: 12px;
+  line-height: 40px;
+  width: 100px;
+}
+
+.form-field-string{
+  height: 40px;
+  width: calc(100% - 100px);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-field-string-name{
+  height: 40px;
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-field-select{
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-field-select:hover{
+  cursor: pointer;
+}
+
+.form-field-calendar{
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-field-calendar:hover{
+  cursor: pointer;
+}
+
+.form-field-date{
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-field-date:hover{
+  cursor: pointer;
+}
+
+.form-field-time{
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-field-time:hover{
+  cursor: pointer;
+}
+
+.form-field-kara{
+  font-size: 30px;
+  color: #FFFFFF;
+  margin: 0 20px;
+}
+
+.form-field-text{
+  height: 150px;
+  width: calc(100% - 100px);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  resize: none;
+}
+
+.form-field-firstimage{
+  position: relative;
+  display: inline-block;
+}
+
+.form-field-firstimage-image{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.form-field-firstimage-image:hover{
+  cursor: pointer;
+  transition: .2s;
+}
+
+.form-field-firstimage-custom{
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #D8D8D8;
+  margin-right: 20px;
+}
+
+.firstimage-preview{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.form-field-firstimage-button{
+  height: 50px;
+  position: absolute;
+  right: 26px;
+  bottom: 10px;
+}
+
+.form-field-secondimage{
+  position: relative;
+  display: inline-block;
+}
+
+.form-field-secondimage-image{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.form-field-secondimage-image:hover{
+  cursor: pointer;
+}
+
+.form-field-secondimage-custom{
+  display: inline-block;
+  height: 100px;
+  width: 150px;
+  border-radius: 10px;
+  background-color: #D8D8D8;
+  margin-right: 30px;
+}
+
+.secondimage-preview{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.form-field-secondimage-button{
+  height: 50px;
+  position: absolute;
+  right: 36px;
+  bottom: 10px;
+}
+
+.form-field-albumimage{
+  position: relative;
+  display: inline-block;
+}
+
+.form-field-albumimage-image{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.form-field-albumimage-custom{
+  font-size: 30px;
+  background-color: #FFFFFF;
+  height: 130px;
+  width: 130px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 10px 0;
+}
+
+.album-preview{
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.album-preview-image{
+  height: 130px;
+  width: 130px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  object-fit: cover;
+  margin: 0 10px 10px 0;
+}
+
+.form-field-users{
+}
+
+.form-field-user{
+  margin-bottom: 20px;
+}
+
+.form-field-user-check{
+  margin: 0 20px 12px 0;
+}
+
+.form-field-user-image{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.form-field-user-name{
+  color: #FFFFFF;
+  font-size: 10px;
+  text-align: center;
+}
+
+.form-action{
+  text-align: center;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.form-action-submit{
+  height: 40px;
+  width: 200px;
+  background-color: #FFFFFF;
+  color: #313E52;
+  border: none;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.form-action-submit:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+
+.form-action-delete{
+  height: 40px;
+  width: 200px;
+  background-color: #B9B9B9;
+  color: #313E52;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-action-delete:hover{
+  background-color: #313E52;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: .2s
+}
+/* ================================================== */

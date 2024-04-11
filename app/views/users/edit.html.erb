@@ -1,124 +1,134 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%= render "shared/channel_box_modal" %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "channel-top">
-      <div class ="user-form">
-        <div class ="user-form-back">
-          <%= link_to '< 戻る', user_path(params[:id]),class:"user-form-back" %>
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# ユーザー編集フォーム Start %>
+  <div class = "channel-right">
+    <div class = "form-left">
+      <%= form_with(model:@user, local: true) do |f| %>
+        
+        <%# ユーザー編集フォーム ヘッダー Start %>
+        <div class ="form-back">
+          <%= link_to '< 戻る', user_path(params[:id]), class:"form-back-text" %>
         </div>
-        <div class ="user-form-title">
+        <div class ="form-title-left">
           プロフィール　編集
         </div>
-        <div class ="user-form-contents">
-        <%= form_with(model:@user, local: true) do |f| %>
-          <div class = "user-form-error">
-            <%= render "shared/error_messages", resource: @user %>
+        <%# ユーザー編集フォーム ヘッダー End %>
+
+        <%# ユーザー編集フォーム エラー表示 Start %>
+        <div class = "form-error">
+          <%= render "devise/shared/error_messages", resource: @user %>
+        </div>
+        <%# ユーザー編集フォーム エラー表示 End %>
+
+        <%# ユーザー編集フォーム 画像・名前部分 Start %>
+        <div class= "form-beside">
+          <div class="form-beside-field">
+            <% f.label :image,class:"form-field-label" %>
+            <div class = "form-field-firstimage">
+              <%= f.file_field :profile_image, class:"form-field-firstimage-image" %>
+              <span class="form-field-firstimage-custom", id="user-profile-image"></span>
+              <%= image_tag 'user/registrations/photo-button.png',class:"form-field-firstimage-button" %>
+            </div>
           </div>
-          <div class= "user-form-top">
-            <div class="user-form-field">
-              <div class = "user-form-main-image">
-                <% f.label :image %>
-                <%= f.file_field :profile_image, class:"user-form-profile-image-input", id:"user_profile_image" %>
-                <span class="custom-user-form-profile-image", id="profileimage-previews"></span>
-                <%= image_tag 'user/registrations/photo-button.png',class:"user-form-profile-image-button" %>
-              </div>
-            </div>
-            <div class="user-form-field">
-              <%= f.label :name, "名前",class:"user-form-field-label" %><br />
-              <%= f.text_field :name, placeholder:"名前を入力してください", autofocus: true, autocomplete: "name",class:"user-form-input1" %>
-            </div>
-          </div>
-          <div class = "user-form-buttom">
-            <div class = "user-form-labels">
-              <div class="user-form-field-label">メールアドレス</div>
-              <div class="user-form-field-label">パスワード</div>
-              <div class="user-form-field-label">確認用</div>
-              <div class="user-form-field-label">性別</div>
-              <div class="user-form-field-label">年齢</div>
-              <div class="user-form-field-label">誕生日</div>
-              <div class="user-form-field-label">MTBI</div>
-              <div class="user-form-field-label">LINE ID</div>
-              <div class="user-form-field-label">PayPay ID</div>
-              <div class="user-form-field-label">背景画像</div>
-              <div class="user-form-field-label-profile">プロフィール</div>
-            </div>
-            <div class = "user-form-field-input">
-              <div class="user-form-field">
-                <% f.label :email %>
-                <%= f.email_field :email, placeholder:"メールアドレスを入力してください", autocomplete: "email", class:"user-form-input2" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :password %>
-                <%= f.password_field :password, placeholder:"パスワードを入力してください", autocomplete: "password_digest", class:"user-form-input2" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "password_confirmation", class:"user-form-input2" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :gender %>
-                <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box"}) %>
-              </div>
-              <div class="user-form-field">
-                <%  f.label :age %>
-                <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box"}) %>
-              </div>
-              <div class="user-form-field">
-                <%  f.label :birthday %>
-                <%= f.date_field :birthday, class:"calendar" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :mbti %>
-                <%= f.collection_select(:mbti_id, Mbti.all, :id, :name, {}, {class:"select-box"}) %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :line %>
-                <%= f.text_field :line, placeholder:"LINE IDを入力してください", autocomplete: "line",class:"sign-in-field-input2" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :paypay %>
-                <%= f.text_field :paypay, placeholder:"PayPay IDを入力してください", autocomplete: "paypay",class:"sign-in-field-input2" %>
-              </div>
-              <div class="user-form-field">
-                <div class = "user-form-background-image">
-                  <% f.label :image %>
-                  <%= f.file_field :background_image, class:"user-form-background-image-input", id:"user_background_image" %>
-                <span class="custom-user-form-background-image", id="backgroundimage-previews"></span>
-                <%= image_tag 'user/registrations/photo-button.png',class:"user-form-background-image-button" %>
-              </div>
-              <div class="user-form-field">
-                <% f.label :profile %>
-                <%= f.text_area :profile, placeholder:" プロフィールを入力してください", autocomplete: "profile",class:"user-form-input3" %>
-              </div>
-            </div>
+          <div class="form-beside-field">
+            <%= f.label :name, "名前",class:"form-field-label" %><br />
+            <%= f.text_field :name, placeholder:"名前を入力してください", autofocus: true, autocomplete: "name",class:"form-field-string-name" %>
           </div>
         </div>
-          <div class="user-form-actions">
-            <%= f.submit "更新する",class:"user-form-actions-button-update"%>
-            <div class="user-form-actions-button-delete">
-            削除する
+        <%# ユーザー編集フォーム 画像・名前部分 End %>
+
+        <%# ユーザー編集フォーム その他 Start %>
+        <div class = "form-vertical">
+          <div class = "form-vertical-field">
+            <%= f.label :email, "メールアドレス",class:"form-field-label" %>
+            <%= f.email_field :email, placeholder:"メールアドレスを入力してください", autocomplete: "email", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :password, "パスワード",class:"form-field-label" %>
+            <%= f.password_field :password, placeholder:"パスワードを入力してください", autocomplete: "new-password", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :password_confirmation, "確認用",class:"form-field-label" %>
+            <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "new-password", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :gender, "性別",class:"form-field-label" %>
+            <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"form-field-select"}) %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :age, "年齢",class:"form-field-label" %>
+            <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"form-field-select"}) %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :birthday, "誕生日",class:"form-field-label" %>
+            <%= f.date_field :birthday, class:"form-field-calendar" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :mbti, "MBTI",class:"form-field-label" %>
+            <%= f.collection_select(:mbti_id, Mbti.all, :id, :name, {}, {class:"form-field-select"}) %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :line, "LINE ID",class:"form-field-label" %>
+            <%= f.text_field :line, placeholder:"LINE IDを入力してください", autocomplete: "line",class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :paypay, "PayPay ID",class:"form-field-label" %>
+            <%= f.text_field :paypay, placeholder:"PayPay IDを入力してください", autocomplete: "paypay",class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :image, "背景画像",class:"form-field-label" %>
+            <div class = "form-field-secondimage">
+              <%= f.file_field :background_image, class:"form-field-secondimage-image" %>
+              <span class="form-field-secondimage-custom", id="user-backgroundimage-image"></span>
+              <%= image_tag 'user/registrations/photo-button.png',class:"form-field-secondimage-button" %>
             </div>
-            <%# モーダル %>
-            <div class ="user-form-actions-button-delete-modal">
-              <div class ="user-form-actions-button-delete-modal-title">
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :profile, "プロフィール",class:"form-field-label" %>
+            <%= f.text_area :profile, placeholder:"プロフィールを入力してください", autocomplete: "profile",class:"form-field-text" %>
+          </div>
+        </div>
+        <%# ユーザー編集フォーム その他 End %>
+
+        <%# ユーザー編集フォーム アクション Start %>
+        <div class="form-action">
+          <%= f.submit "更新する",class:"form-action-submit"%>
+          <div class="form-action-delete">
+            削除する
+          </div>
+
+          <%# ユーザー編集フォーム ユーザー削除 モーダル Start %>
+          <div class ="modal" id = "modal-user-delete">
+            <div class= "modal-box">
+              <div class ="modal-box-title">
                 本当に削除しますか？
               </div>
-              <div class ="user-form-actions-button-delete-modal-button">
-                <%= link_to 'Yes', user_path(@user.id), data: { turbo_method: :delete }, class:"user-form-actions-button-delete-modal-button-y" %>
-                <div class ="user-form-actions-button-delete-modal-button-n">
+              <div class ="modal-actions">
+                <%= link_to 'Yes', user_path(@user.id), data: { turbo_method: :delete }, class:"modal-actions-y" %>
+                <div class ="modal-actions-n">
                   No
                 </div>
               </div>
             </div>
-            <%# モーダル %>
           </div>
-        <% end %>
+          <%# ユーザー編集フォーム ユーザー削除 モーダル Start %>
+
         </div>
-      </div>
+        <%# ユーザー編集フォーム アクション End %>
+
+      <% end %>
     </div>
   </div>
+  <%# ユーザー編集フォーム End %>
+
 </div>
+<%# チャンネル 共通 End %>

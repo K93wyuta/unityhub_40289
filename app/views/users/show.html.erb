@@ -1,118 +1,122 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
-<%= render "shared/channel_box_modal" %>
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "channel-top">
-      <div class = "channel-top-background">
-        <% if @user&.background_image.present? %>
-          <%= image_tag @user.background_image, class:"channel-top-background-image" %>
-        <% end %>
-        <div class ="channel-top-box">
-          <div class = "channel-top-box-image2">
-            <% if @user&.profile_image.present? %>
-              <%= image_tag @user.profile_image ,class: "channel-top-box-main-image"%>
-            <% end %>
-          </div>
-          <div class ="channel-top-box-name">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# ユーザー詳細ページ  Start %>
+  <div class = "channel-right">
+    <div class = "channel-user">
+
+      <%# ユーザー詳細ページ ヘッダー Start %>
+      <div class = "channel-user-top">
+        <%= image_tag @user.background_image, class:"channel-show-top-background" if @user&.background_image.present? %>
+        <div class ="channel-user-top-user">
+          <%= image_tag @user.profile_image ,class: "channel-show-top-user-image" if @user&.profile_image.present? %>
+          <div class ="channel-user-top-user-name">
             <%= @user.name %>
           </div>
-          <div class= "channel-top-box-id">
+          <div class= "channel-user-top-user-email">
             <%= @user.email %>
           </div>
         </div>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <%= link_to "編集", edit_user_path(@user.id) ,class:"channel-user-top-user-edit" %>
+        <% end %>
       </div>
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <div class ="channel-top-edit">
-          <%= link_to "編集", edit_user_path(@user.id) %>
-        </div>
-      <% end %>
-    </div>
-    <div class ="channel-user">
-      <div class ="channel-user-columns">
-        <div class ="channel-user-column">
-          <%= image_tag 'user/show/gender.svg',class:"channel-user-column-image" %>
-          <div class = "channel-user-column-content">
-            <div class = "channel-user-column-content-title">
-              性別
+      <%# ユーザー詳細ページ ヘッダー End %>
+
+      <%# ユーザー詳細ページ プロフィール部分 Start %>
+      <div class ="channel-user-buttom">
+        <ul class ="channel-user-buttom-columns">
+          <li class ="channel-user-buttom-column">
+            <%= image_tag 'user/show/gender.svg',class:"channel-user-buttom-column-image" %>
+            <div class = "channel-user-buttom-column-content">
+              <div class = "channel-user-buttom-column-content-title">
+                性別
+              </div>
+              <div class ="channel-user-buttom-column-content-string">
+                <%= @user.gender.name %>
+              </div>
             </div>
-            <div class ="channel-user-column-content-string">
-              <%= @user.gender.name %>
+          </li>
+          <li class ="channel-user-buttom-column">
+            <%= image_tag 'user/show/age.svg',class:"channel-user-buttom-column-image" %>
+            <div class = "channel-user-buttom-column-content">
+              <div class = "channel-user-buttom-column-content-title">
+                年齢
+              </div>
+              <div class ="channel-user-buttom-column-content-string">
+                <%= @user.age.name %>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class ="channel-user-column">
-          <%= image_tag 'user/show/age.svg',class:"channel-user-column-image" %>
-          <div class = "channel-user-column-content">
-            <div class = "channel-user-column-content-title">
-              年齢
+          </li>
+          <li class ="channel-user-buttom-column">
+            <%= image_tag 'user/show/birthday.svg',class:"channel-user-buttom-column-image" %>
+            <div class = "channel-user-buttom-column-content">
+              <div class = "channel-user-buttom-column-content-title">
+                誕生日
+              </div>
+              <div class ="channel-user-buttom-column-content-string">
+                <%= @user.birthday.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@user.birthday.wday] + ')' %>
+              </div>
             </div>
-            <div class ="channel-user-column-content-string">
-              <%= @user.age.name %>
+          </li>
+          <li class ="channel-user-buttom-column">
+            <%= image_tag 'user/show/mbti.svg',class:"channel-user-buttom-column-image" %>
+            <div class = "channel-user-buttom-column-content">
+              <div class = "channel-user-buttom-column-content-title">
+                MBTI
+              </div>
+              <div class ="channel-user-buttom-column-content-string">
+                <%= @user.mbti.name %>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class ="channel-user-column">
-          <%= image_tag 'user/show/birthday.svg',class:"channel-user-column-image" %>
-          <div class = "channel-user-column-content">
-            <div class = "channel-user-column-content-title">
-              誕生日
+          </li>
+          <li class ="channel-user-buttom-column">
+            <%= image_tag 'user/show/line.svg',class:"channel-user-buttom-column-image" %>
+            <div class = "channel-user-buttom-column-content">
+              <div class = "channel-user-buttom-column-content-title">
+                LINE ID
+              </div>
+              <div class ="channel-user-buttom-column-content-string">
+                <%= @user.line %>
+              </div>
             </div>
-            <div class ="channel-user-column-content-string">
-              <%= @user.birthday %>
+          </li>
+          <li class ="channel-user-buttom-column">
+            <%= image_tag 'user/show/paypay.svg',class:"channel-user-buttom-column-image" %>
+            <div class = "channel-user-buttom-column-content">
+              <div class = "channel-user-buttom-column-content-title">
+                PayPay ID
+              </div>
+              <div class ="channel-user-buttom-column-content-string">
+                <%= @user.paypay %>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class ="channel-user-columns">
-        <div class ="channel-user-column">
-          <%= image_tag 'user/show/mbti.svg',class:"channel-user-column-image" %>
-          <div class = "channel-user-column-content">
-            <div class = "channel-user-column-content-title">
-              MBTI
+          </li>
+        </ul>
+        <div class ="channel-user-buttom-profile">
+          <%= image_tag 'user/show/profile.svg',class:"channel-user-buttom-profile-image" %>
+          <div class = "channel-user-buttom-profile-content">
+            <div class = "channel-user-buttom-profile-content-title">
+              プロフィール
             </div>
-            <div class ="channel-user-column-content-string">
-              <%= @user.mbti.name %>
+            <div class ="channel-user-buttom-profile-content-string">
+              <%= @user.profile %>
             </div>
-          </div>
-        </div>
-        <div class ="channel-user-column">
-          <%= image_tag 'user/show/line.svg',class:"channel-user-column-image" %>
-          <div class = "channel-user-column-content">
-            <div class = "channel-user-column-content-title">
-              LINE ID
-            </div>
-            <div class ="channel-user-column-content-string">
-              <%= @user.line %>
-            </div>
-          </div>
-        </div>
-        <div class ="channel-user-column">
-          <%= image_tag 'user/show/paypay.svg',class:"channel-user-column-image" %>
-          <div class = "channel-user-column-content">
-            <div class = "channel-user-column-content-title">
-              PayPay ID
-            </div>
-            <div class ="channel-user-column-content-string">
-              <%= @user.paypay %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class ="channel-user-column-profile">
-        <%= image_tag 'user/show/profile.svg',class:"channel-user-column-profile-image" %>
-        <div class = "channel-user-column-profile-content">
-          <div class = "channel-user-column-content-title">
-             プロフィール
-          </div>
-          <div class ="channel-user-column-content-string">
-            <%= @user.profile %>
           </div>
         </div>
       </div>
-    </div>
+      <%# ユーザー詳細ページ プロフィール部分 End %>
+
   </div>
+  <%# ユーザー詳細ページ End %>
+
 </div>
+<%# チャンネル 共通 Start %>

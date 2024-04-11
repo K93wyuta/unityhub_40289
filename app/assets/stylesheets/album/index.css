@@ -1,7 +1,4 @@
-.chanel-album{
-  padding: 40px 100px;
-}
-
+/* ===== アルバム 検索ボックス ========================= */
 .chanel-album-search{
   display: flex;
   margin-bottom: 40px;
@@ -28,7 +25,9 @@
 .chanel-album-search-button-image{
 
 }
+/* ================================================== */
 
+/* ===== アルバム 一覧 ================================ */
 .chanel-album-lists{
   display: flex;
   flex-wrap: wrap; 
@@ -77,3 +76,31 @@
   text-align: right;
   font-size: 12px;
 }
+/* ================================================== */
+
+/* ===== アルバム 新規作成 ============================= */
+.channel-album-action{
+  height: 60px;
+  width: 60px;
+  background-color: #313E52;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  position: fixed;
+  right: 60px;
+  bottom: 60px; 
+}
+
+.channel-album-action:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #313E52;
+  box-shadow:  0 5px 10px 0;
+  transition: .2s
+}
+/* ================================================== */

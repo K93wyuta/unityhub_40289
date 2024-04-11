@@ -1,8 +1,9 @@
-.chanel-calendar{
+/* ===== カレンダー ================================= */
+.channel-event{
   padding: 40px 100px;
 }
 
-.channel-calender-event{
+.channel-event-list{
   width: 80px;
   background-color: #313E52;
   color: #FFFFFF;
@@ -13,10 +14,14 @@
   transition: transform 0.3s ease; 
 }
 
-.channel-calender-event:hover{
+.channel-event-list:hover{
   cursor: pointer;
   transition: .2s;
   transform: scale(1.2); 
+}
+
+.channel-event-action{
+
 }
 
 .channel-calender-event-box{
@@ -24,7 +29,6 @@
   opacity: 0.5;
 }
 
-/* month_calender start */
 .simple-calendar{
 
 }
@@ -83,4 +87,4 @@
 .today{
   background-color: #313E52;
 }
-/* month_calender end */
+/* ================================================== */

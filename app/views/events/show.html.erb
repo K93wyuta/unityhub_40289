@@ -1,96 +1,109 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%= render "shared/channel_box_modal" %>
-<div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "event">
-      <div class ="event-show">
-        <div class ="event-show-back">
-          <%= link_to '< 戻る', :back %>
-        </div>
-        <div class ="event-show-title">
-          <div class ="event-show-title-name">
-            <%= @event.name %>
-          </div>
-          <%= link_to "編集", edit_channel_event_path(@event.id) ,class:"event-show-title-edit" %>
-        </div>
-          <div class ="event-show-title-updated">
-            最終更新日：<%= @event.updated_at %>
-          </div>
-        <div class ="event-show-line">
-        </div>
-        <div class ="event-show-item">
-          <div class ="event-show-item-name">
-            日時
-          </div>
-          <div class ="event-show-item-output">
-            <% if @event.date_start == @event.date_end %>
-              <%= @event.date_start.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_start.wday]}）") %>
-            <% else %>
-              <%= @event.date_start.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_start.wday]}）") %> 〜 <%= @event.date_end.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_end.wday]}）") %>
-            <% end %>
-          </div>
-        </div>
-        <div class ="event-show-item">
-          <div class ="event-show-item-name">
-            時刻
-          </div>
-          <div class ="event-show-item-output">
-            <%= @event.time_start.strftime("%H:%M") %> 〜 <%= @event.time_end.strftime("%H:%M") %>
-          </div>
-        </div>
-        <div class ="event-show-item">
-          <div class ="event-show-item-name">
-            場所
-          </div>
-          <div class ="event-show-item-output">
-            <%= @event.place %>
-          </div>
-        </div>
-        <div class ="event-show-participant">
-          <div class ="event-show-participant-name">
-            参加者
-          </div>
-          <div class ="event-show-participant-user">
-            <ul class = "event-show-participant-user-lists">
-              <% @channel_event_users.each do |channel_event_user| %>
-                <li class ="event-show-participant-user-list">
-                  <%= link_to user_path(channel_event_user.channel_user.user.id) do %>
-                    <% if channel_event_user.channel_user&.user&.profile_image.present? %>
-                      <%= image_tag channel_event_user.channel_user.user.profile_image, class:"event-show-participant-user-list-image" %>
-                    <% end %>
-                    <div class ="event-show-participant-user-list-name">
-                      <%= channel_event_user.channel_user.user.name %>
-                    </div>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <div class ="event-show-item">
-          <div class ="event-show-item-name">
-            詳細
-          </div>
-          <div class ="event-show-item-output">
-            <%= @event.detail %>
-          </div>
-        </div>
-        <div class="event-show-button">
-          <% channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id) %>
-          <% is_joined = ChannelEventUser.where(channel_user_id: channel_user.id, event_id: @event.id).exists? %>
-          
-          <%= form_with url: channel_event_channel_event_users_path(@channel, @event), method: :post do |form| %>
-            <%= form.submit "参加", class: is_joined ? "event-show-button-joined" : "event-show-button-not-joined", disabled: is_joined %>
-          <% end %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
-          <%= form_with url: channel_event_channel_event_user_path(@channel, @event), method: :delete do |form| %>
-            <%= form.submit "不参加", class: is_joined ? "event-show-button-not-joined" : "event-show-button-joined", disabled: !is_joined %>
+<%# チャンネル 共通 Start %>
+<div class = "channel">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# イベント詳細ページ Start %>
+  <div class = "channel-right">
+    <div class = "channel-event">
+
+      <%# イベント詳細ページ ヘッダー Start %>
+      <div class ="channel-event-back">
+        <%= link_to '< 戻る', :back %>
+      </div>
+      <div class ="channel-event-title">
+        <div class ="channel-event-title-name">
+          <%= @event.name %>
+        </div>
+        <%= link_to "編集", edit_channel_event_path(@event.id) ,class:"channel-event-title-edit" %>
+      </div>
+      <div class ="channel-event-updated">
+        最終更新日：<%= @event.updated_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@event.updated_at.wday] + ')' %>
+      </div>
+      <div class ="channel-event-line">
+      </div>
+      <%# イベント詳細ページ ヘッダー End %>
+
+      <%# イベント詳細ページ 詳細 Start %>
+      <div class ="channel-event-item">
+        <div class ="channel-event-item-name">
+          日時
+        </div>
+        <div class ="channel-event-item-output">
+          <% if @event.date_start == @event.date_end %>
+            <%= @event.date_start.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_start.wday]}）") %>
+          <% else %>
+            <%= @event.date_start.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_start.wday]}）") %> 〜 <%= @event.date_end.strftime("%Y年%m月%d日（#{%w(日 月 火 水 木 金 土)[@event.date_end.wday]}）") %>
           <% end %>
         </div>
       </div>
+      <div class ="channel-event-item">
+        <div class ="channel-event-item-name">
+          時刻
+        </div>
+        <div class ="channel-event-item-output">
+          <%= @event.time_start.strftime("%H:%M") %> 〜 <%= @event.time_end.strftime("%H:%M") %>
+        </div>
+      </div>
+      <div class ="channel-event-item">
+        <div class ="channel-event-item-name">
+          場所
+        </div>
+        <div class ="channel-event-item-output">
+          <%= @event.place %>
+        </div>
+      </div>
+      <div class ="channel-event-item">
+        <div class ="channel-event-item-name">
+          参加者
+        </div>
+        <ul class = "channel-event-item-users">
+          <% @channel_event_users.each do |channel_event_user| %>
+            <li class ="channel-event-item-user">
+              <%= link_to user_path(channel_event_user.channel_user.user.id) do %>
+                <% if channel_event_user.channel_user&.user&.profile_image.present? %>
+                  <%= image_tag channel_event_user.channel_user.user.profile_image, class:"channel-event-item-user-image" %>
+                <% end %>
+                <div class ="channel-event-item-users-name">
+                  <%= channel_event_user.channel_user.user.name %>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class ="channel-event-item">
+        <div class ="channel-event-item-name">
+          詳細
+        </div>
+        <div class ="channel-event-item-output">
+          <%= @event.detail %>
+        </div>
+      </div>
+      <%# イベント詳細ページ 詳細 End %>
+
+      <%# イベント詳細ページ 参加可否 Start %>
+      <div class="channel-event-action">
+        <% channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id) %>
+        <% is_joined = ChannelEventUser.where(channel_user_id: channel_user.id, event_id: @event.id).exists? %>
+        
+        <%= form_with url: channel_event_channel_event_users_path(@channel, @event), method: :post do |form| %>
+          <%= form.submit "参加", class: is_joined ? "channel-event-action-joined" : "channel-event-action-not-joined", disabled: is_joined %>
+        <% end %>
+
+        <%= form_with url: channel_event_channel_event_user_path(@channel, @event), method: :delete do |form| %>
+          <%= form.submit "不参加", class: is_joined ? "channel-event-action-not-joined" : "channel-event-action-joined", disabled: !is_joined %>
+        <% end %>
+      </div>
+      <%# イベント詳細ページ 参加可否 End %>
+
     </div>
   </div>
+  <%# イベント詳細ページ End %>
 </div>

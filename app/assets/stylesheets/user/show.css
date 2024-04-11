@@ -1,42 +1,94 @@
+/* ===== ユーザー詳細ページ  Start ===================== */
 .channel-user{
+
+}
+/* ================================================== */
+
+/* ===== ユーザー詳細ページ ヘッダー Start ============== */
+.channel-user-top{
+  position: relative;
+  margin-bottom: 200px;
+}
+
+.channel-show-top-background{
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.channel-user-top-user{
+  position: absolute;
+  top: 240px;
+  margin-left: 100px;
+}
+
+.channel-show-top-user-image{
+  height: 120px;
+  width: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.channel-user-top-user-name{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.channel-user-top-user-email{
+
+}
+
+.channel-user-top-user-edit{
+  float: right;
+  border: 1px #313E52 solid;
+  border-radius: 40px;
+  padding: 5px 20px;
+  margin: 24px 100px 0 0 ;
+}
+/* ================================================== */
+
+/* ===== ユーザー詳細ページ プロフィール部分 Start ======== */
+.channel-user-buttom{
   margin: 0 100px;
 }
 
-.channel-user-columns{
+.channel-user-buttom-columns{
   display: flex;
+  flex-wrap: wrap; 
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
-.channel-user-column{
+.channel-user-buttom-column{
   display: flex;
   height: 100px;
   width: 320px;
   border: #465163 solid 1px;
   border-radius: 10px;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
-.channel-user-column-image{
+.channel-user-buttom-column-image{
   width: 60px;
 }
 
-.channel-user-column-content{
+.channel-user-buttom-column-content{
   margin-left: 20px;
 }
-.channel-user-column-content-title{
+
+.channel-user-buttom-column-content-title{
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.channel-user-column-content-string{
+.channel-user-buttom-column-content-string{
 
 }
 
-.channel-user-column-profile{
+.channel-user-buttom-profile{
   display: flex;
-  height: 200px;
   width: 100%;
   border: #465163 solid 1px;
   border-radius: 10px;
@@ -45,16 +97,21 @@
   margin-bottom: 100px;
 }
 
-.channel-user-column-profile-image{
+.channel-user-buttom-profile-image{
   width: 60px;
 }
 
-.channel-user-column-profile-content{
+.channel-user-buttom-profile-content{
   margin-left: 20px;
 }
 
-.channel-user-column-content-title{
+.channel-user-buttom-profile-content-title{
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 5px;
 }
+
+.channel-user-buttom-profile-content-string{
+
+}
+/* ================================================== */

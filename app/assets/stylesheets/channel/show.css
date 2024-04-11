@@ -1,56 +1,45 @@
-.channel-right-content{
-  background-color: #ffffff;
-  height: 100%;
-  width: calc(100vw - 220px);
-  margin-left: 220px;
-}
+/* ===== チャンネル詳細ページ ========================== */
+.channel-show{
 
-.channel-top{
+}
+/* ================================================== */
+
+/* ===== チャンネル詳細ページ ヘッダー =================== */
+.channel-show-top{
   position: relative;
-  height: 375px;
-  margin-bottom: 50px;
+  margin-bottom: 200px;
 }
 
-.channel-top-background{
-  height: 250px;
-  background-color: #D8D8D8;
-}
-.channel-top-background-image{
+.channel-show-top-background{
+  height: 300px;
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
-.channel-top-box{
+.channel-show-top-channel{
   position: absolute;
-  bottom: 0;
+  top: 240px;
   margin-left: 100px;
 }
 
-.channel-top-box-image2{
+.channel-show-top-channel-image{
   height: 120px;
   width: 120px;
   border-radius: 10px;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
-.channel-top-box-main-image{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.channel-top-box-name{
+.channel-show-top-channel-name{
   font-size: 24px;
   font-weight: bold;
 }
 
-.channel-top-box-id{
+.channel-show-top-channel-id{
 
 }
 
-.channel-top-edit{
+.channel-show-top-channel-edit{
   float: right;
   border: 1px #313E52 solid;
   border-radius: 40px;
@@ -58,148 +47,96 @@
   margin: 24px 100px 0 0 ;
 }
 
-.channel-top-edit:hover{
+.channel-show-top-channel-edit:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
+/* ================================================== */
 
-.channel-content{
+/* ===== チャンネル詳細ページ 各コンテンツ一覧 ============ */
+.channel-show-buttom{
   margin: 0 100px;
 }
 
-.channel-profile{
+.channel-show-buttom-profile{
   border: 1px #313E52 solid;
   border-radius: 10px;
-  padding: 20px;
+  padding: 40px 20px;
   display: flex;
   align-items: flex-start;
   margin-bottom: 40px;
 }
 
-.channel-profile-image{
+.channel-show-buttom-profile-image{
   margin-right: 10px;
   height: 40px;
 }
 
-.channel-Administrator-user-frofile-image{
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+.channel-show-buttom-profile-content{
+
+}
+
+.channel-show-buttom-title{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.channel-show-buttom-text{
+  
+}
+
+.channel-show-buttom-administrator{
+  margin-bottom: 40px;
+}
+
+.channel-show-buttom-participant{
+  margin-bottom: 40px;
+}
+
+.channel-show-buttom-users{
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.channel-show-buttom-user{
+  margin: 0 20px 20px 0;
   transition: transform 0.3s ease; 
 }
 
-.channel-Administrator-user-frofile-image:hover{
+.channel-show-buttom-user:hover{
   cursor: pointer;
   transition: .2s;
   transform: scale(1.1); 
 }
 
-.channel-profile-content{
-
-}
-
-.channel-profile-title{
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.channel-profile-text{
-
-}
-
-.channel-Administrator{
-  margin-bottom: 40px;
-}
-
-.channel-Administrator-title{
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.channel-Administrator-user{
-
-}
-
-.channel-Administrator-user-lists{
-  display: flex;
-}
-
-.channel-Administrator-user-list{
-  margin-right: 20px;
-}
-
-.channel-Administrator-userimage{
+.channel-show-buttom-user-image{
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  background-color: #D8D8D8;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
-.channel-Administrator-username{
+.channel-show-buttom-user-name{
   font-size: 14px;
   text-align: center;
 }
 
-.channel-participant{
-  margin-bottom: 40px;
-}
-
-.channel-participant-title{
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.channel-participant-user{
-
-}
-
-.channel-participant-user-lists{
-  display: flex;
-}
-
-.channel-participant-user-list{
-  margin-right: 20px;
-}
-
-.channel-participant-userimage{
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-color: #D8D8D8;
-  margin-bottom: 10px;
-}
-
-.channel-participant-username{
-  font-size: 14px;
-  text-align: center;
-}
-
-.channel-event{
+.channel-show-buttom-event{
   margin-bottom: 100px;
 }
 
-.channel-event-title{
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.channel-event-lists{
+.channel-show-buttom-event-lists{
   display: flex;
+  overflow-x: auto;
+  overflow-y: hidden; 
+  white-space: nowrap;
 }
 
-.channel-event-list{
-  margin-right: 20px;
-}
-
-.channel-event-list-box{
+.channel-show-buttom-event-list{
   height: 200px;
   width: 200px;
   border-radius: 10px;
@@ -209,108 +146,84 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
+  padding: 10px;
   transition: transform 0.3s ease; 
 }
 
-.channel-event-list-box:hover{
+.channel-show-buttom-event-list:hover{
   cursor: pointer;
   transition: .2s;
   transform: scale(1.05); 
 }
 
-.channel-event-box-date{
+.channel-show-buttom-event-list-date{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.channel-show-buttom-event-list-name{
   font-size: 14px;
 }
 
-.channel-event-box-name{
-  font-size: 14px;
+.channel-show-buttom-topics{
+  width: 100%;
 }
 
-.channel-event-button{
-  float: right;
-  margin-top: 20px;
+.channel-show-buttom-topics-lists{
 }
 
-.botton{
-  background-color: #ffffff;
-  height: 40px;
-  width: 40px;
-  border-radius: 50px;
-  border: 1px #313E52 solid;
-  color: #313E52;
-  margin-right: 20px;
-}
-
-
-.channel-topics{
-
-}
-
-.channel-topics-title{
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.channel-topics-content{
-
-}
-
-.channel-topics-content-lists{
-
-}
-
-.channel-topics-content-list{
+.channel-show-buttom-topics-list{
   display: flex;
 }
 
-.channel-topics-content-list-left{
+.channel-show-buttom-topics-list-left{
 
 }
 
-.channel-topics-content-list-image{
+.channel-show-buttom-topics-list-left-image{
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: #D8D8D8;
   margin-right: 10px;
+  object-fit: cover;
 }
 
-.channel-topics-content-list-right{
-
+.channel-show-buttom-topics-list-right{
+  width: 100%;
 }
 
-.channel-topics-content-list-top{
+.channel-show-buttom-topics-list-right-top{
   display: flex;
   font-size: 10px;
   margin: 10px 0;
 }
 
-.channel-topics-content-list-top-name{
+.channel-show-buttom-topics-list-right-top-name{
   margin-right: 20px;
 }
 
-.channel-topics-content-list-top-time{
+.channel-show-buttom-topics-list-right-top-time{
+
 }
 
-.channel-topics-content-list-center{
+.channel-show-buttom-topics-list-right-center{
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.channel-topics-content-list-center-title{
+.channel-show-buttom-topics-list-right-center-title{
   font-size: 18px;
   font-weight: bold;
-  margin-right: 100px;
 }
 
-.channel-topics-content-list-center-button{
+.channel-show-buttom-topics-list-right-center-actions{
   display: flex;
 }
 
-.channel-topics-content-list-center-edit{
+.channel-show-buttom-topics-list-right-center-actions-edit{
   font-size: 12px;
   border: 1px #313E52 solid;
   border-radius: 40px;
@@ -318,33 +231,33 @@
   margin-right: 20px;
 }
 
-.channel-topics-content-list-center-edit:hover{
+.channel-show-buttom-topics-list-right-center-actions-edit:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.channel-topics-content-list-center-delete{
+.channel-show-buttom-topics-list-right-center-actions-delete{
   font-size: 12px;
   border: 1px #313E52 solid;
   border-radius: 40px;
   padding: 5px 20px;
 }
 
-.channel-topics-content-list-center-delete:hover{
+.channel-show-buttom-topics-list-right-center-actions-delete:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.channel-topics-content-list-buttom{
+.channel-show-buttom-topics-list-right-buttom{
   font-size: 14px;
 }
 
-.channel-topics-content-list-line{
-  width: 960px;
+.channel-show-buttom-topics-list-right-line{
   border-bottom: 1px #D8D8D8 solid;
   margin: 40px 0;
 }
+/* ================================================== */

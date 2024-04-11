@@ -1,10 +1,10 @@
 const channelMainPreview = () => {
-  const channelMainPreviewList = document.getElementById('custom-channel-form-main-image-previews');
+  const channelMainPreviewList = document.getElementById('channel-main-image');
   const channelMainFileField = document.querySelector('input[type="file"][name="channel[channel_main_image]"]');
 
   if (channelMainFileField !== null) {
     channelMainFileField.addEventListener('change', (e) => {
-      const channelMainAlreadyPreview = document.querySelector('.channel-form-main-image-preview');
+      const channelMainAlreadyPreview = document.querySelector('.firstimage-preview');
       if (channelMainAlreadyPreview){
         channelMainAlreadyPreview.remove();
       };
@@ -12,7 +12,7 @@ const channelMainPreview = () => {
     const channelMainBlob = window.URL.createObjectURL(channelMainFile);
 
     const channelMainPreviewImage = document.createElement('img');
-    channelMainPreviewImage.setAttribute('class', 'channel-form-main-image-preview');
+    channelMainPreviewImage.setAttribute('class', 'firstimage-preview');
     channelMainPreviewImage.setAttribute('src', channelMainBlob);
 
     channelMainPreviewList.appendChild(channelMainPreviewImage);
@@ -21,12 +21,12 @@ const channelMainPreview = () => {
 };
 
 const channelBackgroundPreview = () => {
-  const channelBackgroundPreviewList = document.getElementById('custom-channel-form-background-image-previews');
+  const channelBackgroundPreviewList = document.getElementById('channel-backgroundimage-image');
   const channelBackgroundFileField = document.querySelector('input[type="file"][name="channel[channel_background_image]"]');
 
   if (channelBackgroundFileField !== null) {
   channelBackgroundFileField.addEventListener('change', (e) => {
-    const channelBackgroundAlreadyPreview = document.querySelector('.channel-form-background-image-preview');
+    const channelBackgroundAlreadyPreview = document.querySelector('.secondimage-preview');
     if (channelBackgroundAlreadyPreview){
       channelBackgroundAlreadyPreview.remove();
     };
@@ -35,30 +35,7 @@ const channelBackgroundPreview = () => {
     const channelBackgroundBlob = window.URL.createObjectURL(channelBackgroundFile);
 
     const channelBackgroundPreviewImage = document.createElement('img');
-    channelBackgroundPreviewImage.setAttribute('class', 'channel-form-background-image-preview');
-    channelBackgroundPreviewImage.setAttribute('src', channelBackgroundBlob);
-
-    channelBackgroundPreviewList.appendChild(channelBackgroundPreviewImage);
-  });
- }
-};
-
-const channelAdministratorPreview = () => {
-  const channelAdministratorPreviewList = document.getElementById('custom-channel-form-background-image-previews');
-  const channelBackgroundFileField = document.querySelector('input[type="file"][name="channel[channel_background_image]"]');
-
-  if (channelBackgroundFileField !== null) {
-  channelBackgroundFileField.addEventListener('change', (e) => {
-    const channelBackgroundAlreadyPreview = document.querySelector('.channel-form-background-image-preview');
-    if (channelBackgroundAlreadyPreview){
-      channelBackgroundAlreadyPreview.remove();
-    };
-
-    const channelBackgroundFile = e.target.files[0];
-    const channelBackgroundBlob = window.URL.createObjectURL(channelBackgroundFile);
-
-    const channelBackgroundPreviewImage = document.createElement('img');
-    channelBackgroundPreviewImage.setAttribute('class', 'channel-form-background-image-preview');
+    channelBackgroundPreviewImage.setAttribute('class', 'secondimage-preview');
     channelBackgroundPreviewImage.setAttribute('src', channelBackgroundBlob);
 
     channelBackgroundPreviewList.appendChild(channelBackgroundPreviewImage);
@@ -67,4 +44,6 @@ const channelAdministratorPreview = () => {
 };
 
 window.addEventListener('turbo:load', channelMainPreview);
+window.addEventListener('turbo:render', channelMainPreview);
 window.addEventListener('turbo:load', channelBackgroundPreview);
+window.addEventListener('turbo:render', channelBackgroundPreview);

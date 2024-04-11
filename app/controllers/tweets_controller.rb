@@ -2,10 +2,10 @@ class TweetsController < ApplicationController
   def index
     @channel = Channel.find(session[:channel_id])
     if params[:search].blank?
-      @channel_users = @channel.channel_users.where(administrator: false)
+      @channel_users = @channel.channel_users
     else
       @channel_users = @channel.channel_users.joins(:user).where('users.name LIKE ?',
-                                                                 "%#{params[:search]}%").where(administrator: false)
+                                                                 "%#{params[:search]}%")
     end
     @tweets = @channel.tweets.order(created_at: :desc)
     @tweet = Tweet.new
@@ -16,10 +16,10 @@ class TweetsController < ApplicationController
     @channel_user = @channel.channel_users.find(params[:id])
 
     if params[:search].blank?
-      @channel_users = @channel.channel_users.where(administrator: false)
+      @channel_users = @channel.channel_users
     else
       @channel_users = @channel.channel_users.joins(:user).where('users.name LIKE ?',
-                                                                 "%#{params[:search]}%").where(administrator: false)
+                                                                 "%#{params[:search]}%")
     end
     @tweets = @channel_user.tweets.order(created_at: :desc)
     @tweet = Tweet.new

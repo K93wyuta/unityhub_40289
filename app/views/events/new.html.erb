@@ -1,92 +1,97 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%= render "shared/channel_box_modal" %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class = "channel-top">
-      <div class ="user-form">
-        <div class ="user-form-back">
-          <%= link_to '< 戻る', :back, class: "user-form-back" %>
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# イベント 新規作成 Start %>
+  <div class = "channel-right">
+
+    <%# イベント 新規作成フォーム Start %>
+    <div class = "form-left">
+      <%= form_with(model:[@channel ,@event], local: true) do |f| %>
+
+        <%# イベント 新規作成フォーム ヘッダー Start %>
+        <div class ="form-back">
+          <%= link_to '< 戻る', :back, class:"form-back-text" %>
         </div>
-        <div class ="user-form-title">
+        <div class ="form-title-left">
           イベント申請
         </div>
-        <div class ="user-form-contents">
-        <%= form_with(model:[@channel ,@event], local: true) do |f| %>
-          <div class = "user-form-error">
-            <%= render "shared/error_messages", resource: @event %>
-          </div>
-          <div class = "user-form-buttom">
-            <div class = "user-form-labels">
-              <div class="user-form-field-label">イベント名</div>
-              <div class="user-form-field-label">日時</div>
-              <div class="user-form-field-label">時刻</div>
-              <div class="user-form-field-label">場所</div>
-              <div class="event-form-field-label-participant">参加者</div>
-              <div class="user-form-field-label">詳細</div>
-            </div>
-            <div class = "user-form-field-input">
-              <div class="user-form-field">
-                <% f.label :name %>
-                <%= f.text_field :name, placeholder:"タイトルを入力してください", autocomplete: "name", class:"user-form-input2" %>
-              </div>
-              <div class="event-form-date">
-                <div class="user-form-field">
-                  <% f.label :date_start %>
-                  <%= f.date_field :date_start, placeholder:"日時を入力してください", autocomplete: "date_start", class:"event-form-date-input" %>
-                </div>
-                <div class="event-form-date-kara">
-                  ~
-                </div>
-                <div class="user-form-field">
-                  <% f.label :date_end %>
-                  <%= f.date_field :date_end, placeholder:"日時を入力してください", autocomplete: "date_end", class:"event-form-date-input" %>
-                </div>
-              </div>
-              <div class="event-form-time">
-                <div class="user-form-field">
-                <% f.label :time_start %>
-                <%= f.time_field :time_start, placeholder:"時間を入力してください", autocomplete: "time_start", class:"event-form-time-input" %>
-                </div>
-                <div class="event-form-date-kara">
-                  ~
-                </div>
-                <div class="user-form-field">
-                <% f.label :time_end %>
-                <%= f.time_field :time_end, placeholder:"時間を入力してください", autocomplete: "time_end", class:"event-form-time-input" %>
-                </div>
-              </div>
-              <div class="user-form-field">
-                <% f.label :place %>
-                <%= f.text_field :place, placeholder:"場所を入力してください", autocomplete: "place", class:"user-form-input2" %>
-              </div>
-               <div class="channel-form-field">
-                <div class ="channel-modal-content-administrator">
-                  <% @channel_users.each do |channel_user| %>
-                    <div class ="channel-modal-content-user">
-                      <%= check_box_tag 'users[]', channel_user.user.id, false, class: "channel-modal-content-user-check" %>
-                      <% if channel_user.user&.profile_image.present? %>
-                        <%= image_tag channel_user.user.profile_image, class:"channel-modal-content-user-image" %>
-                      <% end %>
-                      <%= label_tag :username,channel_user.user.name, class: "channel-modal-content-user-name" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="user-form-field">
-                <% f.label :detail %>
-                <%= f.text_area :detail, placeholder:" 詳細を入力してください", autocomplete: "detail",class:"user-form-input3" %>
-              </div>
-            </div>
-          </div>
-          <div class="user-form-actions">
-            <%= f.submit "作成する",class:"user-form-actions-button-update"%>
-          </div>
-        <% end %>
+        <%# イベント 新規作成フォーム ヘッダー End %>
+
+        <%# イベント 新規作成フォーム エラー表示 Start %>
+        <div class = "form-error">
+          <%= render 'shared/error_messages', resource: @event %>
         </div>
-      </div>
+        <%# イベント 新規作成フォーム エラー表示 End %>
+
+        <%# イベント 新規作成フォーム 入力部分 Start %>
+        <div class = "form-vertical">
+          <div class = "form-vertical-field">
+            <%= f.label :name, "イベント名",class:"form-field-label" %>
+            <%= f.text_field :name, placeholder:"イベント名を入力してください", autocomplete: "name", class:"form-field-string" %>
+          </div>
+          <div class = "form-vertical-field">
+            <%= f.label :date_start, "日時",class:"form-field-label" %>
+            <%= f.date_field :date_start, placeholder:"開始日を選択してください", autocomplete: "date_start", class:"form-field-date" %>
+            <div class="form-field-kara">
+              ~
+            </div>
+            <% f.label :date_end, "日時",class:"form-field-label" %>
+            <%= f.date_field :date_end, placeholder:"終了日を選択してください", autocomplete: "date_end", class:"form-field-date" %>
+          </div>
+          <div class = "form-vertical-field">
+            <%= f.label :time_start, "時刻",class:"form-field-label" %>
+            <%= f.time_field :time_start, placeholder:"開始日を選択してください", autocomplete: "time_start", class:"form-field-time" %>
+            <div class="form-field-kara">
+              ~
+            </div>
+            <% f.label :time_end, "日時",class:"form-field-label" %>
+            <%= f.time_field :time_end, placeholder:"終了日を選択してください", autocomplete: "time_end", class:"form-field-time" %>
+          </div>
+          <div class = "form-vertical-field">
+            <%= f.label :place, "場所",class:"form-field-label" %>
+            <%= f.text_field :place, placeholder:"場所を入力してください", autocomplete: "place", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :user, "参加者",class:"form-field-label" %>
+            <div class = "form-field-users">
+              <% @channel_users.each do |channel_user| %>
+                <div class="form-field-user">
+                  <%= check_box_tag "users[]", channel_user.user.id, false, class: "form-field-user-check", id: "user_#{channel_user.id}" %>
+                  <% if channel_user.user&.profile_image.present? %>
+                    <%= image_tag channel_user.user.profile_image, class:"form-field-user-image" %>
+                  <% end %>
+                  <%= label_tag "user_#{channel_user.id}", channel_user.user.name, class: "form-field-user-name" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :detail, "詳細",class:"form-field-label" %>
+            <%= f.text_area :detail, placeholder:"詳細を入力してください", autocomplete: "detail",class:"form-field-text" %>
+          </div>
+        </div>
+        <%# イベント 新規作成フォーム 入力部分 End %>
+
+        <%# イベント 新規作成フォーム アクション Start %>
+        <div class="form-action">
+          <%= f.submit "作成する",class:"form-action-submit"%>
+        </div>
+         <%# イベント 新規作成フォーム アクション End %>
+         
+      <% end %>
     </div>
+    <%# イベント 新規作成フォーム End %>
+
   </div>
+  <%# イベント 新規作成 End %>
+
 </div>
+<%# チャンネル 共通 End %>

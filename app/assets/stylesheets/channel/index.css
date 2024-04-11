@@ -1,85 +1,65 @@
-.channel-index-content{
-  min-height: 100vh;
-  width: 100vw;
-  background-color: #465163;
+/* ===== チャンネル一覧ページ ========================== */
+.channel-index{
   padding: 50px 100px 0 100px;
 }
 
 .channel-index-title{
-  color: #FFFFFF;
   font-size: 20px;
   margin-bottom: 40px;
 }
 
-.channel-index{
+.channel-index-lists{
   display: flex;
   flex-wrap: wrap; 
 }
 
-.channel-empty-title{
-  color: #FFFFFF;
-  font-size: 14px;
-  margin-bottom: 40px;
+.channel-index-empty{
+
 }
 
-.channel-empty-button{
+.channel-index-empty-text{
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.channel-index-empty-logout{
   border: none;
   border-radius: 40px;
   padding: 5px 20px;
 }
 
-.channel-empty-button:hover{
+.channel-index-empty-logout:hover{
   background-color: #313E52;
   color: #FFFFFF;
   cursor: pointer;
   transition: .2s
 }
 
-.channel-index-box{
+.channel-index-list{
   height: 260px;
   width: 260px;
-  background-color: #D8D8D8;
   filter: brightness(80%);
-  border: #D8D8D8 solid 1px;
   border-radius: 10px;
   margin: 0 40px 40px 0;
   position: relative;
+  transition: transform 0.3s ease; 
 }
 
-.channel-index-box:hover{
+.channel-index-list:hover{
   filter: brightness(100%);
   cursor: pointer;
-  transition: .2s
+  transition: .2s;
+  transform: scale(1.1); 
 }
 
-.channel-index-box:hover .channel-index-box-check {
-  display: flex;  /* Show .channel-index-box-check when hovering on .channel-index-box */
-}
-
-.channel-index-box-image{
+.channel-index-list-image{
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
 
-.channel-index-box-check{
-  display: none;
-  position: absolute;
-  top: 0;
-  height: 26px;
-  width: 26px;
-  background-color: #313E52;
-  border-radius: 50%;
-  color: #FFFFFF;
-  font-size: 12px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
-.channel-index-box-title{
+.channel-index-list-title{
   color: #FFFFFF;
   font-weight: bold;
   position: absolute;
@@ -89,7 +69,7 @@
   text-shadow: 2px 2px 2px black;
 }
 
-.channel-new-action{
+.channel-index-new{
   height: 60px;
   width: 60px;
   background-color: #313E52;
@@ -106,10 +86,11 @@
   bottom: 60px; 
 }
 
-.channel-new-action:hover{
+.channel-index-new:hover{
   cursor: pointer;
   background-color: #FFFFFF;
   color: #313E52;
   box-shadow:  0 5px 10px 0;
   transition: .2s
 }
+/* ================================================== */

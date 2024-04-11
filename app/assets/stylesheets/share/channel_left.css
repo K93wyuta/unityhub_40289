@@ -1,0 +1,177 @@
+/* ===== チャンネル ナビゲーション ===================== */
+.channel-left{
+  position: fixed;
+  background-color: #313E52;
+  height: 100vh;
+  width: 220px;
+  padding: 10px 20px;
+}
+/* ================================================== */
+
+/* ===== ロゴ ======================================== */
+.logo{
+  font-size: 26px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+/* ================================================== */
+
+/* ===== チャンネル表示部分 ============================ */
+.channel-left-channel{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.channel-left-channel:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  transition: .2s
+}
+
+.channel-left-channel-image{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.channel-left-channel-name{
+  color: #ffffff;
+}
+/* ================================================== */
+
+/* ===== チャンネル ログアウト モーダル ================== */
+.channel-left-channel-modal{
+  display: none;
+  height: 400px;
+  width: 800px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding-top: 140px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  z-index: 999;
+}
+
+.channel-left-channel-modal-title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.channel-left-channel-modal-action{
+  display: flex;
+  justify-content: center;
+}
+
+.channel-left-channel-modal-action-y{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #313E52;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.channel-left-channel-modal-action-y:hover{
+  background-color: #FFFFFF;
+  color: #313E52;
+  border: #313E52 solid 1px;
+  cursor: pointer;
+  transition: .2s
+}
+
+.channel-left-channel-modal-action-n{
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #B9B9B9;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.channel-left-channel-modal-action-n:hover{
+  background-color: #FFFFFF;
+  color: #B9B9B9;
+  border: #B9B9B9 solid 1px;
+  cursor: pointer;
+  transition: .2s
+}
+/* ================================================== */
+
+/* ===== ナビゲーション部分 ============================ */
+.channel-left-nav{
+  margin-bottom: 60px;
+}
+
+.channel-left-nav-list{
+  display: flex;
+  align-items: center;
+  padding: 8px 0  8px 10px;
+}
+
+.channel-left-nav-list:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  transition: .2s
+}
+
+.list-image{
+  height: 16px;
+  width: 16px;
+  margin-right: 20px;
+}
+
+.list-text{
+  color: #ffffff;
+}
+/* ================================================== */
+
+/* ===== フォーム部分 ================================= */
+.channel-left-post{
+  margin-bottom: 120px;
+}
+.channel-left-post-list{
+  display: flex;
+  align-items: center;
+  padding: 8px 0  8px 10px;
+}
+
+.channel-left-post-list:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  transition: .2s
+}
+/* ================================================== */
+
+/* ===== ユーザー ログアウト =========================== */
+.channel-left-logout{
+  display: flex;
+  align-items: center;
+  padding: 8px 0  8px 10px;
+}
+
+.channel-left-logout:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  transition: .2s
+}
+/* ================================================== */
+

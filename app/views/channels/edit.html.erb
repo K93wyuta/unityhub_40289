@@ -1,135 +1,144 @@
-<%# モーダル表示時バックグランド %>
-<div class="overlay"></div>
-<%# モーダル表示時バックグランド %>
-<%# モーダル %>
-<div class ="channel-box-modal">
-  <div class ="channel-box-modal-title">
-    チャンネルを退出しますか？
-  </div>
-  <div class ="channel-box-modal-button">
-      <%= link_to 'Yes', root_path, class:"channel-box-modal-button-y" %>
-    <div class ="channel-box-modal-button-n">
-      No
-    </div>
-  </div>
-</div>
-<%# モーダル %>
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
 
+<%# チャンネル 共通 Start %>
 <div class = "channel">
-  <%= render "shared/left-content" %>
-  <div class = "channel-right-content" >
-    <div class ="channel-form">
-      <div class ="channel-form-back">
-        <%= link_to '< 戻る', channel_path(params[:id]),class:"channel-form-back" %>
-      </div>
-      <div class ="channel-form-title">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# チャンネル編集 Start %>
+  <div class = "channel-right">
+
+    <%# チャンネル編集フォーム Start %>
+    <div class = "form-left">
+      <%= form_with model:@channel, local: true do |f| %>
+      
+        <%# チャンネル編集フォーム ヘッダー Start %>
+        <div class ="form-back">
+          <%= link_to '< 戻る', channel_path(params[:id]), class:"form-back-text" %>
+        </div>
+        <div class ="form-title-left">
         チャンネル　編集
-      </div>
-      <div class ="channel-form-contents">
-      <%= form_with(model:@channel, local: true) do |f| %>
-        <div class = "error">
-          <%= render "shared/error_messages", resource: @channel %>
         </div>
-        <div class= "channel-form-top">
-          <div class="channel-form-field">
-            <div class = "channel-form-main-image">
-              <% f.label :image %>
-              <%= f.file_field :channel_main_image, class:"channel-form-main-image-input", id:"channel-form-main-image" %>
-              <span class="custom-channel-form-main-image", id="custom-channel-form-main-image-previews"></span>
-              <%= image_tag 'channel/index/photo-button.png',class:"channel-form-main-image-button" %>
+        <%# チャンネル編集フォーム ヘッダー End %>
+
+        <%# チャンネル編集フォーム エラー Start %>
+        <div class = "form-error">
+          <%= render 'shared/error_messages', resource: @channel %>
+        </div>
+        <%# チャンネル編集フォーム エラー End %>
+
+        <%# チャンネル編集フォーム 画像・名前 Start %>
+        <div class= "form-beside">
+          <div class="form-beside-field">
+            <% f.label :image,class:"form-field-label" %>
+            <div class = "form-field-firstimage">
+              <%= f.file_field :channel_main_image, class:"form-field-firstimage-image" %>
+              <span class="form-field-firstimage-custom", id="channel-main-image"></span>
+              <%= image_tag 'channel/index/photo-button.png',class:"form-field-firstimage-button" %>
             </div>
           </div>
-          <div class="channel-form-field">
-            <%= f.label :name, "チャンネル名",class:"channel-form-field-label" %><br />
-            <%= f.text_field :name, placeholder:"チャンネル名を入力してください", autofocus: true, autocomplete: "name",class:"channel-form-input1" %>
+          <div class="form-beside-field">
+            <%= f.label :name, "チャンネル名",class:"form-field-label" %><br />
+            <%= f.text_field :name, placeholder:"チャンネル名を入力してください", autofocus: true, autocomplete: "name",class:"form-field-string-name" %>
           </div>
         </div>
-        <div class = "channel-form-buttom">
-          <div class = "channel-form-field-labels">
-            <div class="channel-form-field-label">ID</div>
-            <div class="channel-form-field-label">パスワード</div>
-            <div class="channel-form-field-label">確認用</div>
-            <div class="channel-form-field-label-background">背景画像</div>
-            <div class="channel-form-field-label-introduction">紹介文</div>
-            <div class="channel-form-field-label-administrator">管理者</div>
-            <div class="channel-form-field-label-participant">参加者</div>
+        <%# チャンネル編集フォーム 画像・名前 End %>
+
+        <%# チャンネル編集フォーム その他 Start %>
+        <div class = "form-vertical">
+          <div class = "form-vertical-field">
+            <%= f.label :identification, "ID",class:"form-field-label" %>
+            <%= f.text_field :identification, placeholder:"IDを入力してください", autocomplete: "identification", class:"form-field-string" %>
           </div>
-          <div class = "channel-form-field-input">
-            <div class="channel-form-field">
-              <% f.label :identification %>
-              <%= f.text_field :identification, placeholder:"IDを入力してください", autocomplete: "identification", class:"channel-form-input2" %>
+          <div class="form-vertical-field">
+            <%= f.label :password, "パスワード",class:"form-field-label" %>
+            <%= f.password_field :password, placeholder:"パスワードを入力してください", autocomplete: "new-password", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :password_confirmation, "確認用",class:"form-field-label" %>
+            <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "new-password", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :channel_background_image, "背景画像",class:"form-field-label" %>
+            <div class = "form-field-secondimage">
+              <%= f.file_field :channel_background_image, class:"form-field-secondimage-image" %>
+              <span class="form-field-secondimage-custom", id="channel-backgroundimage-image"></span>
+              <%= image_tag 'channel/index/photo-button.png',class:"form-field-secondimage-button" %>
             </div>
-            <div class="channel-form-field">
-              <% f.label :password %>
-              <%= f.password_field :password, placeholder:"パスワードを入力してください", autocomplete: "password_digest", class:"channel-form-input2" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :introduction, "紹介文",class:"form-field-label" %>
+            <%= f.text_area :introduction, placeholder:"紹介文を入力してください", autocomplete: "profile",class:"form-field-text" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :administrator, "管理者",class:"form-field-label" %>
+            <div class = "form-field-users">
+              <% @users.each do |administrator| %>
+                <div class="form-field-user">
+                  <% checked = @channel.channel_users.exists?(user_id: administrator.id, administrator: true) %>
+                  <%= check_box_tag 'administrators[]', administrator.id, checked, class: "form-field-user-check", id: "administrator_#{administrator.id}" %>
+                  <% if administrator&.profile_image.present? %>
+                    <%= image_tag administrator.profile_image, class:"form-field-user-image" %>
+                  <% end %>
+                  <%= label_tag "administrator_#{administrator.id}", administrator.name, class: "form-field-user-name" %>
+                </div>
+              <% end %>
             </div>
-            <div class="channel-form-field">
-              <% f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "password_confirmation", class:"channel-form-input2" %>
-            </div>
-            <div class="channel-form-field">
-              <div class = "channel-form-background-image">
-                <% f.label :image %>
-                <%= f.file_field :channel_background_image, class:"channel-form-background-image-input", id:"channel-form-background-image" %>
-              <span class="custom-channel-form-background-image", id="custom-channel-form-background-image-previews"></span>
-              <%= image_tag 'channel/index/photo-button.png',class:"channel-form-background-image-button" %>
-            </div>
-            </div>
-            <div class="channel-form-field">
-              <% f.label :introduction %>
-              <%= f.text_area :introduction, placeholder:"紹介文を入力してください", autocomplete: "introduction",class:"channel-form-input3" %>
-            </div>
-            <div class="channel-form-field">
-              <div class ="channel-modal-content-administrator">
-                <% @administrators.each do |administrator| %>
-                  <div class ="channel-modal-content-user">
-                    <% checked = @channel.channel_users.exists?(user_id: administrator.id, administrator: true) %>
-                    <%= check_box_tag 'administrators[]', administrator.id, checked, class: "channel-modal-content-user-check" %>
-                    <% if administrator&.profile_image.present? %>
-                      <%= image_tag administrator.profile_image, class:"channel-modal-content-user-image" %>
-                    <% end %>
-                    <%= label_tag :administratorname,administrator.name, class: "channel-modal-content-user-name" %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-            <div class="channel-form-field">
-              <div class ="channel-modal-content-administrator">
-                <% @users.each do |user| %>
-                  <div class ="channel-modal-content-user">
-                    <% checked = @channel.channel_users.exists?(user_id: user.id, administrator: false) %>
-                    <%= check_box_tag 'users[]', user.id, checked, class: "channel-modal-content-user-check" %>
-                    <% if user&.profile_image.present? %>
-                      <%= image_tag user.profile_image, class:"channel-modal-content-user-image" %>
-                    <% end %>
-                    <%= label_tag :username,user.name, class: "channel-modal-content-user-name" %>
-                  </div>
-                <% end %>
-              </div>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :user, "参加者",class:"form-field-label" %>
+            <div class = "form-field-users">
+              <% @users.each do |user| %>
+                <div class="form-field-user">
+                  <% checked = @channel.channel_users.exists?(user_id: user.id, administrator: false) %>
+                  <%= check_box_tag "users[]", user.id, checked, class: "form-field-user-check", id: "user_#{user.id}" %>
+                  <% if user&.profile_image.present? %>
+                    <%= image_tag user.profile_image, class:"form-field-user-image" %>
+                  <% end %>
+                  <%= label_tag "user_#{user.id}", user.name, class: "form-field-user-name" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
-        <div class="channel-actions">
-          <%= f.submit "更新する",class:"channel-form-actions-button-update"%>
-          <div class="channel-form-actions-button-delete">
+        <%# チャンネル編集フォーム その他 End %>
+
+        <%# チャンネル編集フォーム アクション Start %>
+        <div class="form-action">
+          <%= f.submit "更新する",class:"form-action-submit"%>
+          <div class="form-action-delete">
           削除する
           </div>
-          <%# モーダル %>
-          <div class ="channel-form-actions-button-delete-modal">
-            <div class ="channel-form-actions-button-delete-modal-title">
-              本当に削除しますか？
-            </div>
-            <div class ="channel-form-actions-button-delete-modal-button">
-                <%= link_to 'Yes', channel_path(@channel.id), data: { turbo_method: :delete }, class:"channel-form-actions-button-delete-modal-button-y" %>
-              <div class ="channel-form-actions-button-delete-modal-button-n">
-                No
+
+          <%# チャンネル編集フォーム チャンネル削除 モーダル Start %>
+          <div class ="modal" id = "modal-channel-delete">
+            <div class= "modal-box">
+              <div class ="modal-box-title">
+                本当に削除しますか？
+              </div>
+              <div class ="modal-actions">
+                <%= link_to 'Yes', channel_path(@channel.id), data: { turbo_method: :delete }, class:"modal-actions-y" %>
+                <div class ="modal-actions-n">
+                  No
+                </div>
               </div>
             </div>
           </div>
-          <%# モーダル %>
+          <%# チャンネル編集フォーム チャンネル削除 モーダル End %>
+
         </div>
+        <%# チャンネル編集フォーム アクション End %>
+
       <% end %>
-      </div>
     </div>
+    <%# チャンネル編集フォーム END %>
+
   </div>
+  <%# チャンネル編集 Start %>
+
 </div>
+<%# 共通 END %>
