@@ -91,16 +91,16 @@
       <%# イベント詳細ページ 詳細 End %>
 
       <%# イベント詳細ページ 参加可否 Start %>
-      <div class="channel-event-action">
+      <div class="channel-event-attendance">
         <% channel_user = ChannelUser.find_by(user_id: current_user.id, channel_id: @channel.id) %>
         <% is_joined = ChannelEventUser.where(channel_user_id: channel_user.id, event_id: @event.id).exists? %>
         
         <%= form_with url: channel_event_channel_event_users_path(@channel, @event), method: :post do |form| %>
-          <%= form.submit "参加", class: is_joined ? "channel-event-action-joined" : "channel-event-action-not-joined", disabled: is_joined %>
+          <%= form.submit "参加", class: is_joined ? "channel-event-attendance-joined" : "channel-event-attendance-not-joined", disabled: is_joined %>
         <% end %>
 
         <%= form_with url: channel_event_channel_event_user_path(@channel, @event), method: :delete do |form| %>
-          <%= form.submit "不参加", class: is_joined ? "channel-event-action-not-joined" : "channel-event-action-joined", disabled: !is_joined %>
+          <%= form.submit "不参加", class: is_joined ? "channel-event-attendance-not-joined" : "channel-event-attendance-joined", disabled: !is_joined %>
         <% end %>
       </div>
       <%# イベント詳細ページ 参加可否 End %>

@@ -12,6 +12,7 @@ ja:
         name: 名前
       channel:
         password: パスワード
+        password_confirmation: 確認用
         name: 名前
         identification: ID
       event:

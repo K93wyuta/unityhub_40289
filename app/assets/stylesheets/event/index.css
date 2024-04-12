@@ -21,7 +21,28 @@
 }
 
 .channel-event-action{
+  height: 60px;
+  width: 60px;
+  background-color: #313E52;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  position: fixed;
+  right: 60px;
+  bottom: 60px; 
+}
 
+.channel-event-action:hover{
+  cursor: pointer;
+  background-color: #FFFFFF;
+  color: #313E52;
+  box-shadow:  0 5px 10px 0;
+  transition: .2s
 }
 
 .channel-calender-event-box{

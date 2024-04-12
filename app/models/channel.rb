@@ -16,7 +16,11 @@ class Channel < ApplicationRecord
   # Validation
   validates :name, presence: true
   validates :identification, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6, maximum: 128 }
+  validates :password, presence: true, confirmation: true,  length: { minimum: 6, maximum: 128 }, if: :password_required?
   # validates :introduction
+
+  def password_required?
+    new_record? || password.present? || password_confirmation.present?
+  end
 
 end

@@ -85,7 +85,9 @@
   <%# ユーザー ログアウト Start %>
   <div class = "channel-left-logout">
     <%= image_tag 'channel/index/logout.svg',class:"list-image" %>
-    <%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "list-text" %>
+    <div class ="list-text">
+      ログアウト
+    </div>
   </div>
   <%# ユーザー ログアウト End %>
 

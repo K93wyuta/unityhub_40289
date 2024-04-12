@@ -1,5 +1,7 @@
 class ChannelsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_channel, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_channel_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @channels = current_user.channels.includes(:channel_users)
@@ -31,7 +33,6 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.find(params[:id])
     session[:channel_id] = @channel.id
     @administrators = @channel.administrators
     @channel_users = @channel.channel_users
@@ -40,7 +41,6 @@ class ChannelsController < ApplicationController
   end
 
   def edit
-    @channel = Channel.find(params[:id])
     @users = User.all
     return if @channel.administrators.include?(current_user)
 
@@ -48,32 +48,39 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    channel = Channel.find(params[:id])
-    if channel.update(channel_params)
-      channel.tweets.destroy_all
-      channel.topics.destroy_all
-      channel.channel_users.destroy_all
+    if @channel.update(channel_params)
+      @channel.channel_users.destroy_all
       (params[:administrators] || []).each do |administrator_id|
-        channel.channel_users.create(user_id: administrator_id, administrator: true)
+        @channel.channel_users.create(user_id: administrator_id, administrator: true)
       end
       (params[:users] || []).each do |user_id|
-        channel.channel_users.create(user_id:, administrator: false)
+        unless @channel.channel_users.where(user_id: user_id, administrator: true).exists? 
+          @channel.channel_users.create(user_id:, administrator: false)
+        end
       end
       redirect_to channel_path(params[:id])
     else
-      @channel = Channel.find(params[:id])
       @users = User.all
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    channel = Channel.find(params[:id])
-    channel.destroy
+    @channel.destroy
     redirect_to root_path
   end
 
   private
+
+  def set_channel
+    @channel = Channel.find(params[:id])
+  end
+
+  def ensure_correct_channel_user
+    unless @channel.channel_users.exists?(user_id: current_user.id)
+      redirect_to root_path
+    end
+  end
 
   def channel_params
     params.require(:channel).permit(:channel_main_image, :name, :identification, :password,:password_confirmation, :channel_background_image,

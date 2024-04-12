@@ -1,16 +1,35 @@
+<%# ログアウト モーダル 共通 Start %>
+<div class="overlay"></div>
+<%# ログアウト モーダル 共通 End %>
+
 <%# チャンネル ログアウト モーダル Start %>
-  <div class="overlay"></div>
-  <div class= "modal">
-    <div class= "modal-box">
-      <div class ="modal-box-title">
-        チャンネルを退出しますか？
-      </div>
-      <div class ="modal-actions">
-        <%= link_to 'Yes', root_path, class:"modal-actions-y" %>
-        <div class ="modal-actions-n">
-          No
-        </div>
+<div class= "modal" id = "modal-channel-logout">
+  <div class= "modal-box">
+    <div class ="modal-box-title">
+      チャンネルを退出しますか？
+    </div>
+    <div class ="modal-actions">
+      <%= link_to 'Yes', root_path, class:"modal-actions-y" %>
+      <div class ="modal-actions-n">
+        No
       </div>
     </div>
   </div>
+</div>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# ユーザー ログアウト モーダル Start %>
+<div class= "modal" id = "modal-user-logout">
+  <div class= "modal-box">
+    <div class ="modal-box-title">
+      ログアウトしますか？
+    </div>
+    <div class ="modal-actions">
+      <%= link_to 'Yes', destroy_user_session_path, data: {turbo_method: :delete}, class:"modal-actions-y" %>
+      <div class ="modal-actions-n">
+        No
+      </div>
+    </div>
+  </div>
+</div>
 <%# チャンネル ログアウト モーダル End %>
