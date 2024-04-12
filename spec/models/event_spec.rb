@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   before do
+    user = FactoryBot.create(:user)
+    channel = FactoryBot.create(:channel)
+    channel_user = FactoryBot.create(:channel_user, user:, channel:)
     @event = FactoryBot.create(:event)
 
     sleep 0.1

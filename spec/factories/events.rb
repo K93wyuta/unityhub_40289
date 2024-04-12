@@ -7,11 +7,7 @@ FactoryBot.define do
     time_end { DateTime.now + 2.hours }
     place { 'Sample Place' }
     detail { 'Sample Detail' }
-    channel
-
-    after(:create) do |event|
-      channel_user = create(:channel_user, channel: event.channel)
-      create(:channel_event_user, channel_user:, event:)
-    end
+    association :channel
+    association :channel_user
   end
 end
