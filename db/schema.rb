@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_04_153501) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_12_034346) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_04_153501) do
     t.index ["channel_id"], name: "index_albums_on_channel_id"
   end
 
+  create_table "channel_chat_users", charset: "utf8", force: :cascade do |t|
+    t.bigint "chat_id", null: false
+    t.bigint "channel_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_user_id"], name: "index_channel_chat_users_on_channel_user_id"
+    t.index ["chat_id"], name: "index_channel_chat_users_on_chat_id"
+  end
+
   create_table "channel_event_users", charset: "utf8", force: :cascade do |t|
     t.bigint "channel_user_id", null: false
     t.bigint "event_id", null: false
@@ -73,6 +82,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_04_153501) do
     t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_chats_on_channel_id"
   end
 
   create_table "events", charset: "utf8", force: :cascade do |t|
@@ -134,10 +151,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_04_153501) do
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "albums", "channels"
+  add_foreign_key "channel_chat_users", "channel_users"
+  add_foreign_key "channel_chat_users", "chats"
   add_foreign_key "channel_event_users", "channel_users"
   add_foreign_key "channel_event_users", "events"
   add_foreign_key "channel_users", "channels"
   add_foreign_key "channel_users", "users"
+  add_foreign_key "chats", "channels"
   add_foreign_key "events", "channels"
   add_foreign_key "topics", "channel_users"
   add_foreign_key "topics", "channels"

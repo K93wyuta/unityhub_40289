@@ -1,0 +1,2 @@
+class ChannelChatUser < ApplicationRecord
+end
