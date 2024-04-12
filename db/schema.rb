@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_12_034346) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_12_035334) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -108,6 +108,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_034346) do
     t.index ["channel_user_id"], name: "index_events_on_channel_user_id"
   end
 
+  create_table "messages", charset: "utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "channel_chat_user_id", null: false
+    t.bigint "chat_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_chat_user_id"], name: "index_messages_on_channel_chat_user_id"
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+  end
+
   create_table "topics", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "text", null: false
@@ -159,6 +169,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_034346) do
   add_foreign_key "channel_users", "users"
   add_foreign_key "chats", "channels"
   add_foreign_key "events", "channels"
+  add_foreign_key "messages", "channel_chat_users"
+  add_foreign_key "messages", "chats"
   add_foreign_key "topics", "channel_users"
   add_foreign_key "topics", "channels"
   add_foreign_key "tweets", "channel_users"

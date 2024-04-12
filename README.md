@@ -60,6 +60,7 @@
 - has_many :channel_users, dependent: :destroy
 - has_many :administrators, -> { where(channel_users: { administrator: true }) }, through: :channel_users, source: :user
 - has_many :tweets, dependent: :destroy
+- has_many :chats, dependent: :destroy
 - has_many :events, dependent: :destroy
 - has_many :albums, dependent: :destroy
 - has_many :topics, dependent: :destroy
@@ -78,6 +79,7 @@
 
 ### Association
 - has_many :tweets
+- has_many :channel_chat_users, dependent: :destroy
 - has_many :events
 - has_many :channel_event_users, dependent: :destroy
 - has_many :topics

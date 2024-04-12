@@ -49,13 +49,12 @@ class ChannelsController < ApplicationController
 
   def update
     if @channel.update(channel_params)
-      @channel.channel_users.destroy_all
       (params[:administrators] || []).each do |administrator_id|
-        @channel.channel_users.create(user_id: administrator_id, administrator: true)
+        @channel.channel_users.find_or_create_by(user_id: administrator_id, administrator: true)
       end
       (params[:users] || []).each do |user_id|
         unless @channel.channel_users.where(user_id: user_id, administrator: true).exists? 
-          @channel.channel_users.create(user_id:, administrator: false)
+          @channel.channel_users.find_or_create_by(user_id: user_id, administrator: false)
         end
       end
       redirect_to channel_path(params[:id])

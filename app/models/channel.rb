@@ -10,6 +10,7 @@ class Channel < ApplicationRecord
   has_many :administrators, -> { where(channel_users: { administrator: true }) }, through: :channel_users, source: :user
   has_many :albums, dependent: :destroy
   has_many :tweets, dependent: :destroy
+  has_many :chats, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :events, dependent: :destroy
 
