@@ -19,9 +19,9 @@
     <%# 新規会員登録フォーム 画像・名前 Start %>
     <div class= "form-beside">
       <div class="form-beside-field">
-        <% f.label :image,class:"form-field-label" %>
+        <% f.label :profile_image,class:"form-field-label" %>
         <div class = "form-field-firstimage">
-          <%= f.file_field :profile_image, class:"form-field-firstimage-image" %>
+          <%= f.file_field :profile_image, class:"form-field-firstimage-image", id: 'user_profile_image' %>
           <span class="form-field-firstimage-custom", id="user-profile-image"></span>
           <%= image_tag 'user/registrations/photo-button.png',class:"form-field-firstimage-button" %>
         </div>
@@ -48,11 +48,11 @@
         <%= f.password_field :password_confirmation, placeholder:"確認のため、もう一度パスワードを入力してください", autocomplete: "new-password", class:"form-field-string" %>
       </div>
       <div class="form-vertical-field">
-        <%= f.label :gender, "性別",class:"form-field-label" %>
+        <%= f.label :gender_id, "性別",class:"form-field-label" %>
         <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"form-field-select"}) %>
       </div>
       <div class="form-vertical-field">
-        <%= f.label :age, "年齢",class:"form-field-label" %>
+        <%= f.label :age_id, "年齢",class:"form-field-label" %>
         <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"form-field-select"}) %>
       </div>
       <div class="form-vertical-field">
@@ -60,7 +60,7 @@
         <%= f.date_field :birthday, class:"form-field-calendar" %>
       </div>
       <div class="form-vertical-field">
-        <%= f.label :mbti, "MBTI",class:"form-field-label" %>
+        <%= f.label :mbti_id, "MBTI",class:"form-field-label" %>
         <%= f.collection_select(:mbti_id, Mbti.all, :id, :name, {}, {class:"form-field-select"}) %>
       </div>
       <div class="form-vertical-field">
@@ -72,9 +72,9 @@
         <%= f.text_field :paypay, placeholder:"PayPay IDを入力してください", autocomplete: "paypay",class:"form-field-string" %>
       </div>
       <div class="form-vertical-field">
-        <%= f.label :image, "背景画像",class:"form-field-label" %>
+        <%= f.label :background_image, "背景画像",class:"form-field-label" %>
         <div class = "form-field-secondimage">
-          <%= f.file_field :background_image, class:"form-field-secondimage-image" %>
+          <%= f.file_field :background_image, class:"form-field-secondimage-image", id: 'user_background_image' %>
           <span class="form-field-secondimage-custom", id="user-backgroundimage-image"></span>
           <%= image_tag 'user/registrations/photo-button.png',class:"form-field-secondimage-button" %>
         </div>
@@ -87,7 +87,7 @@
     <%# 新規会員登録フォーム その他 End %>
 
     <%# 新規会員登録フォーム アクション Start %>
-    <div class="form-action">
+    <div class="form-action-center">
       <%= f.submit "新規登録",class:"form-action-submit"%>
     </div>
     <%# 新規会員登録フォーム アクション End %>
