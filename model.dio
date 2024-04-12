@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ylnEgA9xmws8Te3zRa_1" name="ページ1">
-        <mxGraphModel dx="887" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="976" dy="574" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -207,18 +207,15 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="81" value="&lt;span style=&quot;text-align: left;&quot;&gt;chat&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;strokeColor=#808080;fontFamily=Helvetica;fontColor=#FFFFFF;fillColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="910" y="830" width="159" height="120" as="geometry">
+                    <mxGeometry x="910" y="830" width="159" height="90" as="geometry">
                         <mxRectangle x="1101" y="210" width="60" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="82" value="(images)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="81" vertex="1">
+                <mxCell id="83" value="name" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="81" vertex="1">
                     <mxGeometry y="30" width="159" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="83" value="name" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="81" vertex="1">
-                    <mxGeometry y="60" width="159" height="30" as="geometry"/>
-                </mxCell>
                 <mxCell id="201" value="&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;channel&lt;/span&gt;" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=1;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="81" vertex="1">
-                    <mxGeometry y="90" width="159" height="30" as="geometry"/>
+                    <mxGeometry y="60" width="159" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="108" value="&lt;font color=&quot;#ffffff&quot;&gt;album&lt;/font&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;strokeColor=#808080;fontFamily=Helvetica;fontColor=#333333;fillColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="1410" y="120" width="160" height="120" as="geometry">
@@ -245,10 +242,10 @@
                 <mxCell id="127" value="(images)" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="116" vertex="1">
                     <mxGeometry y="60" width="159" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="128" value="channel_group_user" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="116" vertex="1">
+                <mxCell id="128" value="channel_chat_user" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="116" vertex="1">
                     <mxGeometry y="90" width="159" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="118" value="group" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="116" vertex="1">
+                <mxCell id="118" value="chat" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="116" vertex="1">
                     <mxGeometry y="120" width="159" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="210" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#000000;fontColor=#808080;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;" parent="1" edge="1">
@@ -343,7 +340,7 @@
                         <mxRectangle x="1101" y="210" width="60" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="96" value="group" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="95" vertex="1">
+                <mxCell id="96" value="chat" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="95" vertex="1">
                     <mxGeometry y="30" width="160" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="97" value="&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;channel_user&lt;/span&gt;" style="text;strokeColor=#808080;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;rounded=0;fontFamily=Helvetica;fontColor=#808080;dashed=1;" parent="95" vertex="1">

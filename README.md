@@ -106,18 +106,69 @@
 ### Validation
 - validate :either_text_or_image
 
+## chatモデル
+### Tebel
+| Column  | Type                    | Options                       |
+| ------- | ----------------------- | ------------------------------|
+| name    | string                  | null: false                   |
+| channel | references              | null: false,foreign_key: true |
+
+### Association
+- has_many :channel_chat_users, dependent: :destroy
+- has_many :messages
+
+- belongs_to :channel
+
+### Validation
+- validates :name, presence: true
+
+## channel_chat_userモデル
+### テーブル
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ------------------------------|
+| chat         | references | null: false,foreign_key: true |
+| channel_user | references | null: false,foreign_key: true |
+
+### Association
+- has_many :messages
+
+- belongs_to :chat
+- belongs_to :channel_user
+
+### Validation
+- none
+
+## messageモデル
+### Tebel
+| Column            | Type                    | Options                       |
+| ----------------- | ----------------------- | ------------------------------|
+| (image)           | has_one_attachedにて実装 |                               |
+| content           | text                    | null: false                   |
+| channel_chat_user | references              | null: false,foreign_key: true |
+| chat              | references              | null: false,foreign_key: true |
+
+### Association
+- has_one_attached :message_image
+
+- belongs_to :channel_chat_user
+- belongs_to :chat
+
+### Validation
+- validate :either_text_or_image
+
 ## eventモデル
 ### Tebel
-| Column     | Type       | Options                       |
-| ---------- | ---------- | ------------------------------|
-| name       | string     | null: false                   |
-| date_start | date       | null: false                   |
-| date_end   | date       | null: false                   |
-| time_start | date       | null: false                   |
-| time_end   | date       | null: false                   |
-| place      | string     |                               |
-| detail     | text       |                               |
-| channel    | references | null: false,foreign_key: true |
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ------------------------------|
+| name         | string     | null: false                   |
+| date_start   | date       | null: false                   |
+| date_end     | date       | null: false                   |
+| time_start   | date       | null: false                   |
+| time_end     | date       | null: false                   |
+| place        | string     |                               |
+| detail       | text       |                               |
+| channel      | references | null: false,foreign_key: true |
+| channel_user | references | null: false,foreign_key: true |
 
 ### Association
 - has_one_attached :event_image
@@ -125,6 +176,7 @@
 - has_many :channel_event_users, dependent: :destroy
 
 - belongs_to :channel
+- belongs_to :channel_user
 
 ### Validation
 - validates :name, presence: true
