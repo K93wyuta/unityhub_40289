@@ -1,24 +1,29 @@
-const tweetPreview = () => {
-  const tweetPreviewList = document.getElementById('tweet-image');
-  const tweetFileField = document.querySelector('input[type="file"][name="tweet[tweet_image]"]');
+const imagePreview = (previewListId, fileFieldSelector, previewImageClass) => {
+  const previewList = document.getElementById(previewListId);
+  const fileField = document.querySelector(fileFieldSelector);
 
-  if (tweetFileField !== null) {
-  tweetFileField.addEventListener('change', (e) => {
-    const tweetAlreadyPreview = document.querySelector('.tweet-preview');
-    if (tweetAlreadyPreview){
-      tweetAlreadyPreview.remove();
-    };
+  if (fileField !== null) {
+    fileField.addEventListener('change', (e) => {
+      const alreadyPreview = document.querySelector('.'+previewImageClass);
+      if (alreadyPreview) {
+        alreadyPreview.remove();
+      };
 
-    const tweetFile = e.target.files[0];
-    const tweetBlob = window.URL.createObjectURL(tweetFile);
+      const file = e.target.files[0];
+      const blob = window.URL.createObjectURL(file);
 
-    const tweetPreviewImage = document.createElement('img');
-    tweetPreviewImage.setAttribute('class', 'tweet-preview');
-    tweetPreviewImage.setAttribute('src', tweetBlob);
+      const previewImage = document.createElement('img');
+      previewImage.setAttribute('class', previewImageClass);
+      previewImage.setAttribute('src', blob);
 
-    tweetPreviewList.appendChild(tweetPreviewImage);
-  });
- }
+      previewList.appendChild(previewImage);
+    });
+  }
 };
 
+// Define preview functions for tweet and message.
+const tweetPreview = () => imagePreview('tweet-image', 'input[type="file"][name="tweet[tweet_image]"]', 'tweet-preview');
+const messagePreview = () => imagePreview('message-image', 'input[type="file"][name="message[message_image]"]', 'message-preview');
+
 window.addEventListener('turbo:load', tweetPreview);
+window.addEventListener('turbo:load', messagePreview);

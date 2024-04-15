@@ -68,9 +68,7 @@
           <% @users.each do |administrator| %>
             <div class="form-field-user">
               <%= check_box_tag 'administrators[]', administrator.id, false, class: "form-field-user-check", id: "administrator_#{administrator.id}" %>
-              <% if administrator&.profile_image.present? %>
-                <%= image_tag administrator.profile_image, class:"form-field-user-image" %>
-              <% end %>
+                <%= image_tag administrator.profile_image.presence || 'common/noimage.png', class:"form-field-user-image" %>
               <%= label_tag "administrator_#{administrator.id}", administrator.name, class: "form-field-user-name" %>
             </div>
           <% end %>
@@ -82,9 +80,7 @@
           <% @users.each do |user| %>
             <div class="form-field-user">
               <%= check_box_tag "users[]", user.id, false, class: "form-field-user-check", id: "user_#{user.id}" %>
-              <% if user&.profile_image.present? %>
-                <%= image_tag user.profile_image, class:"form-field-user-image" %>
-              <% end %>
+                <%= image_tag user.profile_image.presence || 'common/noimage.png', class:"form-field-user-image" %>
               <%= label_tag "user_#{user.id}", user.name, class: "form-field-user-name" %>
             </div>
           <% end %>

@@ -1,0 +1,97 @@
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
+<div class = "channel">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# チャット Start %>
+  <div class = "channel-right">
+    <div class = "channel-chat">
+      
+      <%# チャット チャット選択 Start %>
+      <div class ="chanel-chat-left">
+        <%= form_tag channel_chats_path(@chat), method: :get, class: "chanel-chat-left-search" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "キーワードを入力してください", class:"chanel-chat-left-search-input" %>
+            <div class = "chanel-chat-left-search-button" >
+            <%= image_submit_tag 'chat/index/search.svg', class: "chanel-tweet-chat-search-button-image" %>
+          </div>
+        <% end %>
+        <%= link_to new_channel_chat_path(@channel) do %>
+          <div class ="chanel-chat-left-action">
+            <div class ="chanel-chat-left-action-plus">
+              +
+            </div>
+            <div class ="chanel-chat-left-action-text">
+              新規作成
+            </div>
+          </div>
+        <% end %>
+        <div class ="chanel-tweet-left-users">
+          <% @chats.each do |chat| %>
+            <%= link_to channel_chat_path(chat.channel,chat), class:"chanel-chat-left-user" do %>
+                <%= image_tag(chat.chat_image.presence || 'common/noimage.png', class: "chanel-chat-left-user-image") %>
+              <div class ="chanel-chat-left-user-name">
+                <%= chat.name %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%# チャット チャット選択 End %>
+
+      <%# チャット チャット表示部分 Start %>
+      <div class ="chanel-chat-right">
+        <div class ="chanel-chat-right-chats">
+          <% @messages.each do |message| %>
+            <div class ="chanel-chat-right-chat">
+                  <%= image_tag(message.channel_chat_user.channel_user.user.profile_image || 'common/noimage.png', class: "chanel-chat-right-chat-userimage") %>
+              <div class ="chanel-chat-right-chat-content">
+                <div class ="chanel-chat-right-chat-content-top">
+                  <div class ="chanel-chat-right-chat-content-top-username">
+                    <%= message.channel_chat_user.channel_user.user.name %>
+                  </div>
+                  <div class ="chanel-chat-right-chat-content-top-date">
+                    <%= message.created_at.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[message.created_at.wday] + ')' %>
+                  </div>
+                </div>
+                <div class ="chanel-chat-right-chat-content-text">
+                  <%= message.content %>
+                </div>
+                <div class ="chanel-chat-right-chat-content-buttom">
+                  <% if message.message_image.attached? %>
+                    <%= image_tag(message.message_image, class: "chanel-chat-right-chat-content-buttom-image") %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class = "chanel-chat-right-form" >
+          <%= form_with model:[@channel, @chat, @message], local: true do |f| %>
+            <%= f.text_area :content, placeholder:"messageを入力してください", autocomplete: "content",class:"chanel-chat-right-form-top" %>
+            <div class ="chanel-chat-right-form-buttom">
+              <div class ="chanel-chat-right-form-buttom-image">
+                <div class ="chanel-chat-right-form-buttom-image-plus">
+                  +
+                </div>
+                <%= f.file_field :message_image, class:"chanel-chat-right-form-buttom-image-input" %>
+                <span class="chanel-chat-right-form-buttom-image-input-custom", id="message-image"></span>
+              </div>
+              <%= image_submit_tag 'tweet/index/tweet.svg', class: "chanel-chat-right-form-buttom-image-submit",id: "message-submit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%# チャット チャット表示部分 End %>
+
+    </div>
+  </div>
+  <%# チャット End %>
+
+</div>
+<%# チャンネル 共通 End %>

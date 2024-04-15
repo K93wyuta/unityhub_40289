@@ -9,7 +9,7 @@
 
   <%# チャンネル表示部分 Start %>
   <div class = "channel-left-channel">
-    <%= image_tag(@channel.channel_main_image, class: "channel-left-channel-image") if @channel&.channel_main_image.present? %>
+    <%= image_tag(@channel.channel_main_image.presence || 'common/noimage.png', class: "channel-left-channel-image") %>
     <div class = "channel-left-channel-name">
       <%= @channel.name %>
     </div>
@@ -31,6 +31,14 @@
         <%= image_tag 'channel/index/nav-tweet.svg',class:"list-image" %>
         <div class = "list-text">
           ツイート
+        </div>
+      </li>
+    <% end %>
+    <%= link_to channel_chats_path(@channel) do %>
+      <li class = "channel-left-nav-list">
+        <%= image_tag 'channel/index/nav-chat.svg',class:"list-image" %>
+        <div class = "list-text">
+          チャット
         </div>
       </li>
     <% end %>

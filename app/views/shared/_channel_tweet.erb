@@ -22,19 +22,15 @@
           </div>
         <% end %>
         <div class ="chanel-tweet-left-users">
-          <% if @channel&.channel_main_image.present? %>
             <%= link_to channel_tweets_path(@channel), class:"chanel-tweet-left-user" do %>
-              <%= image_tag(@channel.channel_main_image, class: "chanel-tweet-left-user-image") %>
+              <%= image_tag(@channel.channel_main_image.presence || 'common/noimage.png', class: "chanel-tweet-left-user-image") %>
               <div class ="chanel-tweet-left-user-name">
                 All
               </div>
-            <% end %>
           <% end %>
           <% @channel_users.each do |channel_user| %>
             <%= link_to channel_tweet_path(channel_user.channel,channel_user), class:"chanel-tweet-left-user" do %>
-              <% if channel_user.user&.profile_image.present? %>
-                <%= image_tag(channel_user.user.profile_image, class: "chanel-tweet-left-user-image") %>
-              <% end %>
+                <%= image_tag(channel_user.user.profile_image.presence || 'common/noimage.png', class: "chanel-tweet-left-user-image") %>
               <div class ="chanel-tweet-left-user-name">
                 <%= channel_user.user.name %>
               </div>
@@ -49,9 +45,7 @@
         <div class ="chanel-tweet-right-tweets">
           <% @tweets.each do |tweet| %>
             <div class ="chanel-tweet-right-tweet">
-              <% if tweet.channel_user&.user&.profile_image.present? %>
-                <%= image_tag(tweet.channel_user.user.profile_image, class: "chanel-tweet-right-tweet-userimage") %>
-              <% end %>
+                <%= image_tag(tweet.channel_user.user.profile_image.presence || 'common/noimage.png', class: "chanel-tweet-right-tweet-userimage") %>
               <div class ="chanel-tweet-right-tweet-content">
                 <div class ="chanel-tweet-right-tweet-content-top">
                   <div class ="chanel-tweet-right-tweet-content-top-username">
@@ -113,7 +107,7 @@
           <%= f.file_field :tweet_image, class:"modal-box-buttom-image-input" %>
           <span class="modal-box-buttom-image-input-custom", id="tweet-image"></span>
         </div>
-      <%= image_submit_tag 'tweet/index/tweet.svg', class: "modal-box-buttom-botton-image",id: "tweet-submit" %>
+        <%= image_submit_tag 'tweet/index/tweet.svg', class: "modal-box-buttom-botton-image",id: "tweet-submit" %>
       </div>
     <% end %>
   </div>

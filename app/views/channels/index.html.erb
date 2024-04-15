@@ -18,7 +18,7 @@
     <% else %>
       <% @channels.each do |channel| %>
         <div class ="channel-index-list">
-          <%= image_tag(channel.channel_main_image, class:"channel-index-list-image") if channel.channel_background_image.attached? %>
+          <%= image_tag(channel.channel_main_image.presence || 'common/noimage.png', class:"channel-index-list-image") %>
           <div class ="channel-index-list-title">
             <%= channel.name %>
           </div>

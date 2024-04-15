@@ -1,0 +1,72 @@
+/* ===== チャット メッセージ投稿部分 ===================== */
+.chanel-chat-right-form{
+  width: calc(100% - 600px );
+  border: #D8D8D8 1px solid;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 10px;
+  padding: 10px;
+}
+
+.chanel-chat-right-form-top{
+  height: 50px;
+  width: 100%;
+  border: none;
+  resize: none;
+}
+
+.chanel-chat-right-form-buttom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chanel-chat-right-form-buttom-image{
+  position: relative;
+  display: flex;
+}
+
+.chanel-chat-right-form-buttom-image-plus{
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  width: 40px;
+  background-color: #D8D8D8;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.chanel-chat-right-form-buttom-image-input{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.message-preview{
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.chanel-chat-right-form-buttom-image-input:hover{
+  cursor: pointer;
+  transition: .2s;
+}
+
+.chanel-chat-right-form-buttom-image-input-custom{
+  
+}
+
+.chanel-chat-right-form-buttom-image-submit{
+  height: 20px;
+}
+  /* ================================================== */

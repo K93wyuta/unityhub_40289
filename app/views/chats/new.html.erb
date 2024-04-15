@@ -1,0 +1,77 @@
+<%# チャンネル ログアウト モーダル Start %>
+<%= render "shared/channel_left_modal" %>
+<%# チャンネル ログアウト モーダル End %>
+
+<%# チャンネル 共通 Start %>
+<div class = "channel">
+
+  <%# チャンネル ナビゲーション Start %>
+  <%= render "shared/channel_left" %>
+  <%# チャンネル ナビゲーション End %>
+
+  <%# チャット 新規作成 Start %>
+  <div class = "channel-right">
+
+    <%# チャット 新規作成フォーム Start %>
+    <div class = "form-left">
+      <%= form_with(model:[@channel ,@chat], local: true) do |f| %>
+      
+        <%# チャット 新規作成フォーム ヘッダー Start %>
+        <div class ="form-back">
+          <%= link_to '< 戻る', :back, class:"form-back-text" %>
+        </div>
+        <div class ="form-title-left">
+          チャット　作成
+        </div>
+        <%# チャット 新規作成フォーム ヘッダー End %>
+
+        <%# チャット 新規作成フォーム エラー Start %>
+        <div class = "form-error-left">
+          <%= render 'shared/error_messages', resource: @chat %>
+        </div>
+        <%# チャット 新規作成フォーム エラー End %>
+
+        <%# チャット 新規作成フォーム その他 Start %>
+        <div class = "form-vertical">
+          <div class="form-vertical-field">
+            <%= f.label :chat_image, "チャット画像",class:"form-field-label" %>
+            <div class = "form-field-chatimage">
+              <%= f.file_field :chat_image, class:"form-field-chatimage-image" %>
+              <span class="form-field-chatimage-custom", id="chat-image"></span>
+              <%= image_tag 'channel/index/photo-button.png',class:"form-field-chatimage-button" %>
+            </div>
+          </div>
+          <div class = "form-vertical-field">
+            <%= f.label :name, "チャット名",class:"form-field-label" %>
+            <%= f.text_field :name, placeholder:"チャット名を入力してください", autocomplete: "identification", class:"form-field-string" %>
+          </div>
+          <div class="form-vertical-field">
+            <%= f.label :user, "ユーザー選択",class:"form-field-label" %>
+            <div class = "form-field-users">
+              <% @channel_users.each do |channel_user| %>
+                <div class="form-field-user">
+                  <%= check_box_tag "users[]", channel_user.user.id, false, class: "form-field-user-check", id: "user_#{channel_user.id}" %>
+                    <%= image_tag channel_user.user.profile_image.presence || 'common/noimage.png', class:"form-field-user-image" %>
+                  <%= label_tag "user_#{channel_user.id}", channel_user.user.name, class: "form-field-user-name" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <%# チャット 新規作成フォーム その他 End %>
+
+        <%# チャット 新規作成フォーム アクション Start %>
+        <div class="form-action">
+          <%= f.submit "作成する",class:"form-action-submit"%>
+        </div>
+        <%# チャット 新規作成フォーム アクション End %>
+
+      <% end %>
+    </div>
+    <%# チャット 新規作成フォーム End %>
+
+  </div>
+  <%# チャット 新規作成 End %>
+
+</div>
+<%# チャンネル 共通 End %>

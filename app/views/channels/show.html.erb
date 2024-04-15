@@ -15,9 +15,9 @@
 
       <%# チャンネル詳細ページ ヘッダー Start %>
       <div class = "channel-show-top">
-        <%= image_tag @channel.channel_background_image, class:"channel-show-top-background" if @channel&.channel_background_image.present?%>
+        <%= image_tag @channel.channel_background_image.presence || 'common/noimage.png', class:"channel-show-top-background" %>
         <div class ="channel-show-top-channel">
-          <%= image_tag @channel.channel_main_image ,class: "channel-show-top-channel-image" if @channel&.channel_main_image.present?%>
+          <%= image_tag @channel.channel_main_image.presence || 'common/noimage.png' ,class: "channel-show-top-channel-image" %>
           <div class ="channel-show-top-channel-name">
             <%= @channel.name %>
           </div>
@@ -52,7 +52,7 @@
             <% @administrators.each do |administrator| %>
               <li class ="channel-show-buttom-user">
                 <%= link_to user_path(administrator) do %>
-                  <%= image_tag administrator.profile_image, class:"channel-show-buttom-user-image" if administrator&.profile_image.present?  %>
+                  <%= image_tag administrator.profile_image.presence || 'common/noimage.png', class:"channel-show-buttom-user-image" %>
                   <div class ="channel-show-buttom-user-name">
                     <%= administrator.name %>
                   </div>
@@ -69,7 +69,7 @@
             <% @channel_users.each do |user| %>
               <li class ="channel-show-buttom-user">
                 <%= link_to user_path(user.user.id) do %>
-                  <%= image_tag user.user.profile_image, class:"channel-show-buttom-user-image" if user&.user&.profile_image.present? %>
+                  <%= image_tag user.user.profile_image.presence || 'common/noimage.png', class:"channel-show-buttom-user-image" %>
                   <div class ="channel-show-buttom-user-name">
                     <%= user.user.name %>
                   </div>
@@ -105,7 +105,7 @@
             <% @topics.each do |topic| %>
               <li class ="channel-show-buttom-topics-list">
                 <div class ="channel-show-buttom-topics-list-left">
-                  <%= image_tag topic.channel_user.user.profile_image, class:"channel-show-buttom-topics-list-left-image"  if topic.channel_user&.user&.profile_image.present? %>
+                  <%= image_tag topic.channel_user.user.profile_image.presence || 'common/noimage.png', class:"channel-show-buttom-topics-list-left-image" %>
                 </div>
                 <div class ="channel-show-buttom-topics-list-right">
                   <div class ="channel-show-buttom-topics-list-right-top">

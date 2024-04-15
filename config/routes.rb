@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :channels do
     resources :tweets, only: [:index, :show, :create]
+    resources :chats do
+      resource :messages, only: [:create]
+    end
     resources :events do
       resources :channel_event_users, only: [:create, :destroy]
     end

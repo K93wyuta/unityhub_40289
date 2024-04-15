@@ -15,9 +15,9 @@
 
       <%# ユーザー詳細ページ ヘッダー Start %>
       <div class = "channel-user-top">
-        <%= image_tag @user.background_image, class:"channel-show-top-background" if @user&.background_image.present? %>
+        <%= image_tag @user.background_image.presence || 'common/noimage.png', class:"channel-show-top-background"%>
         <div class ="channel-user-top-user">
-          <%= image_tag @user.profile_image ,class: "channel-show-top-user-image" if @user&.profile_image.present? %>
+          <%= image_tag @user.profile_image.presence || 'common/noimage.png' ,class: "channel-show-top-user-image" %>
           <div class ="channel-user-top-user-name">
             <%= @user.name %>
           </div>
@@ -41,7 +41,9 @@
                 性別
               </div>
               <div class ="channel-user-buttom-column-content-string">
-                <%= @user.gender.name %>
+                <% if @user.gender.present? %>
+                  <%= @user.gender.name %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -52,7 +54,9 @@
                 年齢
               </div>
               <div class ="channel-user-buttom-column-content-string">
-                <%= @user.age.name %>
+                <% if @user.age.present? %>
+                  <%= @user.age.name %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -63,7 +67,9 @@
                 誕生日
               </div>
               <div class ="channel-user-buttom-column-content-string">
+                <% if @user.birthday.present? %>
                 <%= @user.birthday.strftime('%Y年%m月%d日') + '(' + %w(日 月 火 水 木 金 土)[@user.birthday.wday] + ')' %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -74,7 +80,9 @@
                 MBTI
               </div>
               <div class ="channel-user-buttom-column-content-string">
+                <% if @user.mbti.present? %>
                 <%= @user.mbti.name %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -85,7 +93,9 @@
                 LINE ID
               </div>
               <div class ="channel-user-buttom-column-content-string">
+                <% if @user.line.present? %>
                 <%= @user.line %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -96,7 +106,9 @@
                 PayPay ID
               </div>
               <div class ="channel-user-buttom-column-content-string">
+                <% if @user.paypay.present? %>
                 <%= @user.paypay %>
+                <% end %>
               </div>
             </div>
           </li>
@@ -108,7 +120,9 @@
               プロフィール
             </div>
             <div class ="channel-user-buttom-profile-content-string">
+              <% if @user.profile.present? %>
               <%= @user.profile %>
+              <% end %>
             </div>
           </div>
         </div>

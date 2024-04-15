@@ -26,6 +26,7 @@ window.addEventListener('turbo:load', () => {
   imagePreview('background_image', 'user-backgroundimage-image', 'secondimage-preview');
   imagePreview('channel_main_image', 'channel-main-image', 'firstimage-preview', 'channel');
   imagePreview('channel_background_image', 'channel-backgroundimage-image', 'secondimage-preview', 'channel');
+  imagePreview('chat_image', 'chat-image', 'chat-preview', 'chat');
 });
 
 window.addEventListener('turbo:render', () => {

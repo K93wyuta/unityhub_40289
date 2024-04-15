@@ -27,7 +27,7 @@
         <% @albums.each do |album| %>
           <%= link_to channel_album_path(@channel, album) do %>
             <div class ="chanel-album-list">
-              <%= image_tag url_for(album.album_images.first) ,class:"chanel-album-list-image" if album.album_images.attached? %>
+<%= album.album_images.attached? ? image_tag(url_for(album.album_images.first), class: "chanel-album-list-image") : image_tag('common/noimage.png', class: "chanel-album-list-image") %>
               <div class ="chanel-album-list-content">
                 <div class ="chanel-album-list-content-title">
                   <%= album.title %>

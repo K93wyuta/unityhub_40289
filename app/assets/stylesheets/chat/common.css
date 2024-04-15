@@ -1,0 +1,177 @@
+/* ===== チャット ==================================== */
+.channel-chat{
+  display: flex;
+}
+/* ================================================== */
+
+/* ===== チャット グループ選択 ========================= */
+.chanel-chat-left{
+  position: fixed;
+  background-color: #465163;
+  height: 100vh;
+  width: 300px;
+  padding: 20px;
+}
+/* ================================================== */
+
+/* ===== チャット グループ選択 検索 ===================== */
+.chanel-chat-left-search{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.chanel-chat-left-search-input{
+  width: 220px;
+  background-color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 10px 0 0 10px;
+  font-size: 12px;
+  border: none;
+}
+
+.chanel-chat-left-search-button{
+  width: 40px;
+  border-radius: 0 10px 10px 0;
+  background-color: #313E52;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chanel-chat-left-search-button:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: .2s
+}
+
+.chanel-tweet-chat-search-button-image{
+
+}
+/* ================================================== */
+
+/* ===== チャット グループ選択 一覧 ===================== */
+.chanel-chat-left-action{
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chanel-chat-left-action-plus{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #313E52;
+  font-weight: bold;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chanel-chat-left-action:hover .chanel-chat-left-action-plus{
+  background-color: #FFFFFF;
+  color: #313E52;
+  transition: .2s
+}
+
+.chanel-chat-left-action-text{
+  font-size: 14px;
+}
+
+.chanel-tweet-left-users{
+
+}
+
+.chanel-chat-left-user{
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.chanel-chat-left-user:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: .2s
+}
+
+.chanel-chat-left-user-image{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.chanel-chat-left-user-name{
+  color: #FFFFFF;
+  font-size: 14px;
+}
+/* ================================================== */
+
+/* ===== チャット チャット表示部分 ====================== */
+.chanel-chat-right{
+  width: 100%;
+  margin-left: 300px;
+  padding: 40px;
+}
+
+.chanel-chat-right-chats{
+  height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+.chanel-chat-right-chat{
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.chanel-chat-right-chat-userimage{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.chanel-chat-right-chat-content{
+
+}
+
+.chanel-chat-right-chat-content-top{
+  display: flex;
+}
+
+.chanel-chat-right-chat-content-top-username{
+  font-size: 12px;
+  margin: 0 20px 6px 0;
+}
+
+.chanel-chat-right-chat-content-top-date{
+  font-size: 12px;
+}
+
+.chanel-chat-right-chat-content-text{
+  background-color: #D8D8D8;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+
+.chanel-chat-right-chat-content-buttom{
+  display: flex;
+}
+
+.chanel-chat-right-chat-content-buttom-image{
+  height: 160px;
+  width: 160px;
+  border-radius: 10px;
+  margin-right: 10px;
+  box-shadow: 0 1px 2px 0;
+}
+/* ================================================== */

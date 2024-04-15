@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       channel: チャンネル
       tweet: ツイート
+      chat: チャット
       event: イベント
       album: アルバム
 
@@ -15,6 +16,8 @@ ja:
         password_confirmation: 確認用
         name: 名前
         identification: ID
+      chat:
+        name: チャット名
       event:
         name: イベント名
         date_start: 開始日
