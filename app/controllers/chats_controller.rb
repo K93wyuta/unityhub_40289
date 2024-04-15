@@ -36,8 +36,8 @@ class ChatsController < ApplicationController
 
   def set_chats
     @chats = @channel.chats.joins(:channel_chat_users)
-                           .where(channel_chat_users: { channel_user: current_user.channel_users })
-    @chats = @chats.where("chats.name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+                     .where(channel_chat_users: { channel_user: current_user.channel_users })
+    @chats = @chats.where('chats.name LIKE ?', "%#{params[:search]}%") if params[:search].present?
     @chats = @chats.order(created_at: :desc)
   end
 
@@ -49,7 +49,7 @@ class ChatsController < ApplicationController
   end
 
   def find_channel_user(user_id)
-    ChannelUser.find_by(user_id: user_id, channel_id: @channel.id)
+    ChannelUser.find_by(user_id:, channel_id: @channel.id)
   end
 
   def chat_params

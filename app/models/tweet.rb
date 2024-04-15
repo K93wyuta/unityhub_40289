@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
   # Association
   has_one_attached :tweet_image
-  
+
   belongs_to :channel_user
   belongs_to :channel
 

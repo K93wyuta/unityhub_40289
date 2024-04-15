@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :album do
-    title { "Test Album Title" }
+    title { 'Test Album Title' }
     association :channel
   end
 end

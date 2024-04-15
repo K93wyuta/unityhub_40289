@@ -14,9 +14,7 @@ class ChannelEventUsersController < ApplicationController
 
   def destroy
     @channel_event_user = ChannelEventUser.find_by(channel_user_id: @channel_user.id, event_id: @event.id)
-    if @channel_event_user.present?
-      @channel_event_user.destroy
-    end
+    @channel_event_user.destroy if @channel_event_user.present?
     redirect_to channel_event_path(@event.channel, @event)
   end
 

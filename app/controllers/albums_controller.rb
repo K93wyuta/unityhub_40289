@@ -3,11 +3,11 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search].blank?
-      @albums = @channel.albums.order(created_at: :desc)
-    else
-      @albums = @channel.albums.where('title LIKE ?', "%#{params[:search]}%").order(created_at: :desc)
-    end
+    @albums = if params[:search].blank?
+                @channel.albums.order(created_at: :desc)
+              else
+                @channel.albums.where('title LIKE ?', "%#{params[:search]}%").order(created_at: :desc)
+              end
   end
 
   def new
@@ -25,11 +25,9 @@ class AlbumsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
@@ -45,7 +43,6 @@ class AlbumsController < ApplicationController
     redirect_to channel_albums_path(@channel)
   end
 
-
   private
 
   def set_channel
@@ -57,6 +54,6 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:title, {album_images: []}).merge(channel_id: @channel.id)
+    params.require(:album).permit(:title, { album_images: [] }).merge(channel_id: @channel.id)
   end
 end

@@ -15,9 +15,9 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
-    if @tweet.save
-      redirect_to channel_tweet_path(@channel, @tweet)
-    end
+    return unless @tweet.save
+
+    redirect_to channel_tweet_path(@channel, @tweet)
   end
 
   private
@@ -28,15 +28,15 @@ class TweetsController < ApplicationController
 
   def set_channel_users
     @channel_users = if params[:search].blank?
-                      @channel.channel_users
-                    else
-                      @channel.channel_users.joins(:user).where('users.name LIKE ?', "%#{params[:search]}%")
-                    end
+                       @channel.channel_users
+                     else
+                       @channel.channel_users.joins(:user).where('users.name LIKE ?', "%#{params[:search]}%")
+                     end
   end
 
   def tweet_params
     channel_users = ChannelUser.where(user_id: current_user.id, channel_id: @channel.id)
     channel_user_id = channel_users.find_by(administrator: 0)&.id || channel_users.find_by(administrator: 1)&.id
-    params.require(:tweet).permit(:text, :tweet_image).merge(channel_user_id: channel_user_id, channel_id: @channel.id)
+    params.require(:tweet).permit(:text, :tweet_image).merge(channel_user_id:, channel_id: @channel.id)
   end
 end

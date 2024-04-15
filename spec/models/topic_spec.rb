@@ -4,7 +4,7 @@ RSpec.describe Topic, type: :model do
   before do
     user = FactoryBot.create(:user)
     channel = FactoryBot.create(:channel)
-    channel_user = FactoryBot.create(:channel_user, user: user, channel: channel)
+    channel_user = FactoryBot.create(:channel_user, user:, channel:)
     @topic = FactoryBot.create(:topic, channel_user_id: channel_user.id, channel_id: channel.id)
 
     sleep 0.1

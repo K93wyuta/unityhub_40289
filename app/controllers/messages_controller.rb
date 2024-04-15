@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
   end
 
   private
+
   def set_channel
     @channel = Channel.find(session[:channel_id])
   end
