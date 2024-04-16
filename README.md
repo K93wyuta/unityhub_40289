@@ -202,11 +202,6 @@ https://gyazo.com/aa9e54ad55dbc015f56c6f851c0f08ae
 <br>
 <br>
 
-# 実装予定の機能
-<br>
-<br>
-<br>
-
 # データベース設計
 ![model](https://github.com/K93wyuta/unityhub_40289/assets/155528726/846e27d3-7f3c-49fc-8e01-7408f7999b99)
 <br>
