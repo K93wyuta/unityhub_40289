@@ -1,8 +1,4 @@
-# アプリケーション名
-UnityHub  
-<br>
-<br>
-<br>
+# UnityHub  
 
 # アプリケーション概要
 ## 概要
