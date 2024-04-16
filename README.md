@@ -1,289 +1,172 @@
-# テーブル設計
-## userモデル
-### Tebel
-| Column             | Type                    | Options                              |
-| ------------------ | ----------------------- | ------------------------------------ |
-| (image)            | has_one_attachedにて実装 |                                      |
-| name               | string                  | null: false                          |
-| email              | string                  | null: false, unique: true            |
-| encrypted_password | string                  | null: false                          |
-| gender_id          | integer                 |                                      |
-| age_id             | integer                 |                                      |
-| birthday           | date                    |                                      |
-| mbti_id            | integer                 |                                      |
-| line               | string                  | format: { with: /\A[a-zA-Z0-9]+\z/,} |
-| paypay             | string                  | format: { with: /\A[a-zA-Z0-9]+\z/,} |
-| (image|background) | has_one_attachedにて実装 |                                      |
-| profile            | text                    |                                      |
+# アプリケーション名
+UnityHub
 
-### Association
-- has_one_attached :profile_image
-- has_one_attached :background_image
+# アプリケーション概要
+## 概要
+チャンネルを作成し、そのチャンネルに所属するユーザー同士で様々な情報を共有できるアプリ
+## 機能一覧
+・チャンネル作成機能
+・ツイート投稿機能
+・チャット機能
+・カレンダー（イベント）機能
+・アルバム機能
+・News&Topics投稿機能
+## 機能詳細
+### チャンネル作成機能
+メンバーを招待し、チャンネルを作成することでメンバー同士で以下の情報を交換することができる。
+### ツイート投稿機能
+その日の気持ちなど、様々な投稿を発信できる機能。チャンネルに所属しているユーザーの投稿のみ閲覧することが可能。
+### チャット機能
+チャンネルに所属しているユーザー同士でコミュニケーションが取れる機能。
+### カレンダー（イベント）機能
+イベントを作成し、イベントへの参加・不参加を管理できる機能。また、カレンダーでイベントスケジュールを管理することができる。
+### アルバム機能
+チャンネルに所属するユーザーのみ閲覧することが可能なアルバム作成機能
+### News&Topics投稿機能
+チャンネル内での告知等を行うことができる機能。
 
-- has_many :channels, through: :channel_users
-- has_many :channel_users, dependent: :destroy
+# URL
+https://unityhub-40289.onrender.com/
 
-- extend ActiveHash::Associations::ActiveRecordExtensions
-- belongs_to :gender
-- belongs_to :age
-- belongs_to :mbti
+# テスト用アカウント
+## Basic認証
+ID：test
+PASS:test
+## テスト用アカウント
+メールアドレス:test1@gmail.com
+PASS:test0000
 
-### Validation
-- VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-- VALID_ID_REGEX = /\A[a-zA-Z0-9_]+\z/
+# 利用方法
+## ユーザー
+### 新規会員登録
+#### 説明
+ログイン画面右側の「新規会員登録」ボタンから新規会員登録ページに遷移し各種情報を入力後、「新規登録」ボタンをクリック
+#### 参考動画
+https://gyazo.com/af495c8f0d8f0229cbc8056b337099cf
+### ユーザーログイン
+#### 説明
+ログイン画面左側にメールアドレス・パスワードを入力し「ログイン」ボタンをクリック
+### ユーザーログアウト
+#### 説明
+画面左のナビゲーションから「ログアウト」をクリック
+#### 参考動画
+https://gyazo.com/b8bde864db79cbb27e208dfd1aed265b
+## チャンネル
+### 新規作成
+#### 説明
+画面右下の「＋」ボタンからチャンネル新規作成ページに遷移し、各種情報を入力後「作成する」ボタンをクリック
+#### 参考動画
+https://gyazo.com/c1f6232ac303b4dc5599a511c265f099
+### ログイン
+#### 説明
+チャンネルを選択して、ID・パスワードを入力後「参加する」ボタンをクリック
+#### 参考動画
+https://gyazo.com/1ac64388b02dc0aed34c568bca1bb139
+### ログアウト
+#### 説明
+画面左のナビゲーションからチャンネル名をクリック
+#### 参考動画
+https://gyazo.com/a9010af2ea57c15c64dcdbc036ff0ca6
+## ツイート
+### 新規投稿
+#### 説明
+画面右下の「＋」ボタンをクリックし、各種情報を入力後飛、行機マークをクリック
+#### 参考動画
+https://gyazo.com/9c0b92ed6c6596fc3f581224a2bae0d5
+### ユーザー選択
+#### 説明
+画面左側のユーザー一覧より、ツイートを表示したいユーザーをクリック
+#### 参考動画
+https://gyazo.com/8f667143d1c3f9bd38f53c941abb45e3
+## チャット
+### 新規作成
+#### 説明
+画面左側の新規作成より、チャット新規作成ページに遷移し各種情報を入力後、「作成する」をクリック
+#### 参考動画
+https://gyazo.com/5b0feeee4fd5bdef38e1adf0a7665f81
+### ユーザー選択・チャット投稿
+#### 説明
+画面左側のユーザー一覧より、チャットしたいユーザーをクリックし、下部のフォームよりコメントを入力・送信する
+#### 参考動画
+https://gyazo.com/043e7eece4564eef2469bc2689ab655c
+## カレンダー（イベント）
+### 新規作成
+#### 説明
+画面左側のナビゲーションからイベント申請をクリックし、各種を入力後「作成する」をクリック
+#### 参考動画
+https://gyazo.com/04ce77fe5181ea4f41478704ea453471
+### 詳細表示・参加可否
+#### 説明
+カレンダー内の各ボタンから該当のイベントを選択後ページ下部の「参加」「不参加」ボタンを選択
+#### 参考動画
+https://gyazo.com/da169209de1bf83e974752868e3244a0
+## アルバム
+### 新規作成
+#### 説明
+画面右下の「＋」ボタンよりアルバム新規作成ページに遷移し、各種を入力後「作成する」をクリック
+#### 参考動画
+https://gyazo.com/4dd30a33f41a2d1fa3875cbd1a4b7e15
+### 詳細表示・参加可否
+#### 説明
+カレンダー内の各ボタンから該当のイベントを選択後ページ下部の「参加」「不参加」ボタンを選択
+#### 参考動画
+https://gyazo.com/da169209de1bf83e974752868e3244a0
+## News&Topics
+### 新規投稿
+#### 説明
+画面左側のナビゲーションからNews&Topicsをクリックし、各種を入力後「作成する」をクリック
+#### 参考動画
+https://gyazo.com/aa9e54ad55dbc015f56c6f851c0f08ae
+# アプリケーションを作成した背景
+居住しているシェアハウス内の住人にヒアリングを行い、以下課題を抱えていることが判明。
+既存のアプリケーションでは、すべての機能が揃っていないため開発を決意。
 
-- validates :name, presence: true
-- validates :email, presence: true
-- validates :password, presence: true, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }, on: :create
-- validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }, allow_blank: true, on: :update
-- validates_format_of :line, with: VALID_ID_REGEX, allow_blank: true
-- validates_format_of :paypay, with: VALID_ID_REGEX, allow_blank: true
+■課題
+・コミュニケーションツールの不便さ
+┗普段LINEを使用し複数のメンバーでコミュニケーションを行うが、グループを作る際多くのユーザーから該当のユーザーを選択する必要があり手間であった。
+・イベント企画のしにくさ
+┗イベントを企画した後、参加者を募るが現在ではLINEのグループを作成しそのグループに招待することで参加者の管理を行っている。
+ しかし、この方法だと複数のグループが存在してしまい管理が煩雑になってしまう。
+・告知について
+┗現在、なにかを居住者に告知する際全体LINEを使用するが、そのLINEグループでは他のコミュニケーションをとっているため埋もれてしまう。
+・アルバム管理の煩雑さ
+┗上記「イベント企画のしにくさ」に付随するが、イベントごとにLINEグループが作成されるため写真の管理が煩雑となってしまっていた。
 
-## channelモデル
-### Tebel
-| Column             | Type                    | Options                                      |
-| ------------------ | ----------------------- | -------------------------------------------- |
-| (image)            | has_one_attachedにて実装 | null: false                                  |
-| name               | string                  | null: false                                  |
-| identification     | string                  | null: false                                  |
-| encrypted_password | string                  | null: false                                  |
-| introduction       | text                    |                                              |
-| administrator      | references              | null: false,foreign_key:{ to_table: :users } |
+# 実装予定の機能
 
-### Association
-- has_one_attached :channel_main_image
-- has_one_attached :channel_background_image
+# データベース設計
+![model](https://github.com/K93wyuta/unityhub_40289/assets/155528726/846e27d3-7f3c-49fc-8e01-7408f7999b99)
+# 画面遷移図
+![画面遷移図](https://github.com/K93wyuta/unityhub_40289/assets/155528726/2cdadc1e-1185-4fdb-9db5-4a5af14b8056)
+# 開発環境
+## 言語
+・HTML
+・CSS
+・JavaScript
+・Ruby
+## ツール
+・Github
+・Sequel Pro
+・Render
+・Visual Studio Code
+## 開発
+・フロントエンド
+・バックエンド
+・インフラ
+・テスト
 
-- has_secure_password
+# ローカルでの動作方法
+以下のコマンドを順に実行
+% git clone https://github.com/K93wyuta/unityhub_40289.git
+% cd unityhub_40289
+% bundle install
+% yarn install
 
-- has_many :users, through: :channel_users
-- has_many :channel_users, dependent: :destroy
-- has_many :administrators, -> { where(channel_users: { administrator: true }) }, through: :channel_users, source: :user
-- has_many :tweets, dependent: :destroy
-- has_many :chats, dependent: :destroy
-- has_many :events, dependent: :destroy
-- has_many :albums, dependent: :destroy
-- has_many :topics, dependent: :destroy
+# 工夫したポイント
+・ユーザーが本アプリを心地より利用できるようUIデザイン・導線から設計。
+・JavaScriptにてフロント側でモーダルやプレビュー機能を実装することで、快適な操作性を実現。
+・チャンネル内でも様々なグループ（イベントの参加者やチャットの宛先など）を作成し、それぞれ管理できるようテーブルを設計。
+・コードを修正しやすいようコードの共通化、またコメントアウトにて各コードの説明を記載。
 
-### Validation
-- validates :name, presence: true
-- validates :identification, presence: true, uniqueness: true
-- validates :password, presence: true, length: { minimum: 6, maximum: 128 }
-
-## channel_userモデル
-### Tebel
-| Column  | Type       | Options                       |
-| ------- | ---------- | ----------------------------- |
-| channel | references | null: false,foreign_key: true |
-| user    | references | null: false,foreign_key: true |
-
-### Association
-- has_many :tweets
-- has_many :channel_chat_users, dependent: :destroy
-- has_many :events
-- has_many :channel_event_users, dependent: :destroy
-- has_many :topics
-
-- belongs_to :channel
-- belongs_to :user
-
-### Validation
-- none
-
-## tweetモデル
-### Tebel
-| Column       | Type                    | Options                       |
-| ------------ | ----------------------- | ------------------------------|
-| (image)      | has_one_attachedにて実装 |                               |
-| text         | text                    | null: false                   |
-| channel_user | references              | null: false,foreign_key: true |
-| channel      | references              | null: false,foreign_key: true |
-
-### Association
-- has_one_attached :tweet_image
-
-- belongs_to :channel
-- belongs_to :channel_user
-
-### Validation
-- validate :either_text_or_image
-
-## chatモデル
-### Tebel
-| Column  | Type                    | Options                       |
-| ------- | ----------------------- | ------------------------------|
-| name    | string                  | null: false                   |
-| channel | references              | null: false,foreign_key: true |
-
-### Association
-- has_many :channel_chat_users, dependent: :destroy
-- has_many :messages
-
-- belongs_to :channel
-
-### Validation
-- validates :name, presence: true
-
-## channel_chat_userモデル
-### テーブル
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ------------------------------|
-| chat         | references | null: false,foreign_key: true |
-| channel_user | references | null: false,foreign_key: true |
-
-### Association
-- has_many :messages
-
-- belongs_to :chat
-- belongs_to :channel_user
-
-### Validation
-- none
-
-## messageモデル
-### Tebel
-| Column            | Type                    | Options                       |
-| ----------------- | ----------------------- | ------------------------------|
-| (image)           | has_one_attachedにて実装 |                               |
-| content           | text                    | null: false                   |
-| channel_chat_user | references              | null: false,foreign_key: true |
-| chat              | references              | null: false,foreign_key: true |
-
-### Association
-- has_one_attached :message_image
-
-- belongs_to :channel_chat_user
-- belongs_to :chat
-
-### Validation
-- validate :either_text_or_image
-
-## eventモデル
-### Tebel
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ------------------------------|
-| name         | string     | null: false                   |
-| date_start   | date       | null: false                   |
-| date_end     | date       | null: false                   |
-| time_start   | date       | null: false                   |
-| time_end     | date       | null: false                   |
-| place        | string     |                               |
-| detail       | text       |                               |
-| channel      | references | null: false,foreign_key: true |
-| channel_user | references | null: false,foreign_key: true |
-
-### Association
-- has_one_attached :event_image
-
-- has_many :channel_event_users, dependent: :destroy
-
-- belongs_to :channel
-- belongs_to :channel_user
-
-### Validation
-- validates :name, presence: true
-- validates :date_start, presence: true
-- validates :date_end, presence: true
-- validates :time_start, presence: true
-- validates :time_end, presence: true
-
-## channel_event_userモデル
-### テーブル
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ------------------------------|
-| event        | references | null: false,foreign_key: true |
-| channel_user | references | null: false,foreign_key: true |
-
-### Association
-- belongs_to :channel_user
-- belongs_to :event
-
-### Validation
-- none
-
-## albumモデル
-### Tebel
-| Column  | Type                    | Options                       |
-| ------- | ----------------------- | ------------------------------|
-| (image) | has_one_attachedにて実装 |                               |
-| title   | string                  | null: false                   |
-| channel | references              | null: false,foreign_key: true |
-
-### Association
-- has_many_attached :album_images
-
-- belongs_to :channel
-
-### Validation
-- validates :title, presence: true
-
-## topicモデル
-### テーブル
-| Column       | Type       | Options                       |
-| ------------ | ---------- | ------------------------------|
-| title        | string     | null: false                   |
-| text         | text       | null: false,foreign_key: true |
-| channel_user | references | null: false,foreign_key: true |
-| channel      | references | null: false,foreign_key: true |
-
-### Association
-- belongs_to :channel
-- belongs_to :channel_user
-
-### Validation
-- validates :title, presence: true
-- validates :text, presence: true
-
-## ActiveHash
-### genderモデル
-- class Gender < ActiveHash::Base
-| id | name    |
-| -- | ------- |
-| 1  | "---"   |
-| 2  | "男性"   |
-| 3  | "女性"   |
-| 4  | "その他" |
-
-- include ActiveHash::Associations
-- has_many :users
-
-- end
-
-### ageモデル
-- class Age < ActiveHash::Base
-| id   | name       |
-| ---- | ---------- |
-| 1    | "---"      |
-| 2~43 | "18歳~60歳" |
-
-- include ActiveHash::Associations
-- has_many :users
-
-- end
-
-### mbtiモデル
-- class Mbti < ActiveHash::Base
-| id | name                  |
-| -- | --------------------- |
-| 1  | "---"                 |
-| 2  | "ENTP(討論者)"         |
-| 3  | "INTP(論理学者)"       |
-| 4  | "INTJ(建築家)"         |
-| 5  | "ENTJ(指揮官)"         |
-| 6  | "ENFP(運動家)"         |
-| 7  | "INFP(仲介者)"         |
-| 8  | "INFJ(提唱者)"         |
-| 9  | "ENFJ(主人公)"         |
-| 10 | "ESTJ(幹部)"           |
-| 11 | "ISTJ(管理者)"         |
-| 12 | "ISFJ(擁護者)"         |
-| 13 | "ESFJ(領事)"           |
-| 14 | "ESTP(起業家)"         |
-| 15 | "ISTP(巨匠)"           |
-| 16 | "ISFP(冒険家)"         |
-| 17 | "ESFP(エンターテイナー)" |
-
-- include ActiveHash::Associations
-- has_many :users
-
-- end
+# 制作時間
+約3週間程度
