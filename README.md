@@ -221,45 +221,45 @@ https://gyazo.com/aa9e54ad55dbc015f56c6f851c0f08ae
 
 # 開発環境
 ## 言語
-・HTML
-・CSS
-・JavaScript
-・Ruby
+・HTML<br>
+・CSS<br>
+・JavaScript<br>
+・Ruby<br>
 <br>
 <br>
 
 ## ツール
-・Github
-・Sequel Pro
-・Render
-・Visual Studio Code
+・Github<br>
+・Sequel Pro<br>
+・Render<br>
+・Visual Studio Code<br>
 <br>
 <br>
 
 ## 開発
-・フロントエンド
-・バックエンド
-・インフラ
-・テスト
+・フロントエンド<br>
+・バックエンド<br>
+・インフラ<br>
+・テスト<br>
 <br>
 <br>
 <br>
 
 # ローカルでの動作方法
-以下のコマンドを順に実行
-% git clone https://github.com/K93wyuta/unityhub_40289.git
-% cd unityhub_40289
-% bundle install
-% yarn install
+以下のコマンドを順に実行<br>
+% git clone https://github.com/K93wyuta/unityhub_40289.git<br>
+% cd unityhub_40289<br>
+% bundle install<br>
+% yarn install<br>
 <br>
 <br>
 <br>
 
 # 工夫したポイント
-・ユーザーが本アプリを心地より利用できるようUIデザイン・導線から設計。
-・JavaScriptにてフロント側でモーダルやプレビュー機能を実装することで、快適な操作性を実現。
-・チャンネル内でも様々なグループ（イベントの参加者やチャットの宛先など）を作成し、それぞれ管理できるようテーブルを設計。
-・コードを修正しやすいようコードの共通化、またコメントアウトにて各コードの説明を記載。
+・ユーザーが本アプリを心地より利用できるようUIデザイン・導線から設計。<br>
+・JavaScriptにてフロント側でモーダルやプレビュー機能を実装することで、快適な操作性を実現。<br>
+・チャンネル内でも様々なグループ（イベントの参加者やチャットの宛先など）を作成し、それぞれ管理できるようテーブルを設計。<br>
+・コードを修正しやすいようコードの共通化、またコメントアウトにて各コードの説明を記載。<br>
 <br>
 <br>
 <br>
