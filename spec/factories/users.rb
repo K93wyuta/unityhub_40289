@@ -9,7 +9,7 @@ FactoryBot.define do
 
     name { Faker::Name.name }
     email { Faker::Internet.email }
-    password { Faker::Internet.password(min_length: 6) }
+    password {"password123"}
     password_confirmation { password }
     gender_id { Faker::Number.between(from: 2, to: 4) }
     age_id { Faker::Number.between(from: 2, to: 44) }

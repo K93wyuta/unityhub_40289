@@ -91,3 +91,5 @@ gem 'rails-i18n'
 gem 'simple_calendar', '~> 2.0'
 
 gem 'sassc-rails'
+
+gem 'pry-rails'
