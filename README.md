@@ -55,14 +55,14 @@ https://unityhub-40289.onrender.com/
 
 # テスト用アカウント
 ## Basic認証
-ID：test
-PASS:test
+ID：test<br>
+PASS:test<br>
 <br>
 <br>
 
 ## テスト用アカウント
-メールアドレス:test1@gmail.com
-PASS:test0000
+メールアドレス:test1@gmail.com<br>
+PASS:test0000<br>
 <br>
 <br>
 <br>
