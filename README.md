@@ -48,12 +48,12 @@ UnityHub
 <br>
 
 # URL
-https://unityhub-40289.onrender.com/
+http://54.249.94.191/
 <br>
 <br>
 <br>
 
-# テスト用アカウント
+# ID・PASS
 ## Basic認証
 ID：test<br>
 PASS:test<br>
@@ -61,7 +61,21 @@ PASS:test<br>
 <br>
 
 ## テスト用アカウント
+### ユーザー
+#### test1
 メールアドレス:test1@gmail.com<br>
+PASS:test0000<br>
+#### test2
+メールアドレス:test2@gmail.com<br>
+PASS:test0000<br>
+<br>
+
+### チャンネル
+#### test-channel1
+ID:test-channel1<br>
+PASS:test0000<br>
+#### test-channel2
+ID:test-channel2<br>
 PASS:test0000<br>
 <br>
 <br>
