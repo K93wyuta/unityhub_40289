@@ -5,10 +5,10 @@ default: &default
 development:
   <<: *default
   adapter: mysql2
+  database: unityhub_40289_production
   username: root
-  password:
-  host: localhost
-  database: unityhub_40289_development
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
 
 test:
   <<: *default
