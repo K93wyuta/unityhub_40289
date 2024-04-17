@@ -74,9 +74,15 @@ PASS:test0000<br>
 #### test-channel1
 ID:test-channel1<br>
 PASS:test0000<br>
+※test1・test2が所属<br>
 #### test-channel2
 ID:test-channel2<br>
 PASS:test0000<br>
+※test1のみ所属<br>
+#### test-channel3
+ID:test-channel3<br>
+PASS:test0000<br>
+※test2のみ所属<br>
 <br>
 <br>
 <br>
