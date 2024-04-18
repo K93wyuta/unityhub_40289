@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_095658) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_18_103140) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -168,6 +168,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_095658) do
   add_foreign_key "channel_users", "channels"
   add_foreign_key "channel_users", "users"
   add_foreign_key "chats", "channels"
+  add_foreign_key "events", "channel_users"
   add_foreign_key "events", "channels"
   add_foreign_key "messages", "channel_chat_users"
   add_foreign_key "messages", "chats"
