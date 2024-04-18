@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     @event = @channel.events.build(event_params.merge(channel_user: current_channel_user))
     if @event.save
       (params[:users] || []).each do |user_id|
-        channel_user = ChannelUser.find_by(user_id:, channel_id: @channel.id)
+        channel_user = ChannelUser.find_by(user_id: user_id, channel_id: @channel.id)
         @event.channel_event_users.create(channel_user_id: channel_user.id) if channel_user
       end
       redirect_to channel_event_path(@event.channel, @event)
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       @event.channel_event_users.destroy_all
       (params[:users] || []).each do |user_id|
-        channel_user = ChannelUser.find_by(user_id:, channel_id: @channel.id)
+        channel_user = ChannelUser.find_by(user_id: user_id, channel_id: @channel.id)
         @event.channel_event_users.create(channel_user_id: channel_user.id) if channel_user
       end
       redirect_to channel_event_path(params[:id])
