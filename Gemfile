@@ -98,3 +98,5 @@ gem 'simple_calendar', '~> 2.0'
 gem 'sassc-rails'
 
 gem 'pry-rails'
+
+gem "aws-sdk-s3", require: false
