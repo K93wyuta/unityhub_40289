@@ -7,6 +7,9 @@ UnityHub
 # アプリケーション概要
 ## 概要
 チャンネルを作成し、そのチャンネルに所属するユーザー同士で様々な情報を共有できるアプリ
+
+## 補足資料
+https://docs.google.com/presentation/d/1ktThw_RKFLfkFh6ymQkgWmBF_L4y8ztCne4lOgLG6gM/edit#slide=id.gc7244c75b5_0_553
 <br>
 <br>
 
