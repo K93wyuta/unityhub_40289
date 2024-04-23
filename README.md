@@ -185,13 +185,6 @@ https://gyazo.com/da169209de1bf83e974752868e3244a0
 #### 参考動画
 https://gyazo.com/4dd30a33f41a2d1fa3875cbd1a4b7e15
 <br>
-
-### 詳細表示・参加可否
-#### 説明
-カレンダー内の各ボタンから該当のイベントを選択後ページ下部の「参加」「不参加」ボタンを選択
-#### 参考動画
-https://gyazo.com/da169209de1bf83e974752868e3244a0
-<br>
 <br>
 
 ## News&Topics
