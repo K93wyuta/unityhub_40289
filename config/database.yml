@@ -10,7 +10,7 @@ development:
   username: root
   password:
   host: localhost
-  database:unityhub_40289_development
+  database: unityhub_40289_development
 
 test:
   <<: *default
@@ -18,7 +18,7 @@ test:
   username: root
   password:
   host: localhost
-  database:unityhub_40289_test
+  database: unityhub_40289_test
 
 production:
   <<: *default
